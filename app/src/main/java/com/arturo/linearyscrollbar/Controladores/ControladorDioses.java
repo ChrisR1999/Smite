@@ -36,7 +36,7 @@ public class ControladorDioses extends VinculoBD{
                 cursor.moveToNext();
             }
             cursor.close();
-            close(); 
+            close();
             return gods;
         } else {
             cursor.close();
