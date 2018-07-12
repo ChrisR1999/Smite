@@ -28,7 +28,7 @@ public  class MainActivity extends AppCompatActivity  {
         linear = (LinearLayout)findViewById(R.id.Linear1);
         et1 = new EditText(this);
         //  fotos = new EditText(this);
-        insertGods();//ikhkljhkj
+        insertGods();//ikhkljhkjkokokoko
 
     }
 
