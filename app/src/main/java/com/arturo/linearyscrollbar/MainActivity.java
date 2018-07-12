@@ -153,4 +153,11 @@ public  class MainActivity extends AppCompatActivity  {
         startActivity(intent);
     }
 
+
+    public void siguiente(View view){
+        Intent mandar = new Intent(this,Smiteguru.class);
+
+        startActivity(mandar);
+    }
+
 }

@@ -10,4 +10,9 @@
     <string name="buscardios">Buscar un dios</string>
     <string name="recargar">Recargar</string>
     <string name="BuscarJugador">Buscar Jugador</string>
+    <string name="Pc">PC Oficial Smite</string>
+    <string name="PS4">PS4 Oficial</string>
+    <string name="Xbox">XBOX Oficial</string>
+    <string name="guru">Cualquier consola SmiteGuru</string>
+    <string name="regresar">Regresar</string>
 </resources>
