@@ -25,6 +25,7 @@ public  class MainActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //getActionBar().hide();
 
         linear = (LinearLayout)findViewById(R.id.Linear1);
         et1 = new EditText(this);
@@ -37,7 +38,6 @@ public  class MainActivity extends AppCompatActivity  {
         ArrayList<ModeloDioses> model = controlador.getAllGods();
         if (model != null) {
             for (final ModeloDioses m : model) {
-                Toast.makeText(this, String.valueOf(model.size()), Toast.LENGTH_SHORT).show();
                 final ImageButton btn = new ImageButton(this);
                 final String resourceRoute = m.getResourceImage();
                 final int id = m.getGodId();

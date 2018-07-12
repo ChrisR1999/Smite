@@ -28,6 +28,7 @@ public class Buscar extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buscar);
+        //getActionBar().hide();
 
         final ImageView btn = new ImageView(this);
         int id = getIntent().getIntExtra("id", 0);
