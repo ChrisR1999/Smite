@@ -35,21 +35,21 @@ public  class MainActivity extends AppCompatActivity  {
     }
 
     private void insertGods() {
+        int id = 0;
         ControladorDioses controlador = new ControladorDioses(this);
-        ArrayList<ModeloDioses> model = controlador.getAllGods();
+        ArrayList<String> model = controlador.getAllGodsNames();
         if (model != null) {
-            for (final ModeloDioses m : model) {
+            for (final String m : model) {
                 final ImageButton btn = new ImageButton(this);
-                final String resourceRoute = m.getResourceImage();
-                final int id = m.getGodId();
+                final String resourceRoute = m;
                 LinearLayout list = new LinearLayout(this);
                 list.setOrientation(LinearLayout.VERTICAL);
                 list.setId(id);
                 list.setBackgroundColor(getResources().getColor(R.color.Azul));
                 btn.setImageResource(getResources().getIdentifier(resourceRoute, "mipmap", getPackageName()));
 
-                btn.setTag(m.getGodName());
-                btn.setId(m.getGodId());
+                btn.setTag(m);
+                btn.setId(id);
                 btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -64,7 +64,7 @@ public  class MainActivity extends AppCompatActivity  {
 
 
                 TextView text = new TextView(this);
-                text.setText(m.getGodName());
+                text.setText(m);
                 text.setTextSize(25);
                 text.setTextColor(getResources().getColor(R.color.Negro));
 
@@ -75,7 +75,7 @@ public  class MainActivity extends AppCompatActivity  {
                 list.addView(text);
                 list.addView(btn);
                 linear.addView(list);
-
+                id++;
             }
 
         } else {
@@ -84,13 +84,9 @@ public  class MainActivity extends AppCompatActivity  {
     }
 
 
-    private void passActivity(ModeloDioses model) {
+    private void passActivity(String model) {
         Intent intent = new Intent(this,Buscar.class);
-        intent.putExtra("id", model.getGodId());
-        intent.putExtra("name", model.getGodName());
-        intent.putExtra("combo", model.getGodCombo());
-        intent.putExtra("counter", model.getCounter());
-        intent.putExtra("counteredBy", model.getCounterBy());
+        intent.putExtra("name", model);
         startActivity(intent);
     }
 
