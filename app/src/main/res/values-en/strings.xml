@@ -9,5 +9,7 @@
     <string name="conquista">CONQUEST</string>
     <string name="justa">JOUST</string>
     <string name="clash">CLASH</string>
-    <string-array name="buscardios">Looking for a god</string-array>
+    <string name="buscardios">Search a god</string>
+    <string name="recargar">Reload</string>
+    <string name="BuscarJugador">Search Player</string>
 </resources>

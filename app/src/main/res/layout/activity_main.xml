@@ -21,18 +21,20 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="157dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:background="#bf950c"
+        android:baselineAligned="false"
         android:gravity="top"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="133dp"
+            android:layout_height="96dp"
             android:layout_weight="1"
-            android:text="Button" />
+            android:text="@string/recargar" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -46,9 +48,9 @@
         <Button
             android:id="@+id/button2"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="98dp"
             android:layout_weight="1"
-            android:text="Button" />
+            android:text="@string/BuscarJugador" />
     </LinearLayout>
 
     <EditText
@@ -59,7 +61,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="97dp"
         android:ems="10"
-        android:hint="@string/conquista"
+        android:hint="@string/buscardios"
         android:inputType="textPersonName" />
 
     <ImageView

@@ -7,5 +7,7 @@
     <string name="conquista">CONQUISTA</string>
     <string name="justa">JUSTA</string>
     <string name="clash">CLASH</string>
-    <string-array name="buscardios">Buscar un dios</string-array>
+    <string name="buscardios">Buscar un dios</string>
+    <string name="recargar">Recargar</string>
+    <string name="BuscarJugador">Buscar Jugador</string>
 </resources>
