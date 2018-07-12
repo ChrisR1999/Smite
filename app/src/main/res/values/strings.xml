@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Linearyscrollbar</string>
+    <string name="Conterea">Counterea a</string>
+    <string name="EsContereado">Es countereado por</string>
+    <string name="BuildsPopulares">Builds Populares</string>
+    <string name="arena">ARENA</string>
+    <string name="conquista">CONQUISTA</string>
+    <string name="justa">JUSTA</string>
+    <string name="clash">CLASH</string>
+</resources>

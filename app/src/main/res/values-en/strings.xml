@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <string name="Conterea">Counters</string>
+    <string name="EsContereado">Is Counter by</string>
+  <string name="BuildsPopulares">Popular Builds</string>
+    <string name="arena">ARENA</string>
+    <string name="conquista">CONQUEST</string>
+    <string name="justa">JOUST</string>
+    <string name="clash">CLASH</string>
+
+</resources>
