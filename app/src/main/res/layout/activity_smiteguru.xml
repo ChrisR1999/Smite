@@ -12,72 +12,77 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="120dp"
         android:ems="10"
         android:hint="@string/BuscarJugador"
         android:inputType="textPersonName"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="75dp" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="179dp"
+        android:id="@+id/pcButton"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/txt_pc"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="27dp"
-        android:text="@string/regresar"
-        tools:layout_editor_absoluteX="183dp"
-        tools:layout_editor_absoluteY="175dp" />
+        android:layout_marginTop="30dp"
+        android:background="@android:color/holo_gray_light"
+        android:onClick="buscarps"
+        android:text="@string/Pc"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
 
     <Button
-        android:id="@+id/button6"
-        android:layout_width="182dp"
+        android:id="@+id/ps4Button"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/pcButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="116dp"
-        android:background="@android:color/holo_purple"
-        android:onClick="guru"
-        android:text="@string/guru"
-        tools:layout_editor_absoluteX="183dp"
-        tools:layout_editor_absoluteY="92dp" />
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="193dp"
-        android:background="@android:color/holo_green_dark"
-        android:onClick="buscarxbox"
-        android:text="@string/Xbox"
-        tools:layout_editor_absoluteX="183dp"
-        tools:layout_editor_absoluteY="368dp" />
-
-    <Button
-        android:id="@+id/button7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="197dp"
+        android:layout_marginTop="10dp"
         android:background="@android:color/holo_blue_light"
         android:onClick="buscarps"
         android:text="@string/PS4"
-        tools:layout_editor_absoluteX="183dp"
-        tools:layout_editor_absoluteY="269dp" />
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
 
     <Button
-        android:id="@+id/button8"
-        android:layout_width="wrap_content"
+        android:id="@+id/xboxButton"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@id/ps4Button"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="113dp"
-        android:onClick="buscar"
-        android:text="@string/Pc"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="124dp" />
+        android:layout_marginTop="10dp"
+        android:background="@android:color/holo_green_dark"
+        android:onClick="buscarxbox"
+        android:text="@string/Xbox"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/whateverButton"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/xboxButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/holo_purple"
+        android:onClick="guru"
+        android:text="@string/guru"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/whateverButton"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/regresar"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
 </RelativeLayout>
