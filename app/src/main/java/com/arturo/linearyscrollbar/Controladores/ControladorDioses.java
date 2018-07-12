@@ -2,7 +2,11 @@ package com.arturo.linearyscrollbar.Controladores;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.util.Log;
+import android.widget.Toast;
+
 import com.arturo.linearyscrollbar.BD.VinculoBD;
+import com.arturo.linearyscrollbar.MainActivity;
 import com.arturo.linearyscrollbar.Modelos.ModeloDioses;
 
 import java.util.ArrayList;
@@ -53,7 +57,8 @@ public class ControladorDioses extends VinculoBD{
         open();
         search = "%" + search + "%";
         ArrayList<String> gods = new ArrayList<>();
-        Cursor cursor = bdGods.rawQuery("SELECT godName FROM datosDioses WHERE godName = ?", new String[]{search});
+        Log.d("error", search);
+        Cursor cursor = bdGods.rawQuery("SELECT godName FROM datosDioses WHERE godName LIKE ?", new String[]{search});
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){
             gods.add(cursor.getString(0));
