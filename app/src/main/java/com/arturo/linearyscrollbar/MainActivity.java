@@ -9,9 +9,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.arturo.linearyscrollbar.Controladores.ControladorDioses;
-import com.arturo.linearyscrollbar.Modelos.ModeloDioses;
 
 import java.util.ArrayList;
 
@@ -35,7 +33,7 @@ public  class MainActivity extends AppCompatActivity  {
     }
 
     private void insertGods() {
-        int id = 0;
+        int id = 1;
         ControladorDioses controlador = new ControladorDioses(this);
         ArrayList<String> model = controlador.getAllGodsNames();
         if (model != null) {
@@ -47,7 +45,6 @@ public  class MainActivity extends AppCompatActivity  {
                 list.setId(id);
                 list.setBackgroundColor(getResources().getColor(R.color.Azul));
                 btn.setImageResource(getResources().getIdentifier(resourceRoute, "mipmap", getPackageName()));
-
                 btn.setTag(m);
                 btn.setId(id);
                 btn.setOnClickListener(new View.OnClickListener() {
@@ -56,7 +53,6 @@ public  class MainActivity extends AppCompatActivity  {
                         passActivity(m);
                     }
                 });
-
 
                 btn.setBackgroundColor(getResources().getColor(R.color.Negro));
                 btn.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT,
