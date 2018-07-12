@@ -28,7 +28,6 @@ public  class MainActivity extends AppCompatActivity  {
 
         linear = (LinearLayout)findViewById(R.id.Linear1);
         et1 = new EditText(this);
-        //  fotos = new EditText(this);
         insertGods();
     }
 
@@ -69,7 +68,6 @@ public  class MainActivity extends AppCompatActivity  {
 
                 text.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT,
                         LinearLayout.LayoutParams.WRAP_CONTENT));
-
 
                 list.addView(text);
                 list.addView(btn);
