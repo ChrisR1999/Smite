@@ -15,6 +15,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.arturo.linearyscrollbar.Controladores.ControladorDioses;
+import com.arturo.linearyscrollbar.Modelos.ModeloDioses;
+
 public class Buscar extends AppCompatActivity {
 
 
@@ -29,15 +32,10 @@ public class Buscar extends AppCompatActivity {
     private LinearLayout ln1;
     private LinearLayout ln2;
     private String name;
-    private TextView Counter;
-    private TextView CounterBy;
-    private TextView Combo;
-    private TextView url1;
-    private TextView url2;
-    private TextView url3;
-    private TextView url4;
     private ImageButton fotocounter;
     private ImageButton fotocountereadopor;
+
+
 
 
 
@@ -67,13 +65,6 @@ public class Buscar extends AppCompatActivity {
         tv6 = new Button(this);
         tv7 = new Button(this);
         tv8 = new Button(this);
-        Counter = new EditText(this);
-        CounterBy = new EditText(this);
-        Combo = new EditText(this);
-        url1 = new EditText(this);
-        url2 = new EditText(this);
-        url3= new EditText(this);
-        url4 = new EditText(this);
         fotocounter = new ImageButton(this);
         fotocountereadopor = new ImageButton(this);
 
@@ -146,9 +137,18 @@ public class Buscar extends AppCompatActivity {
 
 
 
-        Buscar();
-        //fotocounter.setImageResource(getResources().getIdentifier(Counter.toString(), "mipmap", getPackageName()));
-        //fotocountereadopor.setImageResource(getResources().getIdentifier(CounterBy.toString(), "mipmap", getPackageName()));
+        ControladorDioses controlador = new ControladorDioses (this);
+
+        ModeloDioses datos = controlador.godStadistics(name);
+
+
+
+        String counter = ModeloDioses.getCounter();
+        String counterby = ModeloDioses.getCounter();
+
+
+        fotocounter.setImageResource(getResources().getIdentifier(counter.toString(), "mipmap", getPackageName()));
+        fotocountereadopor.setImageResource(getResources().getIdentifier(counterby.toString(), "mipmap", getPackageName()));
 
         ln1.addView(tv4);
         ln1.addView(btn);
@@ -156,9 +156,9 @@ public class Buscar extends AppCompatActivity {
         ln2.addView(tv3);
         ln2.addView(ln1);
         ln2.addView(tv1);
-       // ln2.addView(fotocounter);
+        ln2.addView(fotocounter);
         ln2.addView(tv2);
-        //ln2.addView(fotocountereadopor);
+        ln2.addView(fotocountereadopor);
         ln2.addView(tv5);
         ln2.addView(tv6);
         ln2.addView(tv7);
@@ -166,35 +166,7 @@ public class Buscar extends AppCompatActivity {
 
     }
 
-    public void Buscar(){
 
-        OpenBaseDeDatos aministrador = new OpenBaseDeDatos(this,"administracion",null,1);
-        SQLiteDatabase BasedeDatos =  aministrador.getWritableDatabase();
-
-
-        String dios = name;
-
-        Cursor Fila = BasedeDatos.rawQuery
-                //
-                        ("select Combo,Counter,Counterby,arena,Clash,Conquista from Dioses where Dios = "+dios,null);
-
-
-        if(Fila.moveToFirst()){
-            Combo.setText(Fila.getString(0));
-            Counter.setText(Fila.getString(1));
-            CounterBy.setText(Fila.getString(2));
-            url1.setText(Fila.getString(3));
-            url2.setText(Fila.getString(4));
-            url3.setText(Fila.getString(5));
-            url4.setText(Fila.getString(6));
-            BasedeDatos.close();
-        }else{
-            Toast.makeText(this,"ERROR",Toast.LENGTH_SHORT).show();
-            BasedeDatos.close();
-        }
-
-
-    }
 
 
 }
