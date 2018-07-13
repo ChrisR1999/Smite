@@ -16,6 +16,8 @@
         android:ems="10"
         android:hint="@string/BuscarJugador"
         android:inputType="textPersonName"
+        android:textColor="@color/Blanco"
+        android:textColorHint="@color/Blanco"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="75dp" />
 
