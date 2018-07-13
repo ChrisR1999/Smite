@@ -11,7 +11,7 @@ public class OpenBaseDeDatos extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("Create Table Dioses (Dios Text Primary Key,Combo Text,Counter Text,Counterby Text)");
+        db.execSQL("Create Table Dioses (Dios Text Primary Key,Combo Text,Counter Text,Counterby Text,arena Text,Clash Text,Conquista Text,Justa Text)");
 
     }
 
