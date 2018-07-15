@@ -160,4 +160,9 @@ public  class MainActivity extends AppCompatActivity  {
         startActivity(mandar);
     }
 
+
+    public void recargar(View view){
+        recreate();
+    }
+
 }

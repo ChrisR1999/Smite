@@ -4,7 +4,7 @@ public class ModeloDioses {
     private int godId;
     private String godName;
     private String godCombo;
-    private String counter;
+    private static String counter;
     private String counterBy;
     private String resourceImage;
 
@@ -45,7 +45,7 @@ public class ModeloDioses {
         this.godCombo = godCombo;
     }
 
-    public String getCounter() {
+    public static String getCounter() {
         return counter;
     }
 
