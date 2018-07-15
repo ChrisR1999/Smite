@@ -45,7 +45,7 @@ public class ModeloDioses {
         this.godCombo = godCombo;
     }
 
-    public static String getCounter() {
+    public String getCounter() {
         return counter;
     }
 

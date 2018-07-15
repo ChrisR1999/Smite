@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/colorPrimary"
+    android:minHeight="?attr/actionBarSize"
+    local:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+    local:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-</android.support.constraint.ConstraintLayout>
+    <EditText
+        android:id="@+id/godSearch"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:hint="Buscar por dios"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        android:focusable="true"
+        android:focusableInTouchMode ="true"
+        android:enabled="false"
+        android:visibility="gone"
+        android:padding="4dp" />
+</android.support.v7.widget.Toolbar>

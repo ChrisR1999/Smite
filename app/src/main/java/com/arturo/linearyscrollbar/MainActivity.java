@@ -3,14 +3,21 @@ package com.arturo.linearyscrollbar;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+
 import com.arturo.linearyscrollbar.Controladores.ControladorDioses;
 
 import java.util.ArrayList;
@@ -19,6 +26,36 @@ public  class MainActivity extends AppCompatActivity  {
 
     private LinearLayout linear;
     private EditText searchBar ;
+    private Toolbar mToolbar;
+    private Animation animOut;
+    private Animation animIn;
+
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        
+        if (id == R.id.action_search){
+            searchBar.setVisibility(View.VISIBLE);
+            searchBar.setEnabled(true);
+            searchBar.startAnimation(animIn);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +65,24 @@ public  class MainActivity extends AppCompatActivity  {
     }
 
     private void initComponents(){
+
+
         linear = (LinearLayout)findViewById(R.id.Linear1);
-        searchBar = (EditText) findViewById(R.id.txt_buscardios);
+        searchBar = (EditText) findViewById(R.id.godSearch);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        animOut = AnimationUtils.loadAnimation(this,  R.anim.searchout);
+        animIn = AnimationUtils.loadAnimation(this,  R.anim.searchin);
+        searchBar.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(!b){
+                    searchBar.startAnimation(animOut);
+                    searchBar.setVisibility(View.GONE);
+                }
+            }
+        });
         searchBar.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -48,6 +101,7 @@ public  class MainActivity extends AppCompatActivity  {
 
             }
         });
+
         insertGods();
     }
 

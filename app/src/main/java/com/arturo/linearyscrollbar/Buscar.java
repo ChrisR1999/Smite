@@ -1,9 +1,6 @@
 package com.arturo.linearyscrollbar;
 
-
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -14,13 +11,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.arturo.linearyscrollbar.Controladores.ControladorDioses;
 import com.arturo.linearyscrollbar.Modelos.ModeloDioses;
 
 public class Buscar extends AppCompatActivity {
-
 
     private TextView tv1;
     private TextView tv2;
@@ -33,39 +28,12 @@ public class Buscar extends AppCompatActivity {
     private Button regreso;
     private LinearLayout ln1;
     private LinearLayout ln2;
-    private  LinearLayout ln3;
-    private String name;
+    private LinearLayout ln3;
+    private String godName;
     private ImageButton fotocounter;
     private ImageButton fotocountereadopor;
 
-
-
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_buscar);
-        //getActionBar().hide();
-
-        final ImageView btn = new ImageView(this);
-         name = getIntent().getStringExtra("name");
-
-
-        ln2 = (LinearLayout)findViewById(R.id.linearabajo) ;
-        ln2.setBackgroundColor(getResources().getColor(R.color.Negro));
-
-        ln1 = new LinearLayout(this);
-        ln1.setOrientation(LinearLayout.HORIZONTAL);
-        LinearLayout.LayoutParams linearlayoutlayoutparams1 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-        ln1.setBackgroundColor(getResources().getColor(R.color.Negro));
-
-        ln3 = new LinearLayout(this);
-        ln3.setOrientation(LinearLayout.HORIZONTAL);
-        LinearLayout.LayoutParams linearlayoutlayoutparams2 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-        ln3.setBackgroundColor(getResources().getColor(R.color.Negro));
-
-
+    private void initComponents(){
         tv1 = new EditText(this);
         tv2 = new EditText(this);
         tv3 = new EditText(this);
@@ -78,16 +46,17 @@ public class Buscar extends AppCompatActivity {
         fotocounter = new ImageButton(this);
         fotocountereadopor = new ImageButton(this);
 
-
-
-
-
-        btn.setImageResource(getResources().getIdentifier(name, "mipmap", getPackageName()));
-
-        btn.setBackgroundColor(getResources().getColor(R.color.Negro));
-        btn.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT));
-
+        godName = getIntent().getStringExtra("name");
+        ln2 = (LinearLayout)findViewById(R.id.linearabajo) ;
+        ln2.setBackgroundColor(getResources().getColor(R.color.Negro));
+        ln1 = new LinearLayout(this);
+        ln1.setOrientation(LinearLayout.HORIZONTAL);
+        LinearLayout.LayoutParams linearlayoutlayoutparams1 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+        ln1.setBackgroundColor(getResources().getColor(R.color.Negro));
+        ln3 = new LinearLayout(this);
+        ln3.setOrientation(LinearLayout.HORIZONTAL);
+        LinearLayout.LayoutParams linearlayoutlayoutparams2 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+        ln3.setBackgroundColor(getResources().getColor(R.color.Negro));
 
         tv1.setText(R.string.Conterea);
         tv1.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
@@ -103,7 +72,7 @@ public class Buscar extends AppCompatActivity {
         tv2.setTextColor(getResources().getColor(R.color.Blanco));
         tv2.setBackgroundColor(getResources().getColor(R.color.Negro));
 
-        tv3.setText(name);
+        tv3.setText(godName);
         tv3.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
         tv3.setEnabled(false);
         tv3.setTextSize(25);
@@ -129,13 +98,13 @@ public class Buscar extends AppCompatActivity {
         regreso.setTextSize(25);
         regreso.setTextColor(getResources().getColor(R.color.Negro));
         //regreso.setBackgroundColor(getResources().getColor(R.color.Negro));
+
         regreso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 RegresoMenu();
             }
         });
-
 
         tv6.setText(R.string.conquista);
         tv6.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
@@ -157,18 +126,24 @@ public class Buscar extends AppCompatActivity {
         tv8.setTextSize(25);
         tv8.setTextColor(getResources().getColor(R.color.Negro));
         // tv8.setBackgroundColor(getResources().getColor(R.color.gris));
-
-
-
+    }
+    
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_buscar);
+        //getActionBar().hide();
+        initComponents();
+        final ImageView btn = new ImageView(this);
         ControladorDioses controlador = new ControladorDioses (this);
+        ModeloDioses datos = controlador.godStadistics(godName);
+        String counter = datos.getCounter();
+        String counterby = datos.getCounterBy();
 
-        ModeloDioses datos = controlador.godStadistics(name);
-
-
-
-        String counter = ModeloDioses.getCounter();
-        String counterby = ModeloDioses.getCounter();
-
+        btn.setImageResource(getResources().getIdentifier(godName, "mipmap", getPackageName()));
+        btn.setBackgroundColor(getResources().getColor(R.color.Negro));
+        btn.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
 
         fotocounter.setImageResource(getResources().getIdentifier(counter.toString(), "mipmap", getPackageName()));
         fotocounter.setTag(counter);
@@ -209,19 +184,22 @@ public class Buscar extends AppCompatActivity {
 
        public void cambiar(){
            Intent mandar = new Intent(this,Buscar.class);
-           mandar.putExtra("name",fotocounter.getTag().toString());
+           mandar.putExtra("godgodName",fotocounter.getTag().toString());
            startActivity(mandar);
+           finish();
        }
 
     public void cambiar2(){
         Intent mandar = new Intent(this,Buscar.class);
-        mandar.putExtra("name",fotocountereadopor.getTag().toString());
+        mandar.putExtra("godgodName",fotocountereadopor.getTag().toString());
         startActivity(mandar);
+        finish();
     }
 
     public void RegresoMenu(){
         Intent mandar = new Intent(this,MainActivity.class);
         startActivity(mandar);
+        finish();
     }
 
 }
