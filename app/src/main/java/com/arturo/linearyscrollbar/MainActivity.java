@@ -1,57 +1,66 @@
 package com.arturo.linearyscrollbar;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.Rect;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.EditText;
-import android.widget.ImageButton;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-
+import com.arturo.linearyscrollbar.Adapters.AdaptadorMain;
 import com.arturo.linearyscrollbar.Controladores.ControladorDioses;
 
 import java.util.ArrayList;
 
-public  class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity {
 
     private LinearLayout linear;
-    private EditText searchBar ;
+    private EditText searchBar;
     private Toolbar mToolbar;
     private Animation animOut;
     private Animation animIn;
-
+    private ListView listMain;
+    private FrameLayout ghost;
+    private ArrayList godCards;
+    private boolean searchFlag;
+    private AdaptadorMain adapter;
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        
-        if (id == R.id.action_search){
-            searchBar.setVisibility(View.VISIBLE);
-            searchBar.setEnabled(true);
-            searchBar.startAnimation(animIn);
+        switch (id) {
+            case R.id.action_search:
+                searchBar.setVisibility(View.VISIBLE);
+                searchBar.setEnabled(true);
+                searchBar.startAnimation(animIn);
+                break;
+            case R.id.action_user:
+                Intent intent = new Intent(this, Smiteguru.class);
+                startActivity(intent);
+                break;
         }
 
         return super.onOptionsItemSelected(item);
@@ -64,20 +73,24 @@ public  class MainActivity extends AppCompatActivity  {
         initComponents();
     }
 
-    private void initComponents(){
-
-
-        linear = (LinearLayout)findViewById(R.id.Linear1);
+    @SuppressLint("ClickableViewAccessibility")
+    private void initComponents() {
+        godCards = new ArrayList();
+        ghost = (FrameLayout) findViewById(R.id.ghostFrame);
+        listMain = (ListView) findViewById(R.id.listMain);
         searchBar = (EditText) findViewById(R.id.godSearch);
+        searchFlag = false;
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar.setTitle("SMITE");
+        mToolbar.setTitleTextColor(getResources().getColor(R.color.Negro));
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        animOut = AnimationUtils.loadAnimation(this,  R.anim.searchout);
-        animIn = AnimationUtils.loadAnimation(this,  R.anim.searchin);
+        animOut = AnimationUtils.loadAnimation(this, R.anim.searchout);
+        animIn = AnimationUtils.loadAnimation(this, R.anim.searchin);
         searchBar.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
-                if(!b){
+                if (!b) {
                     searchBar.startAnimation(animOut);
                     searchBar.setVisibility(View.GONE);
                 }
@@ -92,8 +105,7 @@ public  class MainActivity extends AppCompatActivity  {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 String search = searchBar.getText().toString();
-                linear.removeAllViews();
-                insertResultGods(search);
+                consultGodsBySearch(search);
             }
 
             @Override
@@ -102,15 +114,59 @@ public  class MainActivity extends AppCompatActivity  {
             }
         });
 
-        insertGods();
+
+        ghost.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    if (searchBar.isFocused()) {
+                        Rect outRect = new Rect();
+                        searchBar.getGlobalVisibleRect(outRect);
+                        if (!outRect.contains((int) event.getRawX(), (int) event.getRawY())) {
+                            searchBar.clearFocus();
+                            InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                            imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                        }
+                    }
+                }
+                return false;
+            }
+        });
+
+        listMain.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                final TextView god = (TextView) view.findViewById(R.id.nombre);
+                final String godNameClick = god.getText().toString();
+                passActivity(godNameClick);
+            }
+        });
+        consultAllGods();
+    }
+
+    private void consultAllGods() {
+        ControladorDioses controller = new ControladorDioses(this);
+        godCards = controller.getAllGods();
+        adapter = new AdaptadorMain(this, godCards, this);
+        listMain.setAdapter(adapter);
+    }
+
+    private void consultGodsBySearch(String search) {
+        ControladorDioses controller = new ControladorDioses(this);
+        godCards = controller.searchResults(search);
+        adapter = new AdaptadorMain(this, godCards, this);
+        listMain.setAdapter(adapter);
     }
 
 
+/*
     private void insertResultGods(String name){
         int id = 1;
+        /*
         ControladorDioses controlador = new ControladorDioses(this);
         ArrayList<String> model = controlador.searchResults(name);
         if (model != null) {
+
             for (final String m : model) {
                 final ImageButton btn = new ImageButton(this);
                 final String resourceRoute = m;
@@ -151,8 +207,9 @@ public  class MainActivity extends AppCompatActivity  {
         } else {
             Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show();
         }
-    }
+    }*/
 
+/*
     private void insertGods() {
         int id = 1;
         ControladorDioses controlador = new ControladorDioses(this);
@@ -198,25 +255,12 @@ public  class MainActivity extends AppCompatActivity  {
         } else {
             Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show();
         }
-    }
+    }*/
 
 
-    private void passActivity(String model) {
-        Intent intent = new Intent(this,Buscar.class);
-        intent.putExtra("name", model);
+    private void passActivity(String name) {
+        Intent intent = new Intent(this, Buscar.class);
+        intent.putExtra("name", name);
         startActivity(intent);
     }
-
-
-    public void siguiente(View view){
-        Intent mandar = new Intent(this,Smiteguru.class);
-
-        startActivity(mandar);
-    }
-
-
-    public void recargar(View view){
-        recreate();
-    }
-
 }

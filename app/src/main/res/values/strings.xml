@@ -5,6 +5,9 @@
     <string name="BuildsPopulares">Builds Populares</string>
     <string name="arena">ARENA</string>
     <string name="conquista">CONQUISTA</string>
+    <string name="exampleGodName">Nombre del dios</string>
+    <string name="exampleCategory">Categoría</string>
+    <string name="examplePantheon">Panteon</string>
     <string name="justa">JUSTA</string>
     <string name="clash">CLASH</string>
     <string name="buscardios">Buscar un dios</string>
@@ -13,6 +16,6 @@
     <string name="Pc">PC Oficial Smite</string>
     <string name="PS4">PS4 Oficial</string>
     <string name="Xbox">XBOX Oficial</string>
-    <string name="guru">Cualquier consola SmiteGuru</string>
+    <string name="guru">Cualquier plataforma SmiteGuru</string>
     <string name="regresar">Regresar</string>
 </resources>

@@ -4,12 +4,12 @@
     <color name="Azul">#1386f9</color>
     <color name="Blanco">#ffffff</color>
     <color name="gris">#5d646b</color>
-    <color name="colorPrimary">#F50057</color>
-    <color name="colorPrimaryDark">#C51162</color>
-    <color name="textColorPrimary">#FFFFFF</color>
-    <color name="windowBackground">#FFFFFF</color>
+    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimaryDark">#181818</color>
+    <color name="textColorPrimary">#131313</color>
+    <color name="windowBackground">#000000</color>
     <color name="navigationBarColor">#000000</color>
-    <color name="colorAccent">#FF80AB</color>
+    <color name="colorAccent">#13bcb6</color>
 </resources>
 
 

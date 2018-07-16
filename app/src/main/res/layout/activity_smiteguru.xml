@@ -1,83 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Smiteguru">
 
-    <EditText
-        android:id="@+id/txt_pc"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linearToolbar1"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/searchPlayer"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linearToolbar1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="44dp"
-        android:ems="10"
+        android:layout_marginTop="30dp"
+        android:ems="20"
+        android:gravity="center"
         android:hint="@string/BuscarJugador"
         android:inputType="textPersonName"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="75dp" />
+        android:textSize="16sp" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="179dp"
+        android:id="@+id/pcButton"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@id/searchPlayer"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="27dp"
-        android:text="@string/regresar"
-        tools:layout_editor_absoluteX="183dp"
-        tools:layout_editor_absoluteY="175dp" />
+        android:layout_marginTop="40dp"
+        android:background="@color/gris"
+        android:onClick="buscar"
+        android:text="@string/Pc"
+        android:textSize="16sp" />
 
     <Button
-        android:id="@+id/button6"
-        android:layout_width="182dp"
+        android:id="@+id/xboxButton"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@id/pcButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="116dp"
-        android:background="@android:color/holo_purple"
-        android:onClick="guru"
-        android:text="@string/guru"
-        tools:layout_editor_absoluteX="183dp"
-        tools:layout_editor_absoluteY="92dp" />
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="193dp"
+        android:layout_marginTop="20dp"
         android:background="@android:color/holo_green_dark"
         android:onClick="buscarxbox"
         android:text="@string/Xbox"
-        tools:layout_editor_absoluteX="183dp"
-        tools:layout_editor_absoluteY="368dp" />
+        android:textSize="16sp" />
 
     <Button
-        android:id="@+id/button7"
-        android:layout_width="wrap_content"
+        android:id="@+id/ps4Button"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@id/xboxButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="197dp"
+        android:layout_marginTop="20dp"
         android:background="@android:color/holo_blue_light"
         android:onClick="buscarps"
         android:text="@string/PS4"
-        tools:layout_editor_absoluteX="183dp"
-        tools:layout_editor_absoluteY="269dp" />
+        android:textSize="16sp" />
+
 
     <Button
-        android:id="@+id/button8"
-        android:layout_width="wrap_content"
+        android:id="@+id/anyPlatform"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@id/ps4Button"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="113dp"
-        android:onClick="buscar"
-        android:text="@string/Pc"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="124dp" />
+        android:layout_marginTop="20dp"
+        android:background="@android:color/holo_purple"
+        android:onClick="guru"
+        android:text="@string/guru"
+        android:textSize="16sp" />
+
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/anyPlatform"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/regresar"
+        android:textSize="16sp" />
+
 </RelativeLayout>

@@ -6,10 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".PaginaWeb">
 
+    <LinearLayout
+        android:id="@+id/linearToolbar2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+    </LinearLayout>
+
     <WebView
         android:id="@+id/wv1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/linearToolbar2"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp" />
 </RelativeLayout>
