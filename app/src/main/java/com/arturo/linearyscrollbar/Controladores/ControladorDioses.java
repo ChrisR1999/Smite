@@ -78,7 +78,33 @@ public class ControladorDioses extends VinculoBD{
             ));
             cursor.moveToNext();
         }
+        cursor.close();
         close();
         return gods;
     }
+
+    public String getGodNameByResourceImage(String godName){
+        open();
+        String name = "";
+        Cursor cursor = bdGods.rawQuery("SELECT godName FROM datosDioses WHERE resourceImage = ?", new String[]{godName});
+        cursor.moveToFirst();
+        name = cursor.getString(0);
+        cursor.close();
+        close();
+        return name;
+    }
+
+    public String[] pullItemsByType(String type){
+        String[] items;
+        open();
+        Cursor cursor = bdGods.rawQuery("SELECT * FROM items WHERE tipo = ?", new String[]{type});
+        cursor.moveToFirst();
+        items = new String[cursor.getCount()];
+        for (int i = 0; i< items.length; i++)
+            items[i] = cursor.getString(i);
+        cursor.close();
+        close();
+        return items;
+    }
+
 }

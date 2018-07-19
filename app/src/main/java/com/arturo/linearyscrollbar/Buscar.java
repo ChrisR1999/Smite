@@ -8,11 +8,12 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.arturo.linearyscrollbar.Controladores.ControladorDioses;
 import com.arturo.linearyscrollbar.Modelos.ModeloDioses;
@@ -44,10 +45,10 @@ public class Buscar extends AppCompatActivity {
     }
 
     private void initComponents() {
-        tv1 = new EditText(this);
-        tv2 = new EditText(this);
-        tv3 = new EditText(this);
-        tv4 = new EditText(this);
+        tv1 = new TextView(this);
+        tv2 = new TextView(this);
+        tv3 = new TextView(this);
+        tv4 = new TextView(this);
         tv5 = new Button(this);
         tv6 = new Button(this);
         tv7 = new Button(this);
@@ -199,10 +200,12 @@ public class Buscar extends AppCompatActivity {
 
 
     public void counterSearch(String god) {
+        String name = new ControladorDioses(this).getGodNameByResourceImage(god);
         Intent mandar = new Intent(this, Buscar.class);
-        mandar.putExtra("name", god);
+        mandar.putExtra("name", name);
         startActivity(mandar);
         finish();
+
     }
 
     public void RegresoMenu() {
