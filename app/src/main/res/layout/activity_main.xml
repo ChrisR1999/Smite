@@ -6,6 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="142dp"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-3940256099942544~3347511713">
+
+    </com.google.android.gms.ads.AdView>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="111dp"
+        android:layout_height="65dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/linearToolbar"
+        android:layout_marginEnd="24dp"
+        android:onClick="Iralaweb"
+        android:text="@string/BuscarJugador" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="111dp"
+        android:layout_height="65dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/button2"
+        android:layout_marginStart="17dp"
+        android:onClick="recargarlista"
+        android:text="@string/recargar" />
+
     <LinearLayout
         android:id="@+id/linearToolbar"
         android:layout_width="fill_parent"
@@ -21,7 +53,7 @@
     <LinearLayout
         android:id="@+id/linearLogo"
         android:layout_width="match_parent"
-        android:layout_height="230dp"
+        android:layout_height="109dp"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/linearToolbar"
         android:background="#bf950c"
@@ -32,7 +64,8 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="161dp"
+            android:contentDescription="@string/recargar"
             android:scaleType="fitXY"
             app:srcCompat="@mipmap/fondo" />
 
@@ -51,7 +84,9 @@
     <FrameLayout
         android:id="@+id/ghostFrame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
 
     </FrameLayout>
 

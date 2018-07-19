@@ -22,6 +22,10 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 
 import com.arturo.linearyscrollbar.Adapters.AdaptadorMain;
 import com.arturo.linearyscrollbar.Controladores.ControladorDioses;
@@ -29,6 +33,7 @@ import com.arturo.linearyscrollbar.Controladores.ControladorDioses;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    private AdView mAdView;
 
     private LinearLayout linear;
     private EditText searchBar;
@@ -42,11 +47,15 @@ public class MainActivity extends AppCompatActivity {
     private AdaptadorMain adapter;
 
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
+
         return true;
+
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -71,6 +80,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initComponents();
+
+        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713");
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -262,5 +277,17 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Buscar.class);
         intent.putExtra("name", name);
         startActivity(intent);
+    }
+
+
+    public void Iralaweb(View view){
+        Intent intent = new Intent(this, Smiteguru.class);
+        startActivity(intent);
+    }
+
+    public void recargarlista(View view){
+        Intent refresh = new Intent(this, MainActivity.class);
+        startActivity(refresh);
+        this.finish();
     }
 }
