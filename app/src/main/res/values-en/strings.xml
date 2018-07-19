@@ -4,7 +4,7 @@
 
     <string name="Conterea">Counters</string>
     <string name="EsContereado">Is Counter by</string>
-  <string name="BuildsPopulares">Popular Builds</string>
+    <string name="BuildsPopulares">Popular Builds</string>
     <string name="arena">ARENA</string>
     <string name="conquista">CONQUEST</string>
     <string name="justa">JOUST</string>
@@ -17,4 +17,5 @@
     <string name="Xbox">XBOX Oficial</string>
     <string name="guru">Any Console SmiteGuru</string>
     <string name="regresar">Return</string>
+
 </resources>

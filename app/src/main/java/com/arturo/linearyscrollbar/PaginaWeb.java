@@ -9,11 +9,16 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 public class PaginaWeb extends AppCompatActivity {
 
 
     private WebView wv1;
     private Toolbar mToolbar;
+    private AdView mAdView;
 
 
     private void initComponents() {
@@ -67,5 +72,10 @@ public class PaginaWeb extends AppCompatActivity {
                 }
             }
         }
+
+        MobileAds.initialize(this, "ca-app-pub-5146175048698339~6692980600");
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 }

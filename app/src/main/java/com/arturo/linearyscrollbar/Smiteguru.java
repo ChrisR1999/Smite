@@ -7,11 +7,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 public class Smiteguru extends AppCompatActivity {
 
 
     private Toolbar mToolbar;
     private EditText et1;
+    private AdView mAdView;
+    private AdView mAdView2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +25,7 @@ public class Smiteguru extends AppCompatActivity {
         setContentView(R.layout.activity_smiteguru);
         et1 = (EditText)findViewById(R.id.searchPlayer);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        mToolbar.setTitle("Buscar jugador");
+        mToolbar.setTitle(R.string.BuscarJugador);
         mToolbar.setTitleTextColor(getResources().getColor(R.color.Negro));
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -32,6 +38,15 @@ public class Smiteguru extends AppCompatActivity {
         });
 
 
+        MobileAds.initialize(this, "ca-app-pub-5146175048698339~6692980600");
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+        MobileAds.initialize(this, "ca-app-pub-5146175048698339~6692980600");
+        mAdView = findViewById(R.id.segundoanuncio);
+        AdRequest adRequest2 = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest2);
 
     }
 

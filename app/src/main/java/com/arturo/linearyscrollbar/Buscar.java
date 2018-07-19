@@ -17,6 +17,9 @@ import android.widget.Toast;
 
 import com.arturo.linearyscrollbar.Controladores.ControladorDioses;
 import com.arturo.linearyscrollbar.Modelos.ModeloDioses;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 public class Buscar extends AppCompatActivity {
 
@@ -37,11 +40,14 @@ public class Buscar extends AppCompatActivity {
     private ImageButton fotocounter;
     private ImageButton fotocountereadopor;
     private Toolbar mToolbar;
+    private AdView mAdView;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
+
+
     }
 
     private void initComponents() {
@@ -195,6 +201,11 @@ public class Buscar extends AppCompatActivity {
         ln2.addView(tv7);
         ln2.addView(tv8);
         ln2.addView(imagenPrueba);
+
+        MobileAds.initialize(this, "ca-app-pub-5146175048698339~6692980600");
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
     }
 
