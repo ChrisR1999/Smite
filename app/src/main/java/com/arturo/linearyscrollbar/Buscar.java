@@ -39,6 +39,7 @@ public class Buscar extends AppCompatActivity {
     private String godName;
     private ImageButton fotocounter;
     private ImageButton fotocountereadopor;
+    private ImageButton fotocounter2;
     private Toolbar mToolbar;
     private AdView mAdView;
 
@@ -62,6 +63,7 @@ public class Buscar extends AppCompatActivity {
         regreso = new Button(this);
         fotocounter = new ImageButton(this);
         fotocountereadopor = new ImageButton(this);
+        fotocounter2 = new ImageButton(this);
         imagenPrueba = new ImageButton(this);
         godName = getIntent().getStringExtra("name");
         ln2 = (LinearLayout) findViewById(R.id.linearabajo);
@@ -156,6 +158,7 @@ public class Buscar extends AppCompatActivity {
         final String combo = datos.getGodCombo();
         final String counter = datos.getCounter();
         final String counterby = datos.getCounterBy();
+        final String counter2 = datos.getCounter2();
         final String resourceImage = datos.getResourceImage();
 
         btn.setImageResource(getResources().getIdentifier(resourceImage, "mipmap", getPackageName()));
@@ -181,6 +184,8 @@ public class Buscar extends AppCompatActivity {
             }
         });
 
+
+
         imagenPrueba.setImageResource(getResources().getIdentifier("armor", "mipmap", getPackageName()));
         imagenPrueba.setTag("armor");
 
@@ -196,6 +201,7 @@ public class Buscar extends AppCompatActivity {
         ln2.addView(fotocounter);
         ln2.addView(tv2);
         ln2.addView(fotocountereadopor);
+        //ln2.addView(fotocounter2);
         ln2.addView(tv5);
         ln2.addView(tv6);
         ln2.addView(tv7);
