@@ -7,14 +7,14 @@ public class ModeloDioses {
     private String godName;
     private String godCombo;
     private ArrayList<String> countersBy;
-    private String counter;
+    private ArrayList<String> counter;
     private String resourceImage;
 
     public ModeloDioses(){
 
     }
 
-    public ModeloDioses(int godId, String godName, String godCombo, ArrayList<String> countersBy, String counter, String resourceImage) {
+    public ModeloDioses(int godId, String godName, String godCombo, ArrayList<String> countersBy, ArrayList<String> counter, String resourceImage) {
         this.godId = godId;
         this.godName = godName;
         this.godCombo = godCombo;
@@ -55,11 +55,11 @@ public class ModeloDioses {
         this.countersBy = countersBy;
     }
 
-    public String getCounter() {
+    public ArrayList<String> getCounter() {
         return counter;
     }
 
-    public void setCounter(String counter) {
+    public void setCounter(ArrayList<String> counter) {
         this.counter = counter;
     }
 

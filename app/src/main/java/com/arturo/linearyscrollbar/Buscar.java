@@ -29,20 +29,25 @@ public class Buscar extends AppCompatActivity {
     private TextView tv2;
     private TextView tv3;
     private TextView tv4;
+    private TextView combotext;
     private Button tv5;
     private Button tv6;
     private Button tv7;
     private Button tv8;
     private Button regreso;
     private ImageButton imagenPrueba;
+    private HorizontalScrollView scrollCounters;
+
     private HorizontalScrollView scrollCountersBy;
     private LinearLayout ln1;
     private LinearLayout ln2;
     private LinearLayout ln3;
+    private LinearLayout linerdecombo;
     private LinearLayout linearCountersBy;
+    private LinearLayout linearCounters;
     private String godName;
     private ImageButton[] imageCountersBy;
-    private ImageButton imageCounter;
+    private ImageButton [] imageCounter;
     private ImageButton fotocounter2;
     private Toolbar mToolbar;
     private AdView mAdView;
@@ -60,21 +65,29 @@ public class Buscar extends AppCompatActivity {
         tv2 = new TextView(this);
         tv3 = new TextView(this);
         tv4 = new TextView(this);
+        combotext  = new TextView(this);
         tv5 = new Button(this);
         tv6 = new Button(this);
         tv7 = new Button(this);
         tv8 = new Button(this);
         regreso = new Button(this);
         imageCountersBy = new ImageButton[6];
-        imageCounter = new ImageButton(this);
+        imageCounter = new ImageButton [3];
         imagenPrueba = new ImageButton(this);
         scrollCountersBy = new HorizontalScrollView(this);
+        scrollCounters = new HorizontalScrollView(this);
         linearCountersBy = new LinearLayout(this);
+        linearCounters = new LinearLayout(this);
+        linerdecombo = new LinearLayout(this);
+        linerdecombo.setOrientation(LinearLayout.VERTICAL);
+        linerdecombo.setBackgroundColor(getResources().getColor(R.color.Negro));
         godName = getIntent().getStringExtra("name");
         ln2 = (LinearLayout) findViewById(R.id.linearabajo);
         ln2.setBackgroundColor(getResources().getColor(R.color.Negro));
         linearCountersBy.setOrientation(LinearLayout.HORIZONTAL);
         linearCountersBy.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL);
+        linearCounters.setOrientation(LinearLayout.HORIZONTAL);
+        linearCounters.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL);
         ln1 = new LinearLayout(this);
         ln1.setOrientation(LinearLayout.HORIZONTAL);
         ln1.setBackgroundColor(getResources().getColor(R.color.Negro));
@@ -122,6 +135,8 @@ public class Buscar extends AppCompatActivity {
         regreso.setTextSize(25);
         regreso.setTextColor(getResources().getColor(R.color.Negro));
 
+
+
         regreso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -160,16 +175,32 @@ public class Buscar extends AppCompatActivity {
         final ModeloDioses datos = controlador.godStadistics(godName);
         final String combo = datos.getGodCombo();
         final ArrayList<String> countersBy = datos.getCountersBy();
-        final String counter = datos.getCounter();
+        final ArrayList<String> counters = datos.getCounter();
+       // final String counter = datos.getCounter();
         final String resourceImage = datos.getResourceImage();
         int cont = 0;
+        int cont2=0;
+
+
+
+
+        combotext.setText(combo);
+        combotext.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
+        combotext.setEnabled(false);
+        combotext.setTextSize(25);
+        combotext.setTextColor(getResources().getColor(R.color.Blanco));
+        combotext.setBackgroundColor(getResources().getColor(R.color.Negro));
 
         btn.setImageResource(getResources().getIdentifier(resourceImage, "mipmap", getPackageName()));
         btn.setBackgroundColor(getResources().getColor(R.color.Negro));
         btn.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
 
-        ln1.addView(tv4);
+
+        linerdecombo.addView(tv4);
+        linerdecombo.addView(combotext);
+
+        ln1.addView(linerdecombo);
         ln1.addView(btn);
         ln3.addView(regreso);
         ln3.addView(tv3);
@@ -177,19 +208,35 @@ public class Buscar extends AppCompatActivity {
         ln2.addView(ln1);
         ln2.addView(tv1);
 
-        imageCounter.setImageResource(getResources().getIdentifier(counter, "mipmap", getPackageName()));
-        imageCounter.setTag(counter);
-        imageCounter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                counterSearch(counter);
-            }
-        });
 
-        ln2.addView(imageCounter);
+
+
+
+
         ln2.addView(tv2);
         ln2.addView(scrollCountersBy);
         scrollCountersBy.addView(linearCountersBy);
+
+        ln2.addView(scrollCounters);
+        scrollCounters.addView(linearCounters);
+
+
+        for (final String coun : counters) {
+
+            imageCounter[cont2] = new ImageButton(this);
+            if (coun != null) {
+                imageCounter[cont2].setImageResource(getResources().getIdentifier(coun, "mipmap", getPackageName()));
+                imageCounter[cont2].setTag(coun);
+                imageCounter[cont2].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        counterSearch(coun);
+                    }
+                });
+                linearCounters.addView(imageCounter[cont2]);
+                cont++;
+            }
+        }
 
 
         for (final String cs : countersBy) {
@@ -216,6 +263,9 @@ public class Buscar extends AppCompatActivity {
         ln2.addView(tv7);
         ln2.addView(tv8);
         ln2.addView(imagenPrueba);
+
+
+
 
         MobileAds.initialize(this, "ca-app-pub-5146175048698339~6692980600");
         mAdView = findViewById(R.id.adView);

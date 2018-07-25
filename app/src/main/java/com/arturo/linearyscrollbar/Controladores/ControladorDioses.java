@@ -47,16 +47,22 @@ public class ControladorDioses extends VinculoBD {
 
     public ModeloDioses godStadistics(String godName) {
         ArrayList<String> countersBy = new ArrayList<>();
+        ArrayList<String> counters = new ArrayList<>();
         open();
         ModeloDioses god = new ModeloDioses();
-        Cursor cursor = bdGods.rawQuery("SELECT godCombo, counteredBy, counteredBy2 , counteredBy3, counteredBy4, counteredBy5, counteredBy6, counter, resourceImage FROM datosDioses WHERE godName = ?", new String[]{godName});
+        Cursor cursor = bdGods.rawQuery("SELECT godCombo, counteredBy, counteredBy2 , counteredBy3, counteredBy4, counteredBy5, counteredBy6, counter, counter2,counter3, resourceImage FROM datosDioses WHERE godName = ?", new String[]{godName});
         cursor.moveToFirst();
         god.setGodCombo(cursor.getString(0));
         for (int i = 1; i < 7; i++)
             countersBy.add(cursor.getString(i));
         god.setCountersBy(countersBy);
-        god.setCounter(cursor.getString(7));
-        god.setResourceImage(cursor.getString(8));
+
+        for (int i = 1; i < 4; i++)
+            counters.add(cursor.getString(i));
+        god.setCounter(counters);
+
+
+        god.setResourceImage(cursor.getString(9));
         cursor.close();
         close();
         return god;

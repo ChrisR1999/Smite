@@ -42,7 +42,7 @@
     <LinearLayout
         android:id="@+id/linearLogo"
         android:layout_width="match_parent"
-        android:layout_height="109dp"
+        android:layout_height="69dp"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/linearToolbar"
         android:background="#bf950c"
