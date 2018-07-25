@@ -71,7 +71,7 @@ public class Buscar extends AppCompatActivity {
         tv7 = new Button(this);
         tv8 = new Button(this);
         regreso = new Button(this);
-        imageCountersBy = new ImageButton[6];
+        imageCountersBy = new ImageButton[10];
         imageCounter = new ImageButton [3];
         imagenPrueba = new ImageButton(this);
         scrollCountersBy = new HorizontalScrollView(this);
@@ -212,13 +212,14 @@ public class Buscar extends AppCompatActivity {
 
 
 
+        ln2.addView(scrollCounters);
+        scrollCounters.addView(linearCounters);
 
         ln2.addView(tv2);
         ln2.addView(scrollCountersBy);
         scrollCountersBy.addView(linearCountersBy);
 
-        ln2.addView(scrollCounters);
-        scrollCounters.addView(linearCounters);
+
 
 
         for (final String coun : counters) {

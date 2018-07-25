@@ -57,12 +57,12 @@ public class ControladorDioses extends VinculoBD {
             countersBy.add(cursor.getString(i));
         god.setCountersBy(countersBy);
 
-        for (int i = 1; i < 4; i++)
+        for (int i = 7; i < 10; i++)
             counters.add(cursor.getString(i));
         god.setCounter(counters);
 
 
-        god.setResourceImage(cursor.getString(9));
+        god.setResourceImage(cursor.getString(10));
         cursor.close();
         close();
         return god;
