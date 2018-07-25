@@ -1,28 +1,26 @@
 package com.arturo.linearyscrollbar.Modelos;
 
+import java.util.ArrayList;
+
 public class ModeloDioses {
     private int godId;
     private String godName;
     private String godCombo;
-    private static String counter;
-    private String counterBy;
+    private ArrayList<String> countersBy;
+    private String counter;
     private String resourceImage;
-   private  String counter2;
 
     public ModeloDioses(){
 
     }
 
-
-
-    public ModeloDioses(int godId, String godName, String godCombo, String counter, String counterBy, String resourceImage, String counter2) {
+    public ModeloDioses(int godId, String godName, String godCombo, ArrayList<String> countersBy, String counter, String resourceImage) {
         this.godId = godId;
         this.godName = godName;
         this.godCombo = godCombo;
         this.counter = counter;
-        this.counterBy = counterBy;
+        this.countersBy = countersBy;
         this.resourceImage = resourceImage;
-        this.counter2 = counter2;
     }
 
     public int getGodId() {
@@ -49,20 +47,20 @@ public class ModeloDioses {
         this.godCombo = godCombo;
     }
 
+    public ArrayList<String> getCountersBy() {
+        return countersBy;
+    }
+
+    public void setCountersBy(ArrayList<String> countersBy) {
+        this.countersBy = countersBy;
+    }
+
     public String getCounter() {
         return counter;
     }
 
     public void setCounter(String counter) {
         this.counter = counter;
-    }
-
-    public String getCounterBy() {
-        return counterBy;
-    }
-
-    public void setCounterBy(String counterBy) {
-        this.counterBy = counterBy;
     }
 
     public String getResourceImage() {
@@ -72,11 +70,5 @@ public class ModeloDioses {
     public void setResourceImage(String resourceImage) {
         this.resourceImage = resourceImage;
     }
-    public String getCounter2() {
-        return counter2;
-    }
 
-    public void setCounter2(String counter2) {
-        this.counter2 = counter2;
-    }
 }

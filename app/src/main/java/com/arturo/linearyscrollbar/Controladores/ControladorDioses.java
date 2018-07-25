@@ -3,16 +3,14 @@ package com.arturo.linearyscrollbar.Controladores;
 import android.content.Context;
 import android.database.Cursor;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.arturo.linearyscrollbar.BD.VinculoBD;
-import com.arturo.linearyscrollbar.MainActivity;
 import com.arturo.linearyscrollbar.Modelos.ModeloDioses;
 import com.arturo.linearyscrollbar.Modelos.ModeloDiosesMain;
 
 import java.util.ArrayList;
 
-public class ControladorDioses extends VinculoBD{
+public class ControladorDioses extends VinculoBD {
 
     public ControladorDioses() {
         super();
@@ -47,28 +45,31 @@ public class ControladorDioses extends VinculoBD{
         }
     }
 
-    public ModeloDioses godStadistics(String godName){
+    public ModeloDioses godStadistics(String godName) {
+        ArrayList<String> countersBy = new ArrayList<>();
         open();
         ModeloDioses god = new ModeloDioses();
-        Cursor cursor = bdGods.rawQuery("SELECT godCombo, counter, counteredBy, resourceImage FROM datosDioses WHERE godName = ?", new String[]{godName});
+        Cursor cursor = bdGods.rawQuery("SELECT godCombo, counteredBy, counteredBy2 , counteredBy3, counteredBy4, counteredBy5, counteredBy6, counter, resourceImage FROM datosDioses WHERE godName = ?", new String[]{godName});
         cursor.moveToFirst();
         god.setGodCombo(cursor.getString(0));
-        god.setCounter(cursor.getString(1));
-        god.setCounterBy(cursor.getString(2));
-        god.setResourceImage(cursor.getString(3));
+        for (int i = 1; i < 7; i++)
+            countersBy.add(cursor.getString(i));
+        god.setCountersBy(countersBy);
+        god.setCounter(cursor.getString(7));
+        god.setResourceImage(cursor.getString(8));
         cursor.close();
         close();
         return god;
     }
 
-    public ArrayList<ModeloDiosesMain> searchResults(String search){
+    public ArrayList<ModeloDiosesMain> searchResults(String search) {
         open();
         search = "%" + search + "%";
         ArrayList<ModeloDiosesMain> gods = new ArrayList<>();
         Log.d("error", search);
         Cursor cursor = bdGods.rawQuery("SELECT godId, godName, Tipo, panteon, resourceImage  FROM datosDioses WHERE godName LIKE ?", new String[]{search});
         cursor.moveToFirst();
-        while (!cursor.isAfterLast()){
+        while (!cursor.isAfterLast()) {
             gods.add(new ModeloDiosesMain(
                     cursor.getInt(0),
                     cursor.getString(1),
@@ -83,7 +84,7 @@ public class ControladorDioses extends VinculoBD{
         return gods;
     }
 
-    public String getGodNameByResourceImage(String godName){
+    public String getGodNameByResourceImage(String godName) {
         open();
         String name = "";
         Cursor cursor = bdGods.rawQuery("SELECT godName FROM datosDioses WHERE resourceImage = ?", new String[]{godName});
@@ -94,13 +95,13 @@ public class ControladorDioses extends VinculoBD{
         return name;
     }
 
-    public String[] pullItemsByType(String type){
+    public String[] pullItemsByType(String type) {
         String[] items;
         open();
         Cursor cursor = bdGods.rawQuery("SELECT * FROM items WHERE tipo = ?", new String[]{type});
         cursor.moveToFirst();
         items = new String[cursor.getCount()];
-        for (int i = 0; i< items.length; i++)
+        for (int i = 0; i < items.length; i++)
             items[i] = cursor.getString(i);
         cursor.close();
         close();

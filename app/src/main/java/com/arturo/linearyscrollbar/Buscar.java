@@ -8,7 +8,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -20,6 +20,8 @@ import com.arturo.linearyscrollbar.Modelos.ModeloDioses;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+
+import java.util.ArrayList;
 
 public class Buscar extends AppCompatActivity {
 
@@ -33,12 +35,14 @@ public class Buscar extends AppCompatActivity {
     private Button tv8;
     private Button regreso;
     private ImageButton imagenPrueba;
+    private HorizontalScrollView scrollCountersBy;
     private LinearLayout ln1;
     private LinearLayout ln2;
     private LinearLayout ln3;
+    private LinearLayout linearCountersBy;
     private String godName;
-    private ImageButton fotocounter;
-    private ImageButton fotocountereadopor;
+    private ImageButton[] imageCountersBy;
+    private ImageButton imageCounter;
     private ImageButton fotocounter2;
     private Toolbar mToolbar;
     private AdView mAdView;
@@ -61,20 +65,21 @@ public class Buscar extends AppCompatActivity {
         tv7 = new Button(this);
         tv8 = new Button(this);
         regreso = new Button(this);
-        fotocounter = new ImageButton(this);
-        fotocountereadopor = new ImageButton(this);
-        fotocounter2 = new ImageButton(this);
+        imageCountersBy = new ImageButton[6];
+        imageCounter = new ImageButton(this);
         imagenPrueba = new ImageButton(this);
+        scrollCountersBy = new HorizontalScrollView(this);
+        linearCountersBy = new LinearLayout(this);
         godName = getIntent().getStringExtra("name");
         ln2 = (LinearLayout) findViewById(R.id.linearabajo);
         ln2.setBackgroundColor(getResources().getColor(R.color.Negro));
+        linearCountersBy.setOrientation(LinearLayout.HORIZONTAL);
+        linearCountersBy.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL);
         ln1 = new LinearLayout(this);
         ln1.setOrientation(LinearLayout.HORIZONTAL);
-        LinearLayout.LayoutParams linearlayoutlayoutparams1 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
         ln1.setBackgroundColor(getResources().getColor(R.color.Negro));
         ln3 = new LinearLayout(this);
         ln3.setOrientation(LinearLayout.HORIZONTAL);
-        LinearLayout.LayoutParams linearlayoutlayoutparams2 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
         ln3.setBackgroundColor(getResources().getColor(R.color.Negro));
 
         tv1.setText(R.string.Conterea);
@@ -116,7 +121,6 @@ public class Buscar extends AppCompatActivity {
         regreso.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
         regreso.setTextSize(25);
         regreso.setTextColor(getResources().getColor(R.color.Negro));
-        //regreso.setBackgroundColor(getResources().getColor(R.color.Negro));
 
         regreso.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,7 +134,6 @@ public class Buscar extends AppCompatActivity {
 
         tv6.setTextSize(25);
         tv6.setTextColor(getResources().getColor(R.color.Negro));
-        // tv6.setBackgroundColor(getResources().getColor(R.color.gris));
 
         tv7.setText(R.string.arena);
         tv7.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
@@ -156,52 +159,58 @@ public class Buscar extends AppCompatActivity {
         final ControladorDioses controlador = new ControladorDioses(this);
         final ModeloDioses datos = controlador.godStadistics(godName);
         final String combo = datos.getGodCombo();
+        final ArrayList<String> countersBy = datos.getCountersBy();
         final String counter = datos.getCounter();
-        final String counterby = datos.getCounterBy();
-        final String counter2 = datos.getCounter2();
         final String resourceImage = datos.getResourceImage();
+        int cont = 0;
 
         btn.setImageResource(getResources().getIdentifier(resourceImage, "mipmap", getPackageName()));
         btn.setBackgroundColor(getResources().getColor(R.color.Negro));
         btn.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
 
-        fotocounter.setImageResource(getResources().getIdentifier(counter.toString(), "mipmap", getPackageName()));
-        fotocounter.setTag(counter);
-        fotocounter.setOnClickListener(new View.OnClickListener() {
+        ln1.addView(tv4);
+        ln1.addView(btn);
+        ln3.addView(regreso);
+        ln3.addView(tv3);
+        ln2.addView(ln3);
+        ln2.addView(ln1);
+        ln2.addView(tv1);
+
+        imageCounter.setImageResource(getResources().getIdentifier(counter, "mipmap", getPackageName()));
+        imageCounter.setTag(counter);
+        imageCounter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 counterSearch(counter);
             }
         });
 
-        fotocountereadopor.setImageResource(getResources().getIdentifier(counterby.toString(), "mipmap", getPackageName()));
-        fotocountereadopor.setTag(counterby);
-        fotocountereadopor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                counterSearch(counterby);
+        ln2.addView(imageCounter);
+        ln2.addView(tv2);
+        ln2.addView(scrollCountersBy);
+        scrollCountersBy.addView(linearCountersBy);
+
+
+        for (final String cs : countersBy) {
+            imageCountersBy[cont] = new ImageButton(this);
+            if (cs != null) {
+                imageCountersBy[cont].setImageResource(getResources().getIdentifier(cs, "mipmap", getPackageName()));
+                imageCountersBy[cont].setTag(cs);
+                imageCountersBy[cont].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        counterSearch(cs);
+                    }
+                });
+                linearCountersBy.addView(imageCountersBy[cont]);
+                cont++;
             }
-        });
-
-
+        }
 
         imagenPrueba.setImageResource(getResources().getIdentifier("armor", "mipmap", getPackageName()));
         imagenPrueba.setTag("armor");
 
-
-        ln1.addView(tv4);
-        ln1.addView(btn);
-        ln3.addView(regreso);
-        ln3.addView(tv3);
-
-        ln2.addView(ln3);
-        ln2.addView(ln1);
-        ln2.addView(tv1);
-        ln2.addView(fotocounter);
-        ln2.addView(tv2);
-        ln2.addView(fotocountereadopor);
-        //ln2.addView(fotocounter2);
         ln2.addView(tv5);
         ln2.addView(tv6);
         ln2.addView(tv7);
@@ -222,7 +231,6 @@ public class Buscar extends AppCompatActivity {
         mandar.putExtra("name", name);
         startActivity(mandar);
         finish();
-
     }
 
     public void RegresoMenu() {
