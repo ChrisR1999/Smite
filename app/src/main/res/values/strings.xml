@@ -18,5 +18,9 @@
     <string name="Xbox">XBOX Oficial</string>
     <string name="guru">Cualquier plataforma SmiteGuru</string>
     <string name="regresar">Regresar</string>
+    <string name="mago">Mago</string>
+    <string name="sup">Support</string>
+    <string name="tanque">Tanque</string>
+    <string name="guerrero">Guerrero</string>
 
 </resources>
