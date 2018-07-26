@@ -92,6 +92,21 @@
 
     </com.google.android.gms.ads.AdView>
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="198dp"
+        android:layout_height="433dp"
+        android:layout_centerInParent="true"
+        app:srcCompat="@mipmap/grecas" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="480dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        app:srcCompat="@mipmap/marco" />
+
     <com.google.android.gms.ads.AdView
         android:id="@+id/segundoanuncio"
         android:layout_width="match_parent"
