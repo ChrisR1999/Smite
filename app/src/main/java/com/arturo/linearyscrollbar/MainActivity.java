@@ -148,9 +148,11 @@ public class MainActivity extends AppCompatActivity {
         listMain.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                final TextView god = (TextView) view.findViewById(R.id.nombre);
-                final String godNameClick = god.getText().toString();
-                passActivity(godNameClick);
+                final TextView godName = (TextView) view.findViewById(R.id.nombre);
+                final TextView godType = (TextView) view.findViewById(R.id.godCategory);
+                final String godNameClick = godName.getText().toString();
+                final String godTypeName = godType.getText().toString();
+                passActivity(godNameClick, godTypeName);
             }
         });
         consultAllGods();
@@ -270,8 +272,9 @@ public class MainActivity extends AppCompatActivity {
     }*/
 
 
-    private void passActivity(String name) {
+    private void passActivity(String name, String type) {
         Intent intent = new Intent(this, Buscar.class);
+        intent.putExtra("type", type);
         intent.putExtra("name", name);
         startActivity(intent);
     }
@@ -283,8 +286,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void recargarlista(View view){
-        Intent refresh = new Intent(this, MainActivity.class);
-        startActivity(refresh);
-        this.finish();
+        this.recreate();
     }
 }

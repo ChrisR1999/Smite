@@ -7,5 +7,12 @@ public class StringUtillities {
 
         return parsedGodName;
     }
+
+    public static String parseItemName(String itemName){
+        String item = "";
+        item = itemName.toLowerCase();
+        item = item.replace("","_");
+        return item;
+    }
 }
 

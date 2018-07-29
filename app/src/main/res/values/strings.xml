@@ -4,6 +4,10 @@
     <string name="EsContereado">MALO CONTRAr</string>
     <string name="BuildsPopulares">Builds Populares</string>
     <string name="arena">ARENA</string>
+    <string name="starterItem">Starter items</string>
+    <string name="coreItem">Core items</string>
+    <string name="attackItem">Attack items</string>
+    <string name="defenseItem">Defense items</string>
     <string name="conquista">CONQUISTA</string>
     <string name="exampleGodName">Nombre del dios</string>
     <string name="exampleCategory">Categoría</string>

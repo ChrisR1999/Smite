@@ -13,10 +13,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.arturo.linearyscrollbar.Controladores.ControladorDioses;
+import com.arturo.linearyscrollbar.Controladores.ControladorItems;
 import com.arturo.linearyscrollbar.Modelos.ModeloDioses;
+import com.arturo.linearyscrollbar.Utillities.StringUtillities;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
@@ -30,6 +31,10 @@ public class Buscar extends AppCompatActivity {
     private TextView tv3;
     private TextView tv4;
     private TextView combotext;
+    private TextView starterDivider;
+    private TextView coreDivider;
+    private TextView attackDivider;
+    private TextView defenseDivider;
     private Button tv5;
     private Button tv6;
     private Button tv7;
@@ -37,7 +42,6 @@ public class Buscar extends AppCompatActivity {
     private Button regreso;
     private ImageButton imagenPrueba;
     private HorizontalScrollView scrollCounters;
-
     private HorizontalScrollView scrollCountersBy;
     private LinearLayout ln1;
     private LinearLayout ln2;
@@ -45,9 +49,13 @@ public class Buscar extends AppCompatActivity {
     private LinearLayout linerdecombo;
     private LinearLayout linearCountersBy;
     private LinearLayout linearCounters;
+    private LinearLayout linearStarter;
+    private LinearLayout linearCore;
+    private LinearLayout linearAttack;
+    private LinearLayout linearDefense;
     private String godName;
     private ImageButton[] imageCountersBy;
-    private ImageButton [] imageCounter;
+    private ImageButton[] imageCounter;
     private ImageButton fotocounter2;
     private Toolbar mToolbar;
     private AdView mAdView;
@@ -65,19 +73,34 @@ public class Buscar extends AppCompatActivity {
         tv2 = new TextView(this);
         tv3 = new TextView(this);
         tv4 = new TextView(this);
-        combotext  = new TextView(this);
+        combotext = new TextView(this);
+        starterDivider = new TextView(this);
+        coreDivider = new TextView(this);
+        attackDivider = new TextView(this);
+        defenseDivider = new TextView(this);
         tv5 = new Button(this);
         tv6 = new Button(this);
         tv7 = new Button(this);
         tv8 = new Button(this);
+
         regreso = new Button(this);
         imageCountersBy = new ImageButton[10];
-        imageCounter = new ImageButton [3];
+        imageCounter = new ImageButton[3];
         imagenPrueba = new ImageButton(this);
         scrollCountersBy = new HorizontalScrollView(this);
         scrollCounters = new HorizontalScrollView(this);
-        linearCountersBy = new LinearLayout(this);
-        linearCounters = new LinearLayout(this);
+        linearStarter = new LinearLayout(this);
+        linearStarter.setOrientation(LinearLayout.HORIZONTAL);
+        linearStarter.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL);
+        linearCore = new LinearLayout(this);
+        linearCore.setOrientation(LinearLayout.HORIZONTAL);
+        linearCore.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL);
+        linearAttack = new LinearLayout(this);
+        linearAttack.setOrientation(LinearLayout.HORIZONTAL);
+        linearAttack.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL);
+        linearDefense = new LinearLayout(this);
+        linearDefense.setOrientation(LinearLayout.HORIZONTAL);
+        linearDefense.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL);
         linerdecombo = new LinearLayout(this);
         linerdecombo.setOrientation(LinearLayout.VERTICAL);
         linerdecombo.setBackgroundColor(getResources().getColor(R.color.Negro));
@@ -135,8 +158,6 @@ public class Buscar extends AppCompatActivity {
         regreso.setTextSize(25);
         regreso.setTextColor(getResources().getColor(R.color.Negro));
 
-
-
         regreso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -163,6 +184,27 @@ public class Buscar extends AppCompatActivity {
         tv8.setTextSize(25);
         tv8.setTextColor(getResources().getColor(R.color.Negro));
         // tv8.setBackgroundColor(getResources().getColor(R.color.gris));
+
+        starterDivider.setText(R.string.starterItem);
+        starterDivider.setTextSize(25);
+        starterDivider.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
+        starterDivider.setTextColor(getResources().getColor(R.color.Negro));
+
+        coreDivider.setText(R.string.coreItem);
+        coreDivider.setTextSize(25);
+        coreDivider.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
+        coreDivider.setTextColor(getResources().getColor(R.color.Negro));
+
+        attackDivider.setText(R.string.attackItem);
+        attackDivider.setTextSize(25);
+        attackDivider.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
+        attackDivider.setTextColor(getResources().getColor(R.color.Negro));
+
+        defenseDivider.setText(R.string.defenseItem);
+        defenseDivider.setTextSize(25);
+        defenseDivider.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
+        defenseDivider.setTextColor(getResources().getColor(R.color.Negro));
+
     }
 
     @Override
@@ -172,16 +214,16 @@ public class Buscar extends AppCompatActivity {
         initComponents();
         final ImageView btn = new ImageView(this);
         final ControladorDioses controlador = new ControladorDioses(this);
+        final ControladorItems controladorI = new ControladorItems(this);
         final ModeloDioses datos = controlador.godStadistics(godName);
         final String combo = datos.getGodCombo();
         final ArrayList<String> countersBy = datos.getCountersBy();
         final ArrayList<String> counters = datos.getCounter();
-       // final String counter = datos.getCounter();
+        final String[] items = controladorI.pullItemsByType("putos");
+        // final String counter = datos.getCounter();
         final String resourceImage = datos.getResourceImage();
         int cont = 0;
-        int cont2=0;
-
-
+        int cont2 = 0;
 
 
         combotext.setText(combo);
@@ -207,20 +249,11 @@ public class Buscar extends AppCompatActivity {
         ln2.addView(ln3);
         ln2.addView(ln1);
         ln2.addView(tv1);
-
-
-
-
-
         ln2.addView(scrollCounters);
         scrollCounters.addView(linearCounters);
-
         ln2.addView(tv2);
         ln2.addView(scrollCountersBy);
         scrollCountersBy.addView(linearCountersBy);
-
-
-
 
         for (final String coun : counters) {
 
@@ -259,13 +292,39 @@ public class Buscar extends AppCompatActivity {
         imagenPrueba.setImageResource(getResources().getIdentifier("armor", "mipmap", getPackageName()));
         imagenPrueba.setTag("armor");
 
+        for (int i = 0; i < items.length; i++) {
+            ImageButton item = new ImageButton(this);
+            item.setTag(items[i]);
+            item.setImageResource(getResources().getIdentifier(StringUtillities.parseItemName(items[i]), "mipmap", getPackageName()));
+            switch (i) {
+                case 0:
+                    linearStarter.addView(item);
+                    break;
+                case 1 | 2 | 3:
+                    linearCore.addView(item);
+                    break;
+                case 4 | 5 | 6:
+                    linearAttack.addView(item);
+                    break;
+                case 7 | 8 | 9:
+                    linearDefense.addView(item);
+                    break;
+            }
+        }
+
+        ln2.addView(starterDivider);
+        ln2.addView(linearStarter);
+        ln2.addView(coreDivider);
+        ln2.addView(linearCore);
+        ln2.addView(attackDivider);
+        ln2.addView(linearAttack);
+        ln2.addView(defenseDivider);
+        ln2.addView(linearDefense);
         ln2.addView(tv5);
         ln2.addView(tv6);
         ln2.addView(tv7);
         ln2.addView(tv8);
         ln2.addView(imagenPrueba);
-
-
 
 
         MobileAds.initialize(this, "ca-app-pub-5146175048698339~6692980600");

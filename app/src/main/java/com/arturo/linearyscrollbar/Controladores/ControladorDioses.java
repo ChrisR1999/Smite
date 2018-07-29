@@ -100,18 +100,4 @@ public class ControladorDioses extends VinculoBD {
         close();
         return name;
     }
-
-    public String[] pullItemsByType(String type) {
-        String[] items;
-        open();
-        Cursor cursor = bdGods.rawQuery("SELECT * FROM items WHERE tipo = ?", new String[]{type});
-        cursor.moveToFirst();
-        items = new String[cursor.getCount()];
-        for (int i = 0; i < items.length; i++)
-            items[i] = cursor.getString(i);
-        cursor.close();
-        close();
-        return items;
-    }
-
 }
