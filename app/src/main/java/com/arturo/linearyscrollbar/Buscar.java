@@ -54,6 +54,7 @@ public class Buscar extends AppCompatActivity {
     private LinearLayout linearAttack;
     private LinearLayout linearDefense;
     private String godName;
+    private String godType;
     private ImageButton[] imageCountersBy;
     private ImageButton[] imageCounter;
     private ImageButton fotocounter2;
@@ -105,6 +106,7 @@ public class Buscar extends AppCompatActivity {
         linerdecombo.setOrientation(LinearLayout.VERTICAL);
         linerdecombo.setBackgroundColor(getResources().getColor(R.color.Negro));
         godName = getIntent().getStringExtra("name");
+        godType = getIntent().getStringExtra("type");
         ln2 = (LinearLayout) findViewById(R.id.linearabajo);
         ln2.setBackgroundColor(getResources().getColor(R.color.Negro));
         linearCountersBy.setOrientation(LinearLayout.HORIZONTAL);
@@ -219,7 +221,7 @@ public class Buscar extends AppCompatActivity {
         final String combo = datos.getGodCombo();
         final ArrayList<String> countersBy = datos.getCountersBy();
         final ArrayList<String> counters = datos.getCounter();
-        final String[] items = controladorI.pullItemsByType("putos");
+        final String[] items = controladorI.pullItemsByType(godType);
         // final String counter = datos.getCounter();
         final String resourceImage = datos.getResourceImage();
         int cont = 0;
