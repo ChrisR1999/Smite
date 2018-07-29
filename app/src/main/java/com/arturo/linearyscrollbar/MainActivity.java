@@ -286,6 +286,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void recargarlista(View view){
+        searchBar.setText("");
         this.recreate();
     }
 }

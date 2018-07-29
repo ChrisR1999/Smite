@@ -90,14 +90,15 @@ public class ControladorDioses extends VinculoBD {
         return gods;
     }
 
-    public String getGodNameByResourceImage(String godName) {
+    public ModeloDiosesMain getGodNameAndTypeByResourceImage(String godName) {
+        ModeloDiosesMain modelo = new ModeloDiosesMain();
         open();
-        String name = "";
-        Cursor cursor = bdGods.rawQuery("SELECT godName FROM datosDioses WHERE resourceImage = ?", new String[]{godName});
+        Cursor cursor = bdGods.rawQuery("SELECT godName, Tipo FROM datosDioses WHERE resourceImage = ?", new String[]{godName});
         cursor.moveToFirst();
-        name = cursor.getString(0);
+        modelo.setGodName(cursor.getString(0));
+        modelo.setGodCategory(cursor.getString(1));
         cursor.close();
         close();
-        return name;
+        return modelo;
     }
 }

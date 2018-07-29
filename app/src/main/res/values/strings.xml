@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Linearyscrollbar</string>
     <string name="Conte">BUENO CONTRA</string>
-    <string name="EsContereado">MALO CONTRAr</string>
+    <string name="EsContereado">MALO CONTRA</string>
     <string name="BuildsPopulares">Builds Populares</string>
     <string name="arena">ARENA</string>
     <string name="starterItem">Starter items</string>

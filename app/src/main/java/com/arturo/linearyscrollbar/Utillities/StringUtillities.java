@@ -12,6 +12,7 @@ public class StringUtillities {
         String item = "";
         item = itemName.toLowerCase();
         item = item.replace(" ","_");
+        item = item.replace("'", "");
         return item;
     }
 }

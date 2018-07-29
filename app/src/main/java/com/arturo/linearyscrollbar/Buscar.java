@@ -13,10 +13,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.arturo.linearyscrollbar.Controladores.ControladorDioses;
 import com.arturo.linearyscrollbar.Controladores.ControladorItems;
 import com.arturo.linearyscrollbar.Modelos.ModeloDioses;
+import com.arturo.linearyscrollbar.Modelos.ModeloDiosesMain;
 import com.arturo.linearyscrollbar.Utillities.StringUtillities;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -74,6 +76,8 @@ public class Buscar extends AppCompatActivity {
         tv2 = new TextView(this);
         tv3 = new TextView(this);
         tv4 = new TextView(this);
+        linearCountersBy = new LinearLayout(this);
+        linearCounters = new LinearLayout(this);
         combotext = new TextView(this);
         starterDivider = new TextView(this);
         coreDivider = new TextView(this);
@@ -120,40 +124,20 @@ public class Buscar extends AppCompatActivity {
         ln3.setOrientation(LinearLayout.HORIZONTAL);
         ln3.setBackgroundColor(getResources().getColor(R.color.Negro));
 
-        tv1.setText(R.string.Conterea);
-        tv1.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
-        tv1.setEnabled(false);
-        tv1.setTextSize(25);
-        tv1.setTextColor(getResources().getColor(R.color.Blanco));
-        tv1.setBackgroundColor(getResources().getColor(R.color.Negro));
+        tv1.setText(R.string.Conte);
+        styleHeaders(tv1);
 
         tv2.setText(R.string.EsContereado);
-        tv2.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
-        tv2.setEnabled(false);
-        tv2.setTextSize(25);
-        tv2.setTextColor(getResources().getColor(R.color.Blanco));
-        tv2.setBackgroundColor(getResources().getColor(R.color.Negro));
+        styleHeaders(tv2);
 
         tv3.setText(godName);
-        tv3.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
-        tv3.setEnabled(false);
-        tv3.setTextSize(25);
-        tv3.setTextColor(getResources().getColor(R.color.Blanco));
-        tv3.setBackgroundColor(getResources().getColor(R.color.Negro));
+        styleHeaders(tv3);
 
         tv4.setText("Combo");
-        tv4.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
-        tv4.setEnabled(false);
-        tv4.setTextSize(25);
-        tv4.setTextColor(getResources().getColor(R.color.Blanco));
-        tv4.setBackgroundColor(getResources().getColor(R.color.Negro));
+        styleHeaders(tv4);
 
         tv5.setText(R.string.BuildsPopulares);
-        tv5.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
-        tv5.setEnabled(false);
-        tv5.setTextSize(25);
-        tv5.setTextColor(getResources().getColor(R.color.Blanco));
-        tv5.setBackgroundColor(getResources().getColor(R.color.Negro));
+        styleHeaders(tv5);
 
         regreso.setText(R.string.regresar);
         regreso.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
@@ -188,24 +172,16 @@ public class Buscar extends AppCompatActivity {
         // tv8.setBackgroundColor(getResources().getColor(R.color.gris));
 
         starterDivider.setText(R.string.starterItem);
-        starterDivider.setTextSize(25);
-        starterDivider.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
-        starterDivider.setTextColor(getResources().getColor(R.color.Negro));
+        styleHeaders(starterDivider);
 
         coreDivider.setText(R.string.coreItem);
-        coreDivider.setTextSize(25);
-        coreDivider.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
-        coreDivider.setTextColor(getResources().getColor(R.color.Negro));
+        styleHeaders(coreDivider);
 
         attackDivider.setText(R.string.attackItem);
-        attackDivider.setTextSize(25);
-        attackDivider.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
-        attackDivider.setTextColor(getResources().getColor(R.color.Negro));
+        styleHeaders(attackDivider);
 
         defenseDivider.setText(R.string.defenseItem);
-        defenseDivider.setTextSize(25);
-        defenseDivider.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
-        defenseDivider.setTextColor(getResources().getColor(R.color.Negro));
+        styleHeaders(defenseDivider);
 
     }
 
@@ -226,7 +202,6 @@ public class Buscar extends AppCompatActivity {
         final String resourceImage = datos.getResourceImage();
         int cont = 0;
         int cont2 = 0;
-
 
         combotext.setText(combo);
         combotext.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
@@ -294,24 +269,19 @@ public class Buscar extends AppCompatActivity {
         imagenPrueba.setImageResource(getResources().getIdentifier("armor", "mipmap", getPackageName()));
         imagenPrueba.setTag("armor");
 
-        for (int i = 0; i < items.length; i++) {
+        for (int i = 0; i < 10; i++) {
             ImageButton item = new ImageButton(this);
+            String newItem = StringUtillities.parseItemName(items[i]);
             item.setTag(items[i]);
-            item.setImageResource(getResources().getIdentifier(StringUtillities.parseItemName(items[i]), "mipmap", getPackageName()));
-            switch (i) {
-                case 0:
-                    linearStarter.addView(item);
-                    break;
-                case 1 | 2 | 3:
-                    linearCore.addView(item);
-                    break;
-                case 4 | 5 | 6:
-                    linearAttack.addView(item);
-                    break;
-                case 7 | 8 | 9:
-                    linearDefense.addView(item);
-                    break;
-            }
+            item.setImageResource(getResources().getIdentifier(newItem, "mipmap", getPackageName()));
+            if (i == 0)
+                linearStarter.addView(item);
+            if (i > 0 && i < 4)
+                linearCore.addView(item);
+            if (i > 3 && i < 7)
+                linearAttack.addView(item);
+            if (i > 6)
+                linearDefense.addView(item);
         }
 
         ln2.addView(starterDivider);
@@ -331,16 +301,28 @@ public class Buscar extends AppCompatActivity {
 
         MobileAds.initialize(this, "ca-app-pub-5146175048698339~6692980600");
         mAdView = findViewById(R.id.adView);
+
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
     }
 
+    public void styleHeaders(TextView style) {
+        style.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
+        style.setEnabled(false);
+        style.setTextSize(25);
+        style.setTextColor(getResources().getColor(R.color.Blanco));
+        style.setBackgroundColor(getResources().getColor(R.color.Negro));
+    }
+
 
     public void counterSearch(String god) {
-        String name = new ControladorDioses(this).getGodNameByResourceImage(god);
+        ModeloDiosesMain modelo = new ControladorDioses(this).getGodNameAndTypeByResourceImage(god);
+        String name = modelo.getGodName();
+        String type = modelo.getGodCategory();
         Intent mandar = new Intent(this, Buscar.class);
         mandar.putExtra("name", name);
+        mandar.putExtra("type", type);
         startActivity(mandar);
         finish();
     }
