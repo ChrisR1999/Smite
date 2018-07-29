@@ -11,7 +11,7 @@ public class StringUtillities {
     public static String parseItemName(String itemName){
         String item = "";
         item = itemName.toLowerCase();
-        item = item.replace(" ","-");
+        item = item.replace(" ","_");
         return item;
     }
 }
