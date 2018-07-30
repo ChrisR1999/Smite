@@ -2,7 +2,7 @@
 
 <resources>
 
-    <string name="Conterea">GOOD AGAINST</string>
+    <string name="Conte">GOOD AGAINST</string>
     <string name="EsContereado">WEAK AGAINST</string>
     <string name="BuildsPopulares">Popular Builds</string>
     <string name="arena">ARENA</string>
@@ -21,5 +21,6 @@
     <string name="sup">Support</string>
     <string name="tanque">Tank</string>
     <string name="guerrero">Warrior</string>
+    <string name="ingrsanombre">Write a name before you search</string>
 
 </resources>

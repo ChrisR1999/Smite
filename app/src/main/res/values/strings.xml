@@ -26,5 +26,6 @@
     <string name="sup">Support</string>
     <string name="tanque">Tanque</string>
     <string name="guerrero">Guerrero</string>
+    <string name="ingrsanombre">Ingresa un nombre antes de buscar</string>
 
 </resources>
