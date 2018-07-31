@@ -28,27 +28,26 @@ import java.util.ArrayList;
 
 public class Buscar extends AppCompatActivity {
 
-    private TextView tv1;
-    private TextView tv2;
-    private TextView tv3;
-    private TextView tv4;
-    private TextView combotext;
+    private TextView goodAgainstTitle;
+    private TextView badAgainstTitle;
+    private TextView godNameTitle;
+    private TextView comboTitle;
+    private TextView comboText;
     private TextView starterDivider;
     private TextView coreDivider;
     private TextView attackDivider;
     private TextView defenseDivider;
-    private Button tv5;
-    private Button tv6;
-    private Button tv7;
-    private Button tv8;
+    private Button popularBuildsTitle;
+    private Button buildsConquest;
+    private Button buildsArena;
+    private Button buildsJoust;
     private Button regreso;
-    private ImageButton imagenPrueba;
     private HorizontalScrollView scrollCounters;
     private HorizontalScrollView scrollCountersBy;
     private LinearLayout ln1;
     private LinearLayout ln2;
     private LinearLayout ln3;
-    private LinearLayout linerdecombo;
+    private LinearLayout linearCombo;
     private LinearLayout linearCountersBy;
     private LinearLayout linearCounters;
     private LinearLayout linearStarter;
@@ -57,93 +56,78 @@ public class Buscar extends AppCompatActivity {
     private LinearLayout linearDefense;
     private String godName;
     private String godType;
-    private ImageButton[] imageCountersBy;
-    private ImageButton[] imageCounter;
-    private ImageButton fotocounter2;
-    private Toolbar mToolbar;
     private AdView mAdView;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
-
-
     }
 
     private void initComponents() {
-        tv1 = new TextView(this);
-        tv2 = new TextView(this);
-        tv3 = new TextView(this);
-        tv4 = new TextView(this);
+        goodAgainstTitle = new TextView(this);
+        badAgainstTitle = new TextView(this);
+        godNameTitle = new TextView(this);
+        comboTitle = new TextView(this);
         linearCountersBy = new LinearLayout(this);
         linearCounters = new LinearLayout(this);
-        combotext = new TextView(this);
+        comboText = new TextView(this);
         starterDivider = new TextView(this);
         coreDivider = new TextView(this);
         attackDivider = new TextView(this);
         defenseDivider = new TextView(this);
-        tv5 = new Button(this);
-        tv6 = new Button(this);
-        tv7 = new Button(this);
-        tv8 = new Button(this);
-
+        popularBuildsTitle = new Button(this);
+        buildsConquest = new Button(this);
+        buildsArena = new Button(this);
+        buildsJoust = new Button(this);
         regreso = new Button(this);
-        imageCountersBy = new ImageButton[10];
-        imageCounter = new ImageButton[3];
-        imagenPrueba = new ImageButton(this);
         scrollCountersBy = new HorizontalScrollView(this);
         scrollCounters = new HorizontalScrollView(this);
-        linearStarter = new LinearLayout(this);
-        linearStarter.setOrientation(LinearLayout.HORIZONTAL);
-        linearStarter.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL);
-        linearCore = new LinearLayout(this);
-        linearCore.setOrientation(LinearLayout.HORIZONTAL);
-        linearCore.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL);
-        linearAttack = new LinearLayout(this);
-        linearAttack.setOrientation(LinearLayout.HORIZONTAL);
-        linearAttack.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL);
-        linearDefense = new LinearLayout(this);
-        linearDefense.setOrientation(LinearLayout.HORIZONTAL);
-        linearDefense.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL);
-        linerdecombo = new LinearLayout(this);
-        linerdecombo.setOrientation(LinearLayout.VERTICAL);
-        linerdecombo.setBackgroundColor(getResources().getColor(R.color.Negro));
-        godName = getIntent().getStringExtra("name");
-        godType = getIntent().getStringExtra("type");
+        ln1 = new LinearLayout(this);
         ln2 = (LinearLayout) findViewById(R.id.linearabajo);
+        ln3 = new LinearLayout(this);
+        linearCombo = new LinearLayout(this);
+        linearStarter = new LinearLayout(this);
+        linearCore = new LinearLayout(this);
+        linearAttack = new LinearLayout(this);
+        linearDefense = new LinearLayout(this);
+
+        styleLinearItems(linearStarter);
+        styleLinearItems(linearCore);
+        styleLinearItems(linearAttack);
+        styleLinearItems(linearDefense);
+
+        ln1.setOrientation(LinearLayout.HORIZONTAL);
+        ln1.setBackgroundColor(getResources().getColor(R.color.Negro));
+        linearCombo.setOrientation(LinearLayout.VERTICAL);
+        linearCombo.setBackgroundColor(getResources().getColor(R.color.Negro));
         ln2.setBackgroundColor(getResources().getColor(R.color.Negro));
+        ln3.setOrientation(LinearLayout.HORIZONTAL);
+        ln3.setBackgroundColor(getResources().getColor(R.color.Negro));
         linearCountersBy.setOrientation(LinearLayout.HORIZONTAL);
         linearCountersBy.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL);
         linearCounters.setOrientation(LinearLayout.HORIZONTAL);
         linearCounters.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL);
-        ln1 = new LinearLayout(this);
-        ln1.setOrientation(LinearLayout.HORIZONTAL);
-        ln1.setBackgroundColor(getResources().getColor(R.color.Negro));
-        ln3 = new LinearLayout(this);
-        ln3.setOrientation(LinearLayout.HORIZONTAL);
-        ln3.setBackgroundColor(getResources().getColor(R.color.Negro));
 
-        tv1.setText(R.string.Conte);
-        styleHeaders(tv1);
+        goodAgainstTitle.setText(R.string.Conte);
+        styleHeaders(goodAgainstTitle);
 
-        tv2.setText(R.string.EsContereado);
-        styleHeaders(tv2);
+        badAgainstTitle.setText(R.string.EsContereado);
+        styleHeaders(badAgainstTitle);
 
-        tv3.setText(godName);
-        styleHeaders(tv3);
+        godNameTitle.setText(godName);
+        styleHeaders(godNameTitle);
 
-        tv4.setText("Combo");
-        styleHeaders(tv4);
+        comboTitle.setText("Combo");
+        styleHeaders(comboTitle);
 
-        tv5.setText(R.string.BuildsPopulares);
-        styleHeaders(tv5);
+        popularBuildsTitle.setText(R.string.BuildsPopulares);
+        styleHeaders(popularBuildsTitle);
 
         regreso.setText(R.string.regresar);
         regreso.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
         regreso.setTextSize(25);
         regreso.setTextColor(getResources().getColor(R.color.Negro));
-
         regreso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -151,25 +135,25 @@ public class Buscar extends AppCompatActivity {
             }
         });
 
-        tv6.setText(R.string.conquista);
-        tv6.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
+        buildsConquest.setText(R.string.conquista);
+        buildsConquest.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
 
-        tv6.setTextSize(25);
-        tv6.setTextColor(getResources().getColor(R.color.Negro));
+        buildsConquest.setTextSize(25);
+        buildsConquest.setTextColor(getResources().getColor(R.color.Negro));
 
-        tv7.setText(R.string.arena);
-        tv7.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
+        buildsArena.setText(R.string.arena);
+        buildsArena.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
 
-        tv7.setTextSize(25);
-        tv7.setTextColor(getResources().getColor(R.color.Negro));
-        // tv7.setBackgroundColor(getResources().getColor(R.color.gris));
+        buildsArena.setTextSize(25);
+        buildsArena.setTextColor(getResources().getColor(R.color.Negro));
+        // buildsArena.setBackgroundColor(getResources().getColor(R.color.gris));
 
-        tv8.setText(R.string.justa);
-        tv8.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
+        buildsJoust.setText(R.string.justa);
+        buildsJoust.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
 
-        tv8.setTextSize(25);
-        tv8.setTextColor(getResources().getColor(R.color.Negro));
-        // tv8.setBackgroundColor(getResources().getColor(R.color.gris));
+        buildsJoust.setTextSize(25);
+        buildsJoust.setTextColor(getResources().getColor(R.color.Negro));
+        // buildsJoust.setBackgroundColor(getResources().getColor(R.color.gris));
 
         starterDivider.setText(R.string.starterItem);
         styleHeaders(starterDivider);
@@ -190,6 +174,8 @@ public class Buscar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buscar);
         initComponents();
+        godName = getIntent().getStringExtra("name");
+        godType = getIntent().getStringExtra("type");
         final ImageView btn = new ImageView(this);
         final ControladorDioses controlador = new ControladorDioses(this);
         final ControladorItems controladorI = new ControladorItems(this);
@@ -198,17 +184,10 @@ public class Buscar extends AppCompatActivity {
         final ArrayList<String> countersBy = datos.getCountersBy();
         final ArrayList<String> counters = datos.getCounter();
         final String[] items = controladorI.pullItemsByType(godType);
-        // final String counter = datos.getCounter();
         final String resourceImage = datos.getResourceImage();
-        int cont = 0;
-        int cont2 = 0;
 
-        combotext.setText(combo);
-        combotext.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
-        combotext.setEnabled(false);
-        combotext.setTextSize(25);
-        combotext.setTextColor(getResources().getColor(R.color.Blanco));
-        combotext.setBackgroundColor(getResources().getColor(R.color.Negro));
+        comboText.setText(combo);
+        styleHeaders(comboText);
 
         btn.setImageResource(getResources().getIdentifier(resourceImage, "mipmap", getPackageName()));
         btn.setBackgroundColor(getResources().getColor(R.color.Negro));
@@ -216,58 +195,52 @@ public class Buscar extends AppCompatActivity {
                 LinearLayout.LayoutParams.WRAP_CONTENT));
 
 
-        linerdecombo.addView(tv4);
-        linerdecombo.addView(combotext);
+        linearCombo.addView(comboTitle);
+        linearCombo.addView(comboText);
 
-        ln1.addView(linerdecombo);
+        ln1.addView(linearCombo);
         ln1.addView(btn);
         ln3.addView(regreso);
-        ln3.addView(tv3);
+        ln3.addView(godNameTitle);
         ln2.addView(ln3);
         ln2.addView(ln1);
-        ln2.addView(tv1);
+        ln2.addView(goodAgainstTitle);
         ln2.addView(scrollCounters);
         scrollCounters.addView(linearCounters);
-        ln2.addView(tv2);
+        ln2.addView(badAgainstTitle);
         ln2.addView(scrollCountersBy);
         scrollCountersBy.addView(linearCountersBy);
 
         for (final String coun : counters) {
-
-            imageCounter[cont2] = new ImageButton(this);
+            final ImageButton imageCounter = new ImageButton(this);
             if (coun != null) {
-                imageCounter[cont2].setImageResource(getResources().getIdentifier(coun, "mipmap", getPackageName()));
-                imageCounter[cont2].setTag(coun);
-                imageCounter[cont2].setOnClickListener(new View.OnClickListener() {
+                imageCounter.setImageResource(getResources().getIdentifier(coun, "mipmap", getPackageName()));
+                imageCounter.setTag(coun);
+                imageCounter.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         counterSearch(coun);
                     }
                 });
-                linearCounters.addView(imageCounter[cont2]);
-                cont++;
+                linearCounters.addView(imageCounter);
             }
         }
 
 
         for (final String cs : countersBy) {
-            imageCountersBy[cont] = new ImageButton(this);
+            ImageButton imageCountersBy = new ImageButton(this);
             if (cs != null) {
-                imageCountersBy[cont].setImageResource(getResources().getIdentifier(cs, "mipmap", getPackageName()));
-                imageCountersBy[cont].setTag(cs);
-                imageCountersBy[cont].setOnClickListener(new View.OnClickListener() {
+                imageCountersBy.setImageResource(getResources().getIdentifier(cs, "mipmap", getPackageName()));
+                imageCountersBy.setTag(cs);
+                imageCountersBy.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         counterSearch(cs);
                     }
                 });
-                linearCountersBy.addView(imageCountersBy[cont]);
-                cont++;
+                linearCountersBy.addView(imageCountersBy);
             }
         }
-
-        imagenPrueba.setImageResource(getResources().getIdentifier("armor", "mipmap", getPackageName()));
-        imagenPrueba.setTag("armor");
 
         for (int i = 0; i < 10; i++) {
             ImageButton item = new ImageButton(this);
@@ -292,12 +265,10 @@ public class Buscar extends AppCompatActivity {
         ln2.addView(linearAttack);
         ln2.addView(defenseDivider);
         ln2.addView(linearDefense);
-        ln2.addView(tv5);
-        ln2.addView(tv6);
-        ln2.addView(tv7);
-        ln2.addView(tv8);
-        ln2.addView(imagenPrueba);
-
+        ln2.addView(popularBuildsTitle);
+        ln2.addView(buildsConquest);
+        ln2.addView(buildsArena);
+        ln2.addView(buildsJoust);
 
         MobileAds.initialize(this, "ca-app-pub-5146175048698339~6692980600");
         mAdView = findViewById(R.id.adView);
@@ -314,7 +285,11 @@ public class Buscar extends AppCompatActivity {
         style.setTextColor(getResources().getColor(R.color.Blanco));
         style.setBackgroundColor(getResources().getColor(R.color.Negro));
     }
-
+    
+    public void styleLinearItems(LinearLayout style){
+        style.setOrientation(LinearLayout.HORIZONTAL);
+        style.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL);
+    }
 
     public void counterSearch(String god) {
         ModeloDiosesMain modelo = new ControladorDioses(this).getGodNameAndTypeByResourceImage(god);

@@ -22,20 +22,18 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-
 
 import com.arturo.linearyscrollbar.Adapters.AdaptadorMain;
 import com.arturo.linearyscrollbar.Controladores.ControladorDioses;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private AdView mAdView;
 
-    private LinearLayout linear;
     private EditText searchBar;
     private Toolbar mToolbar;
     private Animation animOut;
@@ -43,16 +41,13 @@ public class MainActivity extends AppCompatActivity {
     private ListView listMain;
     private FrameLayout ghost;
     private ArrayList godCards;
-    private boolean searchFlag;
     private AdaptadorMain adapter;
-
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
-
     }
 
 
@@ -65,12 +60,11 @@ public class MainActivity extends AppCompatActivity {
                 searchBar.setEnabled(true);
                 searchBar.startAnimation(animIn);
                 break;
-            case R.id.action_user:
+            /*case R.id.action_user:
                 Intent intent = new Intent(this, Smiteguru.class);
                 startActivity(intent);
-                break;
+                break;*/
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -91,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
         ghost = (FrameLayout) findViewById(R.id.ghostFrame);
         listMain = (ListView) findViewById(R.id.listMain);
         searchBar = (EditText) findViewById(R.id.godSearch);
-        searchFlag = false;
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbar.setTitle("SMITE");
         mToolbar.setTitleTextColor(getResources().getColor(R.color.Negro));
@@ -280,12 +273,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void Iralaweb(View view){
+    public void Iralaweb(View view) {
         Intent intent = new Intent(this, Smiteguru.class);
         startActivity(intent);
     }
 
-    public void recargarlista(View view){
+    public void recargarlista(View view) {
         searchBar.setText("");
         this.recreate();
     }

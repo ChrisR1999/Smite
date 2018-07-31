@@ -9,12 +9,12 @@
         android:title="Buscar"
         app:showAsAction="ifRoom" />
 
-    <item
-        android:id="@+id/action_user"
-        android:icon="@drawable/ic_usert"
-        android:orderInCategory="101"
-        android:title="usuarios"
-        app:showAsAction="ifRoom" />
+    <!-- -    <item
+            android:id="@+id/action_user"
+            android:icon="@drawable/ic_usert"
+            android:orderInCategory="101"
+            android:title="usuarios"
+            app:showAsAction="ifRoom" />  -->
 
     <item
         android:id="@+id/action_favorites"
