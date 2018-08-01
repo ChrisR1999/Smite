@@ -39,7 +39,7 @@ public class Smiteguru extends AppCompatActivity {
         });
 
 
-        MobileAds.initialize(this, "ca-app-pub-5146175048698339~6692980600");
+        MobileAds.initialize(this, "ca-app-pub-5146175048698339/1447542724");
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
