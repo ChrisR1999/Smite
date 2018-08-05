@@ -166,6 +166,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
 /*
     private void insertResultGods(String name){
         int id = 1;
@@ -281,5 +282,15 @@ public class MainActivity extends AppCompatActivity {
     public void recargarlista(View view) {
         searchBar.setText("");
         this.recreate();
+    }
+
+    public void recargarlista2(View view) {
+        Intent intent = new Intent(this, TodosLosItems.class);
+        startActivity(intent);
+    }
+
+    private void PasaraTodoslosItems(View view){
+
+
     }
 }
