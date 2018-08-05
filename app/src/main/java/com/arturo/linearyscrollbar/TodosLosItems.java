@@ -1,5 +1,6 @@
 package com.arturo.linearyscrollbar;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -37,7 +38,7 @@ public class TodosLosItems extends AppCompatActivity {
        // godImage = new ImageView(this);
         regreso = new Button(this);
         ln1 = new LinearLayout(this);
-        ln2 = (LinearLayout) findViewById(R.id.linearabajo2);
+        ln2 = (LinearLayout) findViewById(R.id.linearabajo3);
         ln3 = new LinearLayout(this);
         ln1.setOrientation(LinearLayout.VERTICAL);
         ln1.setBackgroundColor(getResources().getColor(R.color.Negro));
@@ -51,21 +52,44 @@ public class TodosLosItems extends AppCompatActivity {
         regreso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+               RegresoMenu();
             }
         });
 
 
-        godNameTitle.setText("Todos los Dioses");
-        Magicos.setText("Maigocs");
+        godNameTitle.setText("Todos los Items");
+        godNameTitle.setTextSize(25);
+        godNameTitle.setTextColor(getResources().getColor(R.color.Blanco));
+        godNameTitle.setGravity(Gravity.CENTER);
+
+        Magicos.setText("MAgicos");
+        Magicos.setTextSize(25);
+        Magicos.setTextColor(getResources().getColor(R.color.Blanco));
+        Magicos.setGravity(Gravity.CENTER);
+
         Fisicos.setText("Fisicos");
-        Ambos.setText("General");
-        ln1.addView(godNameTitle);
-        ln1.addView(Magicos);
-        ln1.addView(Fisicos);
-        ln1.addView(Ambos);
-        ln2.addView(ln1);
+        Fisicos.setTextSize(25);
+        Fisicos.setTextColor(getResources().getColor(R.color.Blanco));
+        Fisicos.setGravity(Gravity.CENTER);
+
+       Ambos.setText("Generales");
+        Ambos.setTextSize(25);
+        Ambos.setTextColor(getResources().getColor(R.color.Blanco));
+        Ambos.setGravity(Gravity.CENTER);
+
+        ln2.addView(regreso);
+        ln2.addView(godNameTitle);
+        ln2.addView(Ambos);
+        ln2.addView(Magicos);
+        ln2.addView(Fisicos);
 
 
 }
 
+
+    public void RegresoMenu() {
+        Intent mandar = new Intent(this, MainActivity.class);
+        startActivity(mandar);
+        finish();
+    }
 }

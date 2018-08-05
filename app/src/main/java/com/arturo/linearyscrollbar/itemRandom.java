@@ -76,6 +76,8 @@ public class itemRandom extends AppCompatActivity {
         regreso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                RegresoMenu();
             }
         });
         ln1.addView(godImage);
@@ -122,6 +124,12 @@ public class itemRandom extends AppCompatActivity {
     public void styleLinearItems(LinearLayout style){
         style.setOrientation(LinearLayout.HORIZONTAL);
         style.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL);
+    }
+
+    public void RegresoMenu() {
+        Intent mandar = new Intent(this, MainActivity.class);
+        startActivity(mandar);
+        finish();
     }
 
 }
