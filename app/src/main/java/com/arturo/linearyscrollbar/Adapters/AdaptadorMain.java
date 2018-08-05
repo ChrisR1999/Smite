@@ -2,6 +2,10 @@ package com.arturo.linearyscrollbar.Adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +17,8 @@ import android.widget.TextView;
 import com.arturo.linearyscrollbar.Modelos.ModeloDiosesMain;
 import com.arturo.linearyscrollbar.R;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 
@@ -60,14 +66,6 @@ public class AdaptadorMain extends BaseAdapter {
 
         final ModeloDiosesMain dir = items.get(position);
 
-        ImageButton special = (ImageButton) v.findViewById(R.id.special);
-        special.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
         godName = (TextView) v.findViewById(R.id.nombre);
         godCategoryText = (TextView) v.findViewById(R.id.godCategory);
         godPanteon = (TextView) v.findViewById(R.id.godGroup);
@@ -75,7 +73,7 @@ public class AdaptadorMain extends BaseAdapter {
         godCategoryText.setText(dir.getGodCategory());
         godPanteon.setText(dir.getGodPanteon());
         godImage = (ImageView) v.findViewById(R.id.godImage);
-        godImage.setImageResource(contexto.getResources().getIdentifier(dir.getResourceImage(), "mipmap", contexto.getPackageName()));
+        godImage.setImageDrawable(createImage(dir));
         godImageCategory = (ImageView) v.findViewById(R.id.godCategoryImg);
         switch (dir.getGodCategory()) {
             case "Guerrero":
@@ -100,8 +98,15 @@ public class AdaptadorMain extends BaseAdapter {
         return v;
     }
 
-    public void borrar(int i) {
-
+    public RoundedBitmapDrawable createImage(ModeloDiosesMain dir) {
+        Bitmap bmp = BitmapFactory.decodeResource(contexto.getResources(),contexto.getResources().getIdentifier(dir.getResourceImage(), "mipmap", contexto.getPackageName()));
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        RoundedBitmapDrawable roundedDrawable =
+                RoundedBitmapDrawableFactory.create(null ,bmp);
+        roundedDrawable.setCornerRadius(8);
+        return roundedDrawable;
     }
+
+
 
 }
