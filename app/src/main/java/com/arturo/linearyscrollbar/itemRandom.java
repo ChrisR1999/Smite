@@ -22,6 +22,7 @@ import java.util.ArrayList;
 
 public class itemRandom extends AppCompatActivity {
     private Button regreso;
+    private Button changeItems;
     private TextView godNameTitle;
     private TextView itemDivider;
     private ImageView godImage;
@@ -47,17 +48,15 @@ public class itemRandom extends AppCompatActivity {
     }
 
     public void initComponents(){
-        ControladorItemsRandom controlador = new ControladorItemsRandom(this);
-        Intent intent = getIntent();
         godNameTitle = new TextView(this);
         itemDivider = new TextView(this);
         godImage = new ImageView(this);
+        changeItems = new Button(this);
         regreso = new Button(this);
         linearItem = new LinearLayout(this);
         ln1 = new LinearLayout(this);
         ln2 = (LinearLayout) findViewById(R.id.linearabajo2);
         ln3 = new LinearLayout(this);
-        modelo = controlador.getAllRandomItems(intent.getStringExtra("type"));
         ln1.setOrientation(LinearLayout.HORIZONTAL);
         ln1.setBackgroundColor(getResources().getColor(R.color.Negro));
         ln2.setBackgroundColor(getResources().getColor(R.color.Negro));
@@ -80,24 +79,23 @@ public class itemRandom extends AppCompatActivity {
                 RegresoMenu();
             }
         });
+        changeItems.setText("Rolar");
+        changeItems.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
+        changeItems.setTextSize(25);
+        changeItems.setTextColor(getResources().getColor(R.color.Negro));
+        changeItems.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                rollItems();
+            }
+        });
         ln1.addView(godImage);
         ln3.addView(regreso);
         ln3.addView(godNameTitle);
         ln2.addView(itemDivider);
         ln2.addView(linearItem);
-        for (int i = 0; i < 6 ; i++){
-            final ImageButton image = new ImageButton(this);
-            final String item = getRandomItem();
-            image.setImageResource(getResources().getIdentifier(item, "mipmap", getPackageName()));
-            image.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    openItem(item);
-                }
-            });
-            linearItem.addView(image);
-
-        }
+        rollItems();
+        ln2.addView(changeItems);
     }
 
     public String getRandomItem() {
@@ -106,6 +104,25 @@ public class itemRandom extends AppCompatActivity {
         item = modelo.get(index).getNombre();
         modelo.remove(index);
         return item;
+    }
+
+    private void rollItems(){
+        Intent intent = getIntent();
+        ControladorItemsRandom controlador = new ControladorItemsRandom(this);
+        modelo = controlador.getAllRandomItems(intent.getStringExtra("type"));
+        linearItem.removeAllViews();
+        for (int i = 0; i < 6 ; i++){
+            final ImageButton image = new ImageButton(this);
+            final String item = getRandomItem();
+            image.setImageResource(getResources().getIdentifier(StringUtillities.parseItemName(item), "mipmap", getPackageName()));
+            image.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    openItem(item);
+                }
+            });
+            linearItem.addView(image);
+        }
     }
 
     public void openItem(String item){

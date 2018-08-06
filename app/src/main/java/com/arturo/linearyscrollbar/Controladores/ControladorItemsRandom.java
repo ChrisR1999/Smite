@@ -43,7 +43,6 @@ public class ControladorItemsRandom extends VinculoBD {
             model.setNombre(cursor.getString(0));
             model.setTipo(cursor.getString(1));
             list.add(model);
-
             cursor.moveToNext();
         }
         cursor.close();
