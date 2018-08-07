@@ -10,6 +10,8 @@
     <color name="windowBackground">#000000</color>
     <color name="navigationBarColor">#000000</color>
     <color name="colorAccent">#13bcb6</color>
+    <color name="amarillo">#efe411</color>
+    <color name="verde">#19ac11</color>
 </resources>
 
 

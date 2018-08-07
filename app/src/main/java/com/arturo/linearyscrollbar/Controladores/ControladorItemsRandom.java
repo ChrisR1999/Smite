@@ -34,7 +34,7 @@ public class ControladorItemsRandom extends VinculoBD {
     public ArrayList<ModeloItemsRandom> TodosLosITems(String type) {
         ArrayList<ModeloItemsRandom> list = new ArrayList<>();
         open();
-        Cursor cursor = bdGods.rawQuery("SELECT Nombre,Tipo from ItemRandom ", null);
+        Cursor cursor = bdGods.rawQuery("SELECT Nombre,Tipo,Costo,PhysicalPower,Pasiva from ItemRandom ", null);
 
         cursor.moveToFirst();
 
@@ -42,6 +42,9 @@ public class ControladorItemsRandom extends VinculoBD {
             ModeloItemsRandom model = new ModeloItemsRandom();
             model.setNombre(cursor.getString(0));
             model.setTipo(cursor.getString(1));
+            model.setPhysicalPower(cursor.getInt(3));
+            model.setCosto(cursor.getInt(2));
+            model.setPasive(cursor.getString(4));
             list.add(model);
             cursor.moveToNext();
         }

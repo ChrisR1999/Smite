@@ -18,13 +18,15 @@ public class ModeloItemsRandom {
     private int criticalStrikeChance;
     private int crowdControlReduction;
     private int HPS;
-    private int pasive;
+    private String pasive;
     private String tipo;
 
 
     public ModeloItemsRandom(){}
 
-    public ModeloItemsRandom(int id, String nombre, int costo, int physicalPower, int magicalPower, int mana, int attackSpeed, int health, int coolDown, int movementSpeed, int MPS, int penetration, int magicalProtection, int lifeSteal, int criticalStrikeChance, int crowdControlReduction, int HPS, int pasive, String tipo) {
+    public ModeloItemsRandom(int id, String nombre, int costo, int physicalPower, int magicalPower, int mana, int attackSpeed, int health, int coolDown,
+                             int movementSpeed, int MPS, int penetration, int magicalProtection, int lifeSteal, int criticalStrikeChance, int crowdControlReduction,
+                             int HPS, String pasive, String tipo) {
         this.id = id;
         this.nombre = nombre;
         this.costo = costo;
@@ -182,11 +184,11 @@ public class ModeloItemsRandom {
         this.HPS = HPS;
     }
 
-    public int getPasive() {
+    public String getPasive() {
         return pasive;
     }
 
-    public void setPasive(int pasive) {
+    public void setPasive(String pasive) {
         this.pasive = pasive;
     }
 
