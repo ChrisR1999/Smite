@@ -34,7 +34,7 @@ public class ControladorItemsRandom extends VinculoBD {
     public ArrayList<ModeloItemsRandom> TodosLosITems(String type) {
         ArrayList<ModeloItemsRandom> list = new ArrayList<>();
         open();
-        Cursor cursor = bdGods.rawQuery("SELECT Nombre,Tipo,Costo,PhysicalPower,Pasiva from ItemRandom ", null);
+        Cursor cursor = bdGods.rawQuery("SELECT Nombre,Tipo,Costo,Pasiva from ItemRandom ", null);
 
         cursor.moveToFirst();
 
@@ -42,9 +42,9 @@ public class ControladorItemsRandom extends VinculoBD {
             ModeloItemsRandom model = new ModeloItemsRandom();
             model.setNombre(cursor.getString(0));
             model.setTipo(cursor.getString(1));
-            model.setPhysicalPower(cursor.getInt(3));
+            //model.setPhysicalPower(cursor.getInt(3));
             model.setCosto(cursor.getInt(2));
-            model.setPasive(cursor.getString(4));
+            model.setPasive(cursor.getString(3));
             list.add(model);
             cursor.moveToNext();
         }
@@ -57,11 +57,10 @@ public class ControladorItemsRandom extends VinculoBD {
     public ArrayList<ModeloItemsRandom> Lllamada(String type) {
         ArrayList<ModeloItemsRandom> list = new ArrayList<>();
         open();
-        Cursor cursor = bdGods.rawQuery("SELECT Nombre,Costo,PhysicalPower,MagicalPower,Mana,AtackSpeed,Health,CooldownReduction,MovementSpeed,MPS,Penetration,MagicalProtection,PhysicalProtection,Lifesteal,CriticalStrikeChance,CrowdControlReduction,HPS,Pasiva from ItemRandom where Nombre = ? ", null);
-
+        Cursor cursor = bdGods.rawQuery("SELECT Nombre,Costo,PhysicalPower,MagicalPower,Mana,AtackSpeed,Health,CooldownReduction,MovementSpeed,MPS,Penetration,MagicalProtection,PhysicalProtection,Lifesteal,CriticalStrikeChance,CrowdControlReduction,HPS,Pasiva from ItemRandom where Nombre = ? ", new String[]{type});
         cursor.moveToFirst();
 
-        while(!cursor.isAfterLast()){
+
             ModeloItemsRandom model = new ModeloItemsRandom();
             model.setNombre(cursor.getString(0));
             model.setPhysicalPower(cursor.getInt(2));
@@ -82,8 +81,7 @@ public class ControladorItemsRandom extends VinculoBD {
             model.setHPS(cursor.getInt(17));
             model.setPasive(cursor.getString(18));
             list.add(model);
-            cursor.moveToNext();
-        }
+
         cursor.close();
         close();
         return list;

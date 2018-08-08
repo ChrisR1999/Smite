@@ -84,8 +84,8 @@ public class TodosLosItems extends AppCompatActivity {
             }
         });
 
-        modelo = controlador.TodosLosITems(intent.getStringExtra("type"));
 
+        modelo = controlador.TodosLosITems(intent.getStringExtra("type"));
 
         godNameTitle.setText("Todos los Items");
         godNameTitle.setTextSize(25);
