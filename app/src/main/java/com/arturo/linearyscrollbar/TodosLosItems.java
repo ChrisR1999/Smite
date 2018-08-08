@@ -238,6 +238,10 @@ public class TodosLosItems extends AppCompatActivity {
 
     public void openItem(String item){
 
+        Intent intent = new Intent(this,  DotosDeLosItems.class);
+        intent.putExtra("nombre", item);
+        startActivity(intent);
+
     }
 
     public void RegresoMenu() {
