@@ -27,5 +27,23 @@
     <string name="tanque">Tanque</string>
     <string name="guerrero">Guerrero</string>
     <string name="ingrsanombre">Ingresa un nombre antes de buscar</string>
+    <string name="fisicos">FISICOS</string>
+    <string name="magicos">MAGICOS</string>
+    <string name="general">GENERAL</string>
+    <string name="poderfisico">Poder Fisico</string>
+    <string name="podermagico">Poder Magico</string>
+    <string name="velocidadedeataque">Velocidad de Ataque</string>
+    <string name="vida">Vida</string>
+    <string name="coldown">Reduccion de Cooldown</string>
+    <string name="velocidadmovimiento">Velocidad de Movimiento</string>
+    <string name="penetration">¨Penetracion</string>
+    <string name="defensamagica">Defensa Magica</string>
+    <string name="defensafisica">Defensa Fisica</string>
+    <string name="robodevida">Robo de Vida</string>
+    <string name="contromasas">Reduccion Control de Masas</string>
+    <string name="criticos">Probavilidad de Criticos</string>
+    <string name="pasiva">Pasiva</string>
+    <string name="cosot">Costo</string>
+    <string name="todoslositems">Todos Los Items</string>
 
 </resources>

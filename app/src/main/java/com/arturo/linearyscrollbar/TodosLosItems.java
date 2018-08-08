@@ -87,12 +87,12 @@ public class TodosLosItems extends AppCompatActivity {
 
         modelo = controlador.TodosLosITems(intent.getStringExtra("type"));
 
-        godNameTitle.setText("Todos los Items");
+        godNameTitle.setText(R.string.todoslositems);
         godNameTitle.setTextSize(25);
         godNameTitle.setTextColor(getResources().getColor(R.color.Blanco));
         godNameTitle.setGravity(Gravity.CENTER);
 
-        Magicos.setText("MAgicos");
+        Magicos.setText(R.string.magicos);
         Magicos.setTextSize(25);
         Magicos.setTextColor(getResources().getColor(R.color.gris));
         Magicos.setGravity(Gravity.CENTER);
@@ -113,7 +113,7 @@ public class TodosLosItems extends AppCompatActivity {
             }
         });
 
-        Fisicos.setText("Fisicos");
+        Fisicos.setText(R.string.fisicos);
         Fisicos.setTextSize(25);
         Fisicos.setTextColor(getResources().getColor(R.color.gris));
         Fisicos.setGravity(Gravity.CENTER);
@@ -130,7 +130,7 @@ public class TodosLosItems extends AppCompatActivity {
             }
         });
 
-       Ambos.setText("Generales");
+       Ambos.setText(R.string.general);
         Ambos.setTextSize(25);
         Ambos.setTextColor(getResources().getColor(R.color.gris));
         Ambos.setGravity(Gravity.CENTER);
@@ -175,7 +175,7 @@ public class TodosLosItems extends AppCompatActivity {
                     openItem(item);
                 }
             });
-           Costo.setText("Costo: "+costo+"  ");
+           Costo.setText(R.string.cosot+":   "+costo+"  ");
            Nombre.setText(item);
            mas.setText("  more...");
            mas.setTextColor(getResources().getColor(R.color.verde));

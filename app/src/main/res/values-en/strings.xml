@@ -22,5 +22,23 @@
     <string name="tanque">Tank</string>
     <string name="guerrero">Warrior</string>
     <string name="ingrsanombre">Write a name before you search</string>
+    <string name="fisicos">FISIC</string>
+    <string name="magicos">MAGIC</string>
+    <string name="general">GENERAL</string>
+    <string name="poderfisico">Physical Power</string>
+    <string name="podermagico">Magical Power</string>
+    <string name="velocidadedeataque">Attack Speed</string>
+    <string name="vida">Health</string>
+    <string name="coldown">Cooldown Reduction</string>
+    <string name="velocidadmovimiento">Movement Speed</string>
+    <string name="penetration">¨Penetration</string>
+    <string name="defensamagica">Magic Defense</string>
+    <string name="defensafisica">Phisical Defense</string>
+    <string name="robodevida">Lifesteal</string>
+    <string name="contromasas">CrowdCrontrol Reduction</string>
+    <string name="criticos">Critical Strike Chance</string>
+    <string name="pasiva">Pasive</string>
+    <string name="cosot">Cost</string>
+    <string name="todoslositems">All items</string>
 
 </resources>

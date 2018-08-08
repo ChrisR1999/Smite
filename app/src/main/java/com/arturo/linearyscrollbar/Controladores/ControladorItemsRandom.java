@@ -74,7 +74,7 @@ public class ControladorItemsRandom extends VinculoBD {
             model.setMPS(cursor.getInt(10));
             model.setPenetration(cursor.getInt(11));
             model.setMagicalProtection(cursor.getInt(12));
-            model.setMagicalProtection(cursor.getInt(13));
+            model.setPhysicalProtection(cursor.getInt(13));
             model.setLifeSteal(cursor.getInt(14));
             model.setCriticalStrikeChance(cursor.getInt(15));
             model.setCrowdControlReduction(cursor.getInt(16));
