@@ -175,7 +175,7 @@ public class TodosLosItems extends AppCompatActivity {
                     openItem(item);
                 }
             });
-           Costo.setText(R.string.cosot+":   "+costo+"  ");
+           Costo.setText(getResources().getString(R.string.cosot) +costo+"  ");
            Nombre.setText(item);
            mas.setText("  more...");
            mas.setTextColor(getResources().getColor(R.color.verde));
