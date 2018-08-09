@@ -101,7 +101,7 @@ public class DotosDeLosItems extends AppCompatActivity {
         ln1.setOrientation(LinearLayout.VERTICAL);
         ln1.setBackgroundColor(getResources().getColor(R.color.Negro));
         regreso = new Button(this);
-        modelo = controlador.TodosLosITems(intent.getStringExtra("type"));
+        modelo = controlador.TodosLosITems();
         ln2 = new LinearLayout(this);
         ln2.setOrientation(LinearLayout.HORIZONTAL);
         ln2.setBackgroundColor(getResources().getColor(R.color.Negro));
@@ -183,7 +183,6 @@ public class DotosDeLosItems extends AppCompatActivity {
             texto.setTextColor(getResources().getColor(R.color.Blanco));
             texto.setTextSize(26);
             ln1.addView(texto);
-
         }
 
     }

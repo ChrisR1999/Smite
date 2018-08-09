@@ -43,7 +43,8 @@
     <string name="contromasas">Reduccion Control de Masas</string>
     <string name="criticos">Probavilidad de Criticos</string>
     <string name="pasiva">Pasiva</string>
-    <string name="cosot">Costo</string>
+    <string name="costo">Costo:</string>
     <string name="todoslositems">Todos Los Items</string>
+    <string name="mas">mas...</string>
 
 </resources>
