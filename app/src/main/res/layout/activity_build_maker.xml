@@ -18,7 +18,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/godBuildTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -35,9 +35,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="Button"
+                android:layout_marginTop="8dp"
+                android:text="@string/regresar"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toStartOf="@+id/textView"
+                app:layout_constraintEnd_toStartOf="@+id/godBuildTitle"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,20 +48,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:layout_marginStart="16dp"
-                android:text="Button"
+                android:layout_marginTop="8dp"
+                android:text="@string/items"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textView"
+                app:layout_constraintStart_toEndOf="@+id/godBuildTitle"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/godBuildImage"
                 android:layout_width="130dp"
                 android:layout_height="150dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginTop="32dp"
                 app:layout_constraintEnd_toEndOf="@+id/button5"
-                app:layout_constraintTop_toBottomOf="@+id/textView"
+                app:layout_constraintTop_toBottomOf="@+id/godBuildTitle"
                 app:srcCompat="@android:color/holo_blue_dark" />
 
             <android.support.v7.widget.GridLayout
@@ -71,40 +73,52 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="32dp"
                 app:columnCount="3"
-                app:layout_constraintEnd_toEndOf="@+id/button5"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.488"
-                app:layout_constraintStart_toStartOf="@+id/button4"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/godBuildImage"
                 app:rowCount="2">
 
                 <ImageButton
                     android:id="@+id/itemBuild1"
-                    android:layout_margin="14dp"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_margin="16dp"
                     android:src="@drawable/ic_if_plus" />
 
                 <ImageButton
                     android:id="@+id/itemBuild2"
-                    android:layout_margin="14dp"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_margin="16dp"
                     android:src="@drawable/ic_if_plus" />
 
                 <ImageButton
                     android:id="@+id/itemBuild3"
-                    android:layout_margin="14dp"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_margin="16dp"
                     android:src="@drawable/ic_if_plus" />
 
                 <ImageButton
                     android:id="@+id/itemBuild4"
-                    android:layout_margin="14dp"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_margin="16dp"
                     android:src="@drawable/ic_if_plus" />
 
                 <ImageButton
                     android:id="@+id/itemBuild5"
-                    android:layout_margin="14dp"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_margin="16dp"
                     android:src="@drawable/ic_if_plus" />
 
                 <ImageButton
                     android:id="@+id/itemBuild6"
-                    android:layout_margin="14dp"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_margin="16dp"
                     android:src="@drawable/ic_if_plus" />
 
             </android.support.v7.widget.GridLayout>
@@ -118,10 +132,10 @@
                 android:layout_marginTop="76dp"
                 android:text="TextView"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toStartOf="@+id/imageView2"
+                app:layout_constraintEnd_toStartOf="@+id/godBuildImage"
                 app:layout_constraintHorizontal_bias="0.513"
                 app:layout_constraintStart_toEndOf="@+id/button4"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
+                app:layout_constraintTop_toBottomOf="@+id/godBuildTitle" />
 
             <TextView
                 android:id="@+id/textView3"

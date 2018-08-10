@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="Negro">#030303</color>
-    <color name="Azul">#1386f9</color>
+    <color name="Azul">#09f21d</color>
     <color name="Blanco">#ffffff</color>
     <color name="gris">#5d646b</color>
     <color name="colorPrimary">#ffffff</color>
@@ -12,6 +12,7 @@
     <color name="colorAccent">#13bcb6</color>
     <color name="amarillo">#efe411</color>
     <color name="verde">#19ac11</color>
+    <color name="foreground">#a8158301</color>
 </resources>
 
 

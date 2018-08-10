@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/perdongato"
         android:supportsRtl="true"
         android:theme="@style/MyMaterialTheme">
-        <activity android:name=".TodosLosItems">
+        <activity android:name=".BuildMaker">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

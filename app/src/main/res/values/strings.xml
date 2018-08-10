@@ -46,5 +46,6 @@
     <string name="costo">Costo:</string>
     <string name="todoslositems">Todos Los Items</string>
     <string name="mas">mas...</string>
+    <string name="items">Items</string>
 
 </resources>

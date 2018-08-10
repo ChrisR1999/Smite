@@ -17,7 +17,7 @@ public class ControladorItemsRandom extends VinculoBD {
     public ArrayList<ModeloItemsRandom> getAllRandomItems(String type){
         ArrayList<ModeloItemsRandom> list = new ArrayList<>();
         open();
-        Cursor cursor = bdGods.rawQuery("SELECT Nombre FROM ItemRandom WHERE tipo = ?", new String[]{type});
+        Cursor cursor = bdGods.rawQuery("SELECT Nombre FROM ItemRandom WHERE Tipo = ?", new String[]{type});
         cursor.moveToFirst();
         while(!cursor.isAfterLast()){
             ModeloItemsRandom model = new ModeloItemsRandom();

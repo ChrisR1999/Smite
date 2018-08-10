@@ -1,15 +1,19 @@
 package com.arturo.linearyscrollbar;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.arturo.linearyscrollbar.Controladores.ControladorItemsRandom;
 import com.arturo.linearyscrollbar.Dialogs.ItemDialog;
 import com.arturo.linearyscrollbar.Modelos.ModeloItemsRandom;
+import com.arturo.linearyscrollbar.Utillities.StringUtillities;
 
 import java.util.ArrayList;
 
@@ -20,6 +24,7 @@ public class BuildMaker extends AppCompatActivity {
     private ImageButton itemImage4;
     private ImageButton itemImage5;
     private ImageButton itemImage6;
+    private TextView godTitle;
     private ImageView godImage;
     private ArrayList<ModeloItemsRandom> itemsList;
     private ModeloItemsRandom[] itemsSelected;
@@ -42,9 +47,13 @@ public class BuildMaker extends AppCompatActivity {
         itemImage4 = (ImageButton) findViewById(R.id.itemBuild4);
         itemImage5 = (ImageButton) findViewById(R.id.itemBuild5);
         itemImage6 = (ImageButton) findViewById(R.id.itemBuild6);
-        godName = intent.getStringExtra("name");
-        godType = intent.getStringExtra("type");
-        itemsList = new ControladorItemsRandom(this).getAllRandomItems(godType);
+        godTitle = (TextView) findViewById(R.id.godBuildTitle);
+        godImage = (ImageView) findViewById(R.id.godBuildImage);
+        godName = "Agni";
+        godType = "magico";
+        itemsList = new ControladorItemsRandom(this).TodosLosITems(godType);
+        godTitle.setText(godName);
+        godImage.setImageResource(getResources().getIdentifier(StringUtillities.parseItemName(godName), "mipmap", getPackageName()));
         setOnClickList(itemImage1, 0);
         setOnClickList(itemImage2, 1);
         setOnClickList(itemImage3, 2);

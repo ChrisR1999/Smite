@@ -4,12 +4,16 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.arturo.linearyscrollbar.Modelos.ModeloItemsRandom;
 import com.arturo.linearyscrollbar.R;
@@ -24,6 +28,7 @@ public class ItemDialog {
     private AlertDialog dialog;
     private ScrollView scroll;
     private LinearLayout linearItems;
+    private View auxView;
     private int[] bannedItems;
     private ArrayList<ModeloItemsRandom> items;
 
@@ -41,25 +46,33 @@ public class ItemDialog {
         linearItems = new LinearLayout(context);
         linearItems.setOrientation(LinearLayout.VERTICAL);
         scroll.addView(linearItems);
+        auxView = null;
     }
 
     private void createDialog() {
-        AlertDialog.Builder build = new AlertDialog.Builder(activity);
+        AlertDialog.Builder build = new AlertDialog.Builder(context);
         build.setTitle(title);
         for (final ModeloItemsRandom c : items) {
             final LayoutInflater inflater = LayoutInflater.from(context);
             final View dialogLayout = inflater.inflate(R.layout.item_card, null);
-            final LinearLayout item = new LinearLayout(context);
-            final ImageView image = dialogLayout.findViewById(R.id.imageCard);
-            final TextView name = dialogLayout.findViewById(R.id.itemNameCard);
-            final TextView cost = dialogLayout.findViewById(R.id.itemCostCard);
+            final ImageView image = (ImageView) dialogLayout.findViewById(R.id.imageCard);
+            final TextView name = (TextView) dialogLayout.findViewById(R.id.itemNameCard);
+            final TextView cost = (TextView) dialogLayout.findViewById(R.id.itemCostCard);
+
+            dialogLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //view.setBackgroundColor(context.getResources().getColor(R.color.foreground));
+
+                }
+            });
             image.setImageResource(context.getResources().getIdentifier(
                     StringUtillities.parseItemName(c.getNombre()),
                     "mipmap",
                     context.getPackageName()));
-            name.setText(c.getNombre());
-            cost.setText(c.getCosto());
-            linearItems.addView(image);
+             name.setText(c.getNombre());
+           // cost.setText(c.getCosto());
+            linearItems.addView(dialogLayout);
         }
         build.setView(scroll);
         build.setNegativeButton("Cancelar",new DialogInterface.OnClickListener(){
