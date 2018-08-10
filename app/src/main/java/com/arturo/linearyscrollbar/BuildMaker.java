@@ -71,7 +71,7 @@ public class BuildMaker extends AppCompatActivity {
 
     private void openWindowSelector(ImageButton image, int pos) {
         ItemDialog dialog = new ItemDialog(this, this, "Hola", itemsList);
-
+        dialog.invokeDialog();
     }
 
     private void quitItem(ImageButton image, int pos) {
