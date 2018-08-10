@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.arturo.linearyscrollbar.Controladores.ControladorItemsRandom;
 import com.arturo.linearyscrollbar.Modelos.ModeloItemsRandom;
@@ -101,7 +102,7 @@ public class DotosDeLosItems extends AppCompatActivity {
         ln1.setOrientation(LinearLayout.VERTICAL);
         ln1.setBackgroundColor(getResources().getColor(R.color.Negro));
         regreso = new Button(this);
-        modelo = controlador.TodosLosITems();
+        modelo = controlador.Lllamada(intent.getStringExtra("nombre"));
         ln2 = new LinearLayout(this);
         ln2.setOrientation(LinearLayout.HORIZONTAL);
         ln2.setBackgroundColor(getResources().getColor(R.color.Negro));
@@ -126,7 +127,7 @@ public class DotosDeLosItems extends AppCompatActivity {
         tv1.setText("  "+nombre);
         tv1.setTextColor(getResources().getColor(R.color.verde));
         tv1.setTextSize(26);
-        tv2.setText("  Costo"+costo);
+        tv2.setText("  "+getResources().getString(R.string.cosot)+" "+costo);
         tv2.setTextColor(getResources().getColor(R.color.amarillo));
         tv2.setTextSize(26);
         PoderFisico = modelo.get(0).getPhysicalPower();
@@ -143,30 +144,31 @@ public class DotosDeLosItems extends AppCompatActivity {
         robodevida = modelo.get(0).getLifeSteal();
         criticos = modelo.get(0).getCriticalStrikeChance();
         crowcontrol = modelo.get(0).getCrowdControlReduction();
-        HPS = modelo.get(0).getHPS();
+        pasiva = modelo.get(0).getPasive();
+
+
+//        Toast.makeText(this,pasiva+"",Toast.LENGTH_LONG).show();
 
        // ln2.addView(iteme);
         ln2.addView(tv1);
         ln2.addView(tv2);
         ln1.addView(ln2);
-
-
-        llenardatos(tv3,R.string.poderfisico+" ",PoderFisico);
-       llenardatos(tv4,R.string.podermagico+" ",PoderMagico);
-       llenardatos(tv5,R.string.velocidadedeataque+" ",AtackSpeed);
+        llenardatos(tv3,getResources().getString(R.string.poderfisico),PoderFisico);
+       llenardatos(tv4,getResources().getString(R.string.podermagico),PoderMagico);
+       llenardatos(tv5,getResources().getString(R.string.velocidadedeataque),AtackSpeed);
        llenardatos(tv6,"Mana ",Mana);
-       llenardatos(tv7,R.string.velocidadedeataque+" ",AtackSpeed);
-       llenardatos(tv8,R.string.vida+" ",vida);
-       llenardatos(tv9,R.string.coldown+" ",cooldown);
-       llenardatos(tv10,R.string.penetration+" ",Penetration);
+       llenardatos(tv7,getResources().getString(R.string.velocidadedeataque),AtackSpeed);
+       llenardatos(tv8,getResources().getString(R.string.vida),vida);
+       llenardatos(tv9,getResources().getString(R.string.coldown),cooldown);
+       llenardatos(tv10,getResources().getString(R.string.penetration),Penetration);
        llenardatos(tv11,"MPS ",MPS);
-       llenardatos(tv12,R.string.defensafisica+" ",proteccionfisica);
-       llenardatos(tv13,R.string.defensamagica+" ",proteccionmagica);
-       llenardatos(tv14,R.string.robodevida+" ",robodevida);
-       llenardatos(tv15,R.string.criticos+" ",criticos);
-       llenardatos(tv16,R.string.contromasas+" ",crowcontrol);
+       llenardatos(tv12,getResources().getString(R.string.defensafisica),proteccionfisica);
+       llenardatos(tv13,getResources().getString(R.string.defensamagica),proteccionmagica);
+       llenardatos(tv14,getResources().getString(R.string.robodevida),robodevida);
+       llenardatos(tv15,getResources().getString(R.string.criticos),criticos);
+       llenardatos(tv16,getResources().getString(R.string.contromasas),crowcontrol);
        llenardatos(tv17,"HPS ",HPS);
-       //datosdellinear(tv18,R.string.pasiva+" ",pasiva);
+       datosdellinear(tv18,getResources().getString(R.string.pasiva),pasiva);
 
 
         ln1.addView(regreso);
@@ -178,23 +180,24 @@ public class DotosDeLosItems extends AppCompatActivity {
 
     public void llenardatos(TextView texto,String previo,int poder){
 
-        if(poder ==0 ){
-            texto.setText(""+previo+"   "+poder);
+        if(poder !=0 ){
+            texto.setText(""+previo+": +"+poder);
             texto.setTextColor(getResources().getColor(R.color.Blanco));
             texto.setTextSize(26);
             ln1.addView(texto);
+
         }
 
     }
 
     public void datosdellinear(TextView texto,String previo,String poder){
-        if(poder.isEmpty()){
-            texto.setText(""+previo+"   "+poder);
-            texto.setTextColor(getResources().getColor(R.color.Blanco));
+
+            texto.setText(""+previo+": "+poder);
+            texto.setTextColor(getResources().getColor(R.color.Azul));
             texto.setTextSize(26);
             ln1.addView(texto);
 
-        }
+
 
     }
 
