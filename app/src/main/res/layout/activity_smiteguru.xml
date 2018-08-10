@@ -4,8 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Azul"
+    android:background="@color/gris"
     tools:context=".Smiteguru">
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="383dp"
+        android:layout_height="126dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/searchPlayer"
+        android:layout_marginStart="-67dp"
+        android:contentDescription="@string/BuscarJugador"
+        app:srcCompat="@drawable/cooltext295251101037660" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="172dp"
+        android:layout_height="195dp"
+        android:layout_alignBottom="@+id/xboxButton"
+        android:layout_alignParentEnd="true"
+        android:contentDescription="@string/BuscarJugador"
+        app:srcCompat="@drawable/cofresito" />
 
     <LinearLayout
         android:id="@+id/linearToolbar1"
@@ -24,9 +43,8 @@
         style="@android:style/Widget.Material.Light.EditText"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_alignTop="@+id/imageView8"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="68dp"
         android:ems="20"
         android:fontFamily="sans-serif"
         android:gravity="center"
@@ -41,22 +59,21 @@
     <Button
         android:id="@+id/pcButton"
         android:layout_width="250dp"
-        android:layout_height="wrap_content"
+        android:layout_height="59dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="126dp"
-        android:background="@color/gris"
+        android:layout_marginTop="148dp"
         android:onClick="buscar"
         android:text="@string/Pc"
         android:textSize="16sp" />
 
     <Button
         android:id="@+id/xboxButton"
-        android:layout_width="250dp"
+        android:layout_width="249dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/pcButton"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="221dp"
         android:background="@android:color/holo_green_dark"
         android:onClick="buscarxbox"
         android:text="@string/Xbox"
@@ -66,10 +83,9 @@
         android:id="@+id/ps4Button"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/xboxButton"
+        android:layout_alignBottom="@+id/imageView4"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:background="@android:color/holo_blue_light"
+        android:background="@color/Azul"
         android:onClick="buscarps"
         android:text="@string/PS4"
         android:textSize="16sp" />
@@ -79,25 +95,51 @@
         android:id="@+id/anyPlatform"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ps4Button"
+        android:layout_alignTop="@+id/imageView5"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
         android:background="@android:color/holo_purple"
         android:onClick="guru"
         android:text="@string/guru"
         android:textSize="16sp" />
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="172dp"
+        android:layout_height="205dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/xboxButton"
+        android:contentDescription="@string/recargar"
+        app:srcCompat="@drawable/xbox" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="180dp"
+        android:layout_height="228dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="106dp"
+        android:contentDescription="@string/Xbox"
+        app:srcCompat="@drawable/playstation" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="350dp"
+        android:layout_height="228dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
-        app:adSize="BANNER"
-        app:adUnitId="ca-app-pub-5146175048698339/1447542724">
+        android:layout_marginBottom="0dp"
+        android:contentDescription="@string/regresar"
+        app:srcCompat="@drawable/cooltext295249976735617" />
 
-    </com.google.android.gms.ads.AdView>
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="185dp"
+        android:layout_height="180dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="101dp"
+        android:contentDescription="@string/BuscarJugador"
+        app:srcCompat="@drawable/trueno" />
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/segundoanuncio"
@@ -106,6 +148,18 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="75dp"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-5146175048698339/1447542724">
+
+    </com.google.android.gms.ads.AdView>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
         app:adSize="BANNER"
         app:adUnitId="ca-app-pub-5146175048698339/1447542724">
 
