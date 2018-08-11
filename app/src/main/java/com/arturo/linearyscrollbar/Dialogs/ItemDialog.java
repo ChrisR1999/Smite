@@ -4,9 +4,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -21,7 +18,7 @@ import com.arturo.linearyscrollbar.Utillities.StringUtillities;
 
 import java.util.ArrayList;
 
-public class ItemDialog {
+public class ItemDialog extends AlertDialog.Builder{
     private Context context;
     private Activity activity;
     private String title;
@@ -31,8 +28,11 @@ public class ItemDialog {
     private View auxView;
     private int[] bannedItems;
     private ArrayList<ModeloItemsRandom> items;
+    private int indexSelected;
+    private boolean selected;
 
     public ItemDialog(Context context, Activity activity, String title, ArrayList<ModeloItemsRandom> items) {
+        super(context);
         this.context = context;
         this.activity = activity;
         this.title = title;
@@ -47,11 +47,11 @@ public class ItemDialog {
         linearItems.setOrientation(LinearLayout.VERTICAL);
         scroll.addView(linearItems);
         auxView = null;
+        selected = false;
     }
 
     private void createDialog() {
-        AlertDialog.Builder build = new AlertDialog.Builder(context);
-        build.setTitle(title);
+        setTitle(title);
         for (final ModeloItemsRandom c : items) {
             final LayoutInflater inflater = LayoutInflater.from(context);
             final View dialogLayout = inflater.inflate(R.layout.item_card, null);
@@ -63,28 +63,35 @@ public class ItemDialog {
                 @Override
                 public void onClick(View view) {
                     //view.setBackgroundColor(context.getResources().getColor(R.color.foreground));
-
+                    indexSelected = items.lastIndexOf(c);
+                    dialog.dismiss();
                 }
             });
             image.setImageResource(context.getResources().getIdentifier(
                     StringUtillities.parseItemName(c.getNombre()),
                     "mipmap",
                     context.getPackageName()));
-             name.setText(c.getNombre());
-           // cost.setText(c.getCosto());
+            name.setText(c.getNombre());
+            // cost.setText(c.getCosto());
             linearItems.addView(dialogLayout);
         }
-        build.setView(scroll);
-        build.setNegativeButton("Cancelar",new DialogInterface.OnClickListener(){
+        setView(scroll);
+        setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
             }
         });
-        dialog = build.create();
+        dialog = create();
     }
 
-    public void invokeDialog(){
+    public void invokeDialog() {
         dialog.show();
     }
+
+    public int getItem(){
+        Toast.makeText(context, String.valueOf(indexSelected), Toast.LENGTH_SHORT).show();
+        return indexSelected;
+    }
+
 }

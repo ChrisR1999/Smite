@@ -25,11 +25,14 @@ public class BuildMaker extends AppCompatActivity {
     private ImageButton itemImage5;
     private ImageButton itemImage6;
     private TextView godTitle;
+    private TextView buildStadistics;
     private ImageView godImage;
     private ArrayList<ModeloItemsRandom> itemsList;
     private ModeloItemsRandom[] itemsSelected;
     private String godName;
     private String godType;
+    private int physicalPower;
+    private int magicalPower;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +51,12 @@ public class BuildMaker extends AppCompatActivity {
         itemImage5 = (ImageButton) findViewById(R.id.itemBuild5);
         itemImage6 = (ImageButton) findViewById(R.id.itemBuild6);
         godTitle = (TextView) findViewById(R.id.godBuildTitle);
+        buildStadistics = (TextView) findViewById(R.id.buildStadistics);
         godImage = (ImageView) findViewById(R.id.godBuildImage);
         godName = "Agni";
         godType = "magico";
+        physicalPower = 0;
+        magicalPower = 0;
         itemsList = new ControladorItemsRandom(this).TodosLosITems(godType);
         godTitle.setText(godName);
         godImage.setImageResource(getResources().getIdentifier(StringUtillities.parseItemName(godName), "mipmap", getPackageName()));
@@ -79,8 +85,27 @@ public class BuildMaker extends AppCompatActivity {
     }
 
     private void openWindowSelector(ImageButton image, int pos) {
+        int itemSelected;
         ItemDialog dialog = new ItemDialog(this, this, "Hola", itemsList);
         dialog.invokeDialog();
+        itemSelected = dialog.getItem();
+        image.setImageResource(getResources().getIdentifier(StringUtillities.parseItemName(itemsList.get(itemSelected).getNombre()), "mipmap", getPackageName()));
+        setStadistics(itemsList.get(itemSelected), 1);
+    }
+
+    private void setStadistics(ModeloItemsRandom modelo, int action){
+        if(action == 1) {
+            physicalPower += modelo.getPhysicalPower();
+            magicalPower += modelo.getMagicalPower();
+        }else{
+            physicalPower -= modelo.getPhysicalPower();
+            magicalPower -= modelo.getMagicalPower();
+        }
+        buildStadistics.setText("");
+        buildStadistics.setText("Estadisticas" +
+                "\nAtaque fisico: " + physicalPower +
+                "\nAtaque magico: " + magicalPower +
+                "");
     }
 
     private void quitItem(ImageButton image, int pos) {
