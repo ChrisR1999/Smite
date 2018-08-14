@@ -34,7 +34,7 @@ public class BuildMaker extends AppCompatActivity {
     private AlertDialog dialog;
     private LinearLayout linearItems;
     private ArrayList<ModeloItemsRandom> itemsList;
-    private ModeloItemsRandom[] itemsSelected;
+    private ArrayList itemsSelected;
     private String godName;
     private String godType;
     private int physicalPower;
@@ -64,7 +64,7 @@ public class BuildMaker extends AppCompatActivity {
 
     private void initComponents() {
         Intent intent = getIntent();
-        itemsSelected = new ModeloItemsRandom[7];
+        itemsSelected = new ArrayList<>();
         scroll = new ScrollView(this);
         linearItems = new LinearLayout(this);
         linearItems.setOrientation(LinearLayout.VERTICAL);
@@ -142,9 +142,7 @@ public class BuildMaker extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     //view.setBackgroundColor(context.getResources().getColor(R.color.foreground));
-
-
-                    setStadistics(imageItem, c, itemsList.lastIndexOf(c));
+                    setStadistics(imageItem, c.getNombre() ,itemsList.lastIndexOf(c));
                     dialog.dismiss();
                 }
             });
@@ -167,25 +165,30 @@ public class BuildMaker extends AppCompatActivity {
         dialog.show();
     }
 
-    private void setStadistics(ImageButton image, ModeloItemsRandom modelo, int indexItem) {
-        physicalPower += modelo.getPhysicalPower();
-        magicalPower += modelo.getMagicalPower();
-        mana += modelo.getMana();
-        attackSpeed += modelo.getAttackSpeed();
-        health += modelo.getHealth();
-        coolDownReduction += modelo.getCoolDown();
-        movementSpeed += modelo.getMovementSpeed();
-        mps += modelo.getMPS();
-        penetration += modelo.getPenetration();
-        magicalProtection += modelo.getMagicalProtection();
-        physicalProtection += modelo.getPhysicalProtection();
-        lifeSteal += modelo.getLifeSteal();
-        criticalStrikeChance += modelo.getCriticalStrikeChance();
-        crowdControlReduction += modelo.getCrowdControlReduction();
-        hps += modelo.getHPS();
-        buildPrice += modelo.getCosto();
+    private void setStadistics(ImageButton image, String itemName,  int indexItem) {
+        itemsSelected.add(indexItem);
+        for (Object c: itemsSelected){
+            final ModeloItemsRandom modelo = itemsList.get((Integer) c);
+            physicalPower += modelo.getPhysicalPower();
+            magicalPower += modelo.getMagicalPower();
+            mana += modelo.getMana();
+            attackSpeed += modelo.getAttackSpeed();
+            health += modelo.getHealth();
+            coolDownReduction += modelo.getCoolDown();
+            movementSpeed += modelo.getMovementSpeed();
+            mps += modelo.getMPS();
+            penetration += modelo.getPenetration();
+            magicalProtection += modelo.getMagicalProtection();
+            physicalProtection += modelo.getPhysicalProtection();
+            lifeSteal += modelo.getLifeSteal();
+            criticalStrikeChance += modelo.getCriticalStrikeChance();
+            crowdControlReduction += modelo.getCrowdControlReduction();
+            hps += modelo.getHPS();
+            buildPrice += modelo.getCosto();
+        }
+
         priceBuild.setText(String.valueOf(buildPrice));
-        image.setImageResource(getResources().getIdentifier(StringUtillities.parseItemName(modelo.getNombre()), "mipmap", getPackageName()));
+        image.setImageResource(getResources().getIdentifier(StringUtillities.parseItemName(itemName), "mipmap", getPackageName()));
         buildStadistics.setText("");
         buildStadistics.setText(
                 "Estadisticas" +
@@ -205,6 +208,7 @@ public class BuildMaker extends AppCompatActivity {
                 "\nI Dunno: " + crowdControlReduction +
                 "\nHPS: " + hps
         );
+
     }
 
     private void quitItem(ImageButton image, int pos) {
