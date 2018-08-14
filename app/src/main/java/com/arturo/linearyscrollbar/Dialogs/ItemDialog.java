@@ -18,7 +18,7 @@ import com.arturo.linearyscrollbar.Utillities.StringUtillities;
 
 import java.util.ArrayList;
 
-public class ItemDialog extends AlertDialog.Builder{
+public class ItemDialog{
     private Context context;
     private Activity activity;
     private String title;
@@ -32,7 +32,6 @@ public class ItemDialog extends AlertDialog.Builder{
     private boolean selected;
 
     public ItemDialog(Context context, Activity activity, String title, ArrayList<ModeloItemsRandom> items) {
-        super(context);
         this.context = context;
         this.activity = activity;
         this.title = title;
@@ -51,7 +50,8 @@ public class ItemDialog extends AlertDialog.Builder{
     }
 
     private void createDialog() {
-        setTitle(title);
+        AlertDialog.Builder build = new AlertDialog.Builder(context);
+        build.setTitle(title);
         for (final ModeloItemsRandom c : items) {
             final LayoutInflater inflater = LayoutInflater.from(context);
             final View dialogLayout = inflater.inflate(R.layout.item_card, null);
@@ -75,14 +75,14 @@ public class ItemDialog extends AlertDialog.Builder{
             // cost.setText(c.getCosto());
             linearItems.addView(dialogLayout);
         }
-        setView(scroll);
-        setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+        build.setView(scroll);
+        build.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
             }
         });
-        dialog = create();
+        dialog = build.create();
     }
 
     public void invokeDialog() {
