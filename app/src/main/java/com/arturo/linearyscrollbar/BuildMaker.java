@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.arturo.linearyscrollbar.Controladores.ControladorItemsRandom;
 import com.arturo.linearyscrollbar.Modelos.ModeloItemsRandom;
@@ -30,11 +31,9 @@ public class BuildMaker extends AppCompatActivity {
     private TextView buildStadistics;
     private TextView priceBuild;
     private ImageView godImage;
-    private ScrollView scroll;
     private AlertDialog dialog;
-    private LinearLayout linearItems;
     private ArrayList<ModeloItemsRandom> itemsList;
-    private ArrayList itemsSelected;
+    private ArrayList<Integer> itemsSelected;
     private String godName;
     private String godType;
     private int physicalPower;
@@ -64,11 +63,7 @@ public class BuildMaker extends AppCompatActivity {
 
     private void initComponents() {
         Intent intent = getIntent();
-        itemsSelected = new ArrayList<>();
-        scroll = new ScrollView(this);
-        linearItems = new LinearLayout(this);
-        linearItems.setOrientation(LinearLayout.VERTICAL);
-        scroll.addView(linearItems);
+        itemsSelected = new ArrayList<Integer>();
         itemImage1 = (ImageButton) findViewById(R.id.itemBuild1);
         itemImage2 = (ImageButton) findViewById(R.id.itemBuild2);
         itemImage3 = (ImageButton) findViewById(R.id.itemBuild3);
@@ -81,22 +76,8 @@ public class BuildMaker extends AppCompatActivity {
         godImage = (ImageView) findViewById(R.id.godBuildImage);
         godName = "Agni";
         godType = "magico";
-        physicalPower = 0;
-        magicalPower = 0;
-        mana = 0;
-        health = 0;
-        coolDownReduction = 0;
-        movementSpeed = 0;
-        mps = 0;
-        penetration = 0;
-        magicalProtection = 0;
-        physicalProtection = 0;
-        lifeSteal = 0;
-        criticalStrikeChance = 0;
-        crowdControlReduction = 0;
-        hps = 0;
-        buildPrice = 0;
-        itemsList = new ControladorItemsRandom(this).TodosLosITems(godType);
+
+        itemsList = new ControladorItemsRandom(this).getStadisticsByType(godType);
         godTitle.setText(godName);
         godImage.setImageResource(getResources().getIdentifier(StringUtillities.parseItemName(godName), "mipmap", getPackageName()));
         setOnClickList(itemImage1, 0);
@@ -108,10 +89,12 @@ public class BuildMaker extends AppCompatActivity {
     }
 
     private void setOnClickList(final ImageButton itemImage, final int pos) {
+        itemImage.setTag(-1);
         itemImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openWindowSelector(itemImage, pos);
+
             }
         });
         itemImage.setOnLongClickListener(new View.OnLongClickListener() {
@@ -124,13 +107,17 @@ public class BuildMaker extends AppCompatActivity {
     }
 
     private void openWindowSelector(ImageButton image, int pos) {
-        int itemSelected;
         createDialog(image);
     }
 
     private void createDialog(final ImageButton imageItem) {
+
         final AlertDialog.Builder build = new AlertDialog.Builder(this);
+        final LinearLayout linearItems = new LinearLayout(this);
+        final ScrollView scroll = new ScrollView(this);
+        linearItems.setOrientation(LinearLayout.VERTICAL);
         build.setTitle("");
+        build.setView(null);
         for (final ModeloItemsRandom c : itemsList) {
             final LayoutInflater inflater = LayoutInflater.from(this);
             final View dialogLayout = inflater.inflate(R.layout.item_card, null);
@@ -142,7 +129,16 @@ public class BuildMaker extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     //view.setBackgroundColor(context.getResources().getColor(R.color.foreground));
-                    setStadistics(imageItem, c.getNombre() ,itemsList.lastIndexOf(c));
+                    if ((int) imageItem.getTag() != -1) {
+                        int previousIndex = (int) imageItem.getTag();
+                        itemsSelected.remove((Object)itemsList.lastIndexOf(itemsList.get(previousIndex)));
+                    }
+                    imageItem.setImageResource(getResources().getIdentifier(
+                            StringUtillities.parseItemName(c.getNombre()),
+                            "mipmap",
+                            getPackageName()));
+                    imageItem.setTag(itemsList.lastIndexOf(c));
+                    setStadistics(itemsList.lastIndexOf(c), 1);
                     dialog.dismiss();
                 }
             });
@@ -154,6 +150,7 @@ public class BuildMaker extends AppCompatActivity {
             // cost.setText(c.getCosto());
             linearItems.addView(dialogLayout);
         }
+        scroll.addView(linearItems);
         build.setView(scroll);
         build.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
             @Override
@@ -165,10 +162,12 @@ public class BuildMaker extends AppCompatActivity {
         dialog.show();
     }
 
-    private void setStadistics(ImageButton image, String itemName,  int indexItem) {
-        itemsSelected.add(indexItem);
-        for (Object c: itemsSelected){
-            final ModeloItemsRandom modelo = itemsList.get((Integer) c);
+    private void setStadistics(int indexItem, int action) {
+        initStadistics();
+        if (action == 1)
+            itemsSelected.add(indexItem);
+        for (Integer q : itemsSelected) {
+            final ModeloItemsRandom modelo = itemsList.get(q);
             physicalPower += modelo.getPhysicalPower();
             magicalPower += modelo.getMagicalPower();
             mana += modelo.getMana();
@@ -188,30 +187,53 @@ public class BuildMaker extends AppCompatActivity {
         }
 
         priceBuild.setText(String.valueOf(buildPrice));
-        image.setImageResource(getResources().getIdentifier(StringUtillities.parseItemName(itemName), "mipmap", getPackageName()));
         buildStadistics.setText("");
         buildStadistics.setText(
                 "Estadisticas" +
-                "\nAtaque fisico: " + physicalPower +
-                "\nAtaque magico: " + magicalPower +
-                "\nMana: " + mana +
-                "\nVel. ataque:" + attackSpeed +
-                "\nSalud: " + health +
-                "\nCooldown: " + coolDownReduction +
-                "\nVel. movimiento: " + movementSpeed +
-                "\nMPS: " + mps +
-                "\nPenetracion: " + penetration +
-                "\nProt. magica: " + magicalProtection +
-                "\nProt. fisica: " + physicalProtection +
-                "\nRobo de vida: " + lifeSteal +
-                "\nChance de critico: " + criticalStrikeChance +
-                "\nI Dunno: " + crowdControlReduction +
-                "\nHPS: " + hps
+                        "\nAtaque fisico: " + physicalPower +
+                        "\nAtaque magico: " + magicalPower +
+                        "\nMana: " + mana +
+                        "\nVel. ataque:" + attackSpeed +
+                        "\nSalud: " + health +
+                        "\nCooldown: " + coolDownReduction +
+                        "\nVel. movimiento: " + movementSpeed +
+                        "\nMPS: " + mps +
+                        "\nPenetracion: " + penetration +
+                        "\nProt. magica: " + magicalProtection +
+                        "\nProt. fisica: " + physicalProtection +
+                        "\nRobo de vida: " + lifeSteal +
+                        "\nChance de critico: " + criticalStrikeChance +
+                        "\nI Dunno: " + crowdControlReduction +
+                        "\nHPS: " + hps
         );
 
     }
 
+    private void initStadistics() {
+        physicalPower = 0;
+        magicalPower = 0;
+        mana = 0;
+        attackSpeed = 0;
+        health = 0;
+        coolDownReduction = 0;
+        movementSpeed = 0;
+        mps = 0;
+        penetration = 0;
+        magicalProtection = 0;
+        physicalProtection = 0;
+        lifeSteal = 0;
+        criticalStrikeChance = 0;
+        crowdControlReduction = 0;
+        hps = 0;
+        buildPrice = 0;
+    }
+
     private void quitItem(ImageButton image, int pos) {
-        image.setImageDrawable(getResources().getDrawable(R.drawable.ic_if_plus));
+        if((int)image.getTag() != 0){
+            itemsSelected.remove((Object)itemsList.lastIndexOf(itemsList.get((int) image.getTag())));
+            image.setTag(-1);
+            image.setImageDrawable(getResources().getDrawable(R.drawable.ic_if_plus));
+            setStadistics(0, 0);
+        }
     }
 }

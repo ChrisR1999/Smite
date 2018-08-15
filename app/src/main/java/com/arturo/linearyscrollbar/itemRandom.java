@@ -37,7 +37,7 @@ public class itemRandom extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_random);
-       // initComponents();
+        initComponents();
 
         MobileAds.initialize(this, "ca-app-pub-5146175048698339~6692980600");
         mAdView = findViewById(R.id.adViewRandom);
@@ -92,6 +92,7 @@ public class itemRandom extends AppCompatActivity {
         ln1.addView(godImage);
         ln3.addView(regreso);
         ln3.addView(godNameTitle);
+        ln2.addView(ln1);
         ln2.addView(itemDivider);
         ln2.addView(linearItem);
         rollItems();
@@ -109,7 +110,7 @@ public class itemRandom extends AppCompatActivity {
     private void rollItems(){
         Intent intent = getIntent();
         ControladorItemsRandom controlador = new ControladorItemsRandom(this);
-        modelo = controlador.getAllRandomItems(intent.getStringExtra("type"));
+        modelo = controlador.getAllRandomItems("magico");
         linearItem.removeAllViews();
         for (int i = 0; i < 6 ; i++){
             final ImageButton image = new ImageButton(this);
