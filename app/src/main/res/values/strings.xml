@@ -47,6 +47,8 @@
     <string name="todoslositems">Todos Los Items</string>
     <string name="mas">mas...</string>
     <string name="items">Items</string>
+    <string name="random">Al azar</string>
+    <string name="buildCreator">Crear build</string>
 
 
 </resources>

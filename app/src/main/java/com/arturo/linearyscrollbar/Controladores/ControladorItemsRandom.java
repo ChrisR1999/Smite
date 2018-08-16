@@ -21,7 +21,7 @@ public class ControladorItemsRandom extends VinculoBD {
     public ArrayList<ModeloItemsRandom> getAllRandomItems(String type) {
         ArrayList<ModeloItemsRandom> list = new ArrayList<>();
         open();
-        Cursor cursor = bdGods.rawQuery("SELECT Nombre FROM ItemRandom WHERE Tipo = ?", new String[]{type});
+        Cursor cursor = bdGods.rawQuery("SELECT Nombre FROM ItemRandom WHERE Tipo = ? OR Tipo = ?", new String[]{type,"ambos"});
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             ModeloItemsRandom model = new ModeloItemsRandom();
@@ -41,8 +41,8 @@ public class ControladorItemsRandom extends VinculoBD {
         Cursor cursor = bdGods.rawQuery("SELECT Nombre, Costo, PhysicalPower, MagicalPower, " +
                         "Mana, AtackSpeed, Health, CooldownReduction, MovementSpeed, MPS, Penetration, " +
                         "MagicalProtection, PhysicalProtection, Lifesteal, CriticalStrikeChance, " +
-                        "CrowdControlReduction, HPS, Pasiva FROM ItemRandom WHERE Tipo = ?",
-                new String[]{type}
+                        "CrowdControlReduction, HPS, Pasiva FROM ItemRandom WHERE Tipo = ? OR Tipo = ?",
+                new String[]{type,"ambos"}
         );
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {

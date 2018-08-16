@@ -31,6 +31,7 @@ public class itemRandom extends AppCompatActivity {
     private LinearLayout ln2;
     private LinearLayout ln3;
     private ArrayList<ModeloItemsRandom> modelo;
+    private String godType;
     private AdView mAdView;
 
     @Override
@@ -48,6 +49,8 @@ public class itemRandom extends AppCompatActivity {
     }
 
     public void initComponents(){
+        String godName = getIntent().getStringExtra("godName");
+        godType = getIntent().getStringExtra("godType");
         godNameTitle = new TextView(this);
         itemDivider = new TextView(this);
         godImage = new ImageView(this);
@@ -62,8 +65,8 @@ public class itemRandom extends AppCompatActivity {
         ln2.setBackgroundColor(getResources().getColor(R.color.Negro));
         ln3.setOrientation(LinearLayout.HORIZONTAL);
         styleHeaders(godNameTitle);
-        godNameTitle.setText("Agni");
-        godImage.setImageResource(getResources().getIdentifier("agni", "mipmap", getPackageName()));
+        godNameTitle.setText(godName);
+        godImage.setImageResource(getResources().getIdentifier(StringUtillities.parseItemName(godName), "mipmap", getPackageName()));
         godImage.setBackgroundColor(getResources().getColor(R.color.Negro));
         godImage.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
@@ -110,7 +113,7 @@ public class itemRandom extends AppCompatActivity {
     private void rollItems(){
         Intent intent = getIntent();
         ControladorItemsRandom controlador = new ControladorItemsRandom(this);
-        modelo = controlador.getAllRandomItems("magico");
+        modelo = controlador.getAllRandomItems(godType);
         linearItem.removeAllViews();
         for (int i = 0; i < 6 ; i++){
             final ImageButton image = new ImageButton(this);

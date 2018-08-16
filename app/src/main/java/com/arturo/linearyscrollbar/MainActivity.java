@@ -19,7 +19,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -27,7 +26,6 @@ import com.arturo.linearyscrollbar.Adapters.AdaptadorMain;
 import com.arturo.linearyscrollbar.Controladores.ControladorDioses;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
 
 import java.util.ArrayList;
 
@@ -73,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initComponents();
-       // MobileAds.initialize(this, "ca-app-pub-5146175048698339~6692980600");
+        // MobileAds.initialize(this, "ca-app-pub-5146175048698339~6692980600");
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
@@ -289,7 +287,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void PasaraTodoslosItems(View view){
+    private void PasaraTodoslosItems(View view) {
 
 
     }

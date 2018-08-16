@@ -2,6 +2,7 @@ package com.arturo.linearyscrollbar.Adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
@@ -10,12 +11,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.arturo.linearyscrollbar.BuildMaker;
 import com.arturo.linearyscrollbar.Modelos.ModeloDiosesMain;
 import com.arturo.linearyscrollbar.R;
+import com.arturo.linearyscrollbar.itemRandom;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -53,11 +57,13 @@ public class AdaptadorMain extends BaseAdapter {
     @Override
     public View getView(final int position, final View convertView, ViewGroup parent) {
         View v = convertView;
-        TextView godName;
+        final TextView godName;
         TextView godCategoryText;
         TextView godPanteon;
         ImageView godImage;
         ImageView godImageCategory;
+        Button randomButton;
+        Button buildButton;
 
         if (convertView == null) {
             LayoutInflater inf = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -75,6 +81,29 @@ public class AdaptadorMain extends BaseAdapter {
         godImage = (ImageView) v.findViewById(R.id.godImage);
         godImage.setImageDrawable(createImage(dir));
         godImageCategory = (ImageView) v.findViewById(R.id.godCategoryImg);
+        randomButton = (Button) v.findViewById(R.id.randomButton);
+        buildButton = (Button) v.findViewById(R.id.buildButton);
+
+        randomButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(activity, itemRandom.class);
+                intent.putExtra("godName", dir.getGodName());
+                intent.putExtra("godType", dir.getGodType());
+                activity.startActivity(intent);
+            }
+        });
+
+        buildButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(activity, BuildMaker.class);
+                intent.putExtra("godName", dir.getGodName());
+                intent.putExtra("godType", dir.getGodType());
+                activity.startActivity(intent);
+            }
+        });
+
         switch (dir.getGodCategory()) {
             case "Guerrero":
                 godImageCategory.setImageResource(R.drawable.ic_sword);

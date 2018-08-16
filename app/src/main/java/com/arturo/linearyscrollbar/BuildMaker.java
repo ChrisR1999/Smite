@@ -12,13 +12,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.arturo.linearyscrollbar.Controladores.ControladorItemsRandom;
 import com.arturo.linearyscrollbar.Modelos.ModeloItemsRandom;
 import com.arturo.linearyscrollbar.Utillities.StringUtillities;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class BuildMaker extends AppCompatActivity {
     private ImageButton itemImage1;
@@ -74,8 +74,8 @@ public class BuildMaker extends AppCompatActivity {
         priceBuild = (TextView) findViewById(R.id.price);
         buildStadistics = (TextView) findViewById(R.id.buildStadistics);
         godImage = (ImageView) findViewById(R.id.godBuildImage);
-        godName = "Agni";
-        godType = "magico";
+        godName = intent.getStringExtra("godName");
+        godType = intent.getStringExtra("godType");
 
         itemsList = new ControladorItemsRandom(this).getStadisticsByType(godType);
         godTitle.setText(godName);
@@ -111,44 +111,59 @@ public class BuildMaker extends AppCompatActivity {
     }
 
     private void createDialog(final ImageButton imageItem) {
-
         final AlertDialog.Builder build = new AlertDialog.Builder(this);
         final LinearLayout linearItems = new LinearLayout(this);
         final ScrollView scroll = new ScrollView(this);
+        int count = 0;
         linearItems.setOrientation(LinearLayout.VERTICAL);
         build.setTitle("");
         build.setView(null);
+        if (itemsSelected.size() > 0) {
+            Collections.sort(itemsSelected);
+        }
         for (final ModeloItemsRandom c : itemsList) {
             final LayoutInflater inflater = LayoutInflater.from(this);
             final View dialogLayout = inflater.inflate(R.layout.item_card, null);
             final ImageView image = (ImageView) dialogLayout.findViewById(R.id.imageCard);
             final TextView name = (TextView) dialogLayout.findViewById(R.id.itemNameCard);
             final TextView cost = (TextView) dialogLayout.findViewById(R.id.itemCostCard);
+            boolean exist = false;
 
-            dialogLayout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    //view.setBackgroundColor(context.getResources().getColor(R.color.foreground));
-                    if ((int) imageItem.getTag() != -1) {
-                        int previousIndex = (int) imageItem.getTag();
-                        itemsSelected.remove((Object)itemsList.lastIndexOf(itemsList.get(previousIndex)));
-                    }
-                    imageItem.setImageResource(getResources().getIdentifier(
-                            StringUtillities.parseItemName(c.getNombre()),
-                            "mipmap",
-                            getPackageName()));
-                    imageItem.setTag(itemsList.lastIndexOf(c));
-                    setStadistics(itemsList.lastIndexOf(c), 1);
-                    dialog.dismiss();
+            if (itemsSelected.size() > 0) {
+                if (itemsList.get(itemsSelected.get(count)) == c) {
+                    count++;
+                    exist = true;
                 }
-            });
-            image.setImageResource(getResources().getIdentifier(
-                    StringUtillities.parseItemName(c.getNombre()),
-                    "mipmap",
-                    getPackageName()));
-            name.setText(c.getNombre());
-            // cost.setText(c.getCosto());
-            linearItems.addView(dialogLayout);
+            }
+
+            if (!exist) {
+                dialogLayout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        //view.setBackgroundColor(context.getResources().getColor(R.color.foreground));
+                        if ((int) imageItem.getTag() != -1) {
+                            int previousIndex = (int) imageItem.getTag();
+                            itemsSelected.remove((Object) itemsList.lastIndexOf(itemsList.get(previousIndex)));
+                        }
+                        imageItem.setImageResource(getResources().getIdentifier(
+                                StringUtillities.parseItemName(c.getNombre()),
+                                "mipmap",
+                                getPackageName()));
+                        imageItem.setTag(itemsList.lastIndexOf(c));
+                        setStadistics(itemsList.lastIndexOf(c), 1);
+                        dialog.dismiss();
+                    }
+                });
+
+                image.setImageResource(getResources().getIdentifier(
+                        StringUtillities.parseItemName(c.getNombre()),
+                        "mipmap",
+                        getPackageName()));
+                name.setText(c.getNombre());
+                cost.setText(cost.getText().toString() + c.getCosto());
+
+                linearItems.addView(dialogLayout);
+            }
         }
         scroll.addView(linearItems);
         build.setView(scroll);
@@ -229,8 +244,8 @@ public class BuildMaker extends AppCompatActivity {
     }
 
     private void quitItem(ImageButton image, int pos) {
-        if((int)image.getTag() != 0){
-            itemsSelected.remove((Object)itemsList.lastIndexOf(itemsList.get((int) image.getTag())));
+        if ((int) image.getTag() != 0) {
+            itemsSelected.remove((Object) itemsList.lastIndexOf(itemsList.get((int) image.getTag())));
             image.setTag(-1);
             image.setImageDrawable(getResources().getDrawable(R.drawable.ic_if_plus));
             setStadistics(0, 0);

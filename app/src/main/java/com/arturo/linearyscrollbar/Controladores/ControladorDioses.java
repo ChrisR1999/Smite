@@ -23,7 +23,7 @@ public class ControladorDioses extends VinculoBD {
     public ArrayList<ModeloDiosesMain> getAllGods() {
         open();
         ArrayList<ModeloDiosesMain> gods = new ArrayList<>();
-        Cursor cursor = bdGods.rawQuery("SELECT godId, godName, Tipo, panteon, resourceImage  FROM datosDioses", null);
+        Cursor cursor = bdGods.rawQuery("SELECT godId, godName, Tipo, panteon, resourceImage, diosomago  FROM datosDioses", null);
         if (cursor.moveToFirst()) {
             while (!cursor.isAfterLast()) {
                 gods.add(new ModeloDiosesMain(
@@ -31,7 +31,8 @@ public class ControladorDioses extends VinculoBD {
                         cursor.getString(1),
                         cursor.getString(2),
                         cursor.getString(3),
-                        cursor.getString(4)
+                        cursor.getString(4),
+                        cursor.getString(5)
                 ));
                 cursor.moveToNext();
             }
@@ -73,7 +74,7 @@ public class ControladorDioses extends VinculoBD {
         search = "%" + search + "%";
         ArrayList<ModeloDiosesMain> gods = new ArrayList<>();
         Log.d("error", search);
-        Cursor cursor = bdGods.rawQuery("SELECT godId, godName, Tipo, panteon, resourceImage  FROM datosDioses WHERE godName LIKE ?", new String[]{search});
+        Cursor cursor = bdGods.rawQuery("SELECT godId, godName, Tipo, panteon, resourceImage, diosomago  FROM datosDioses WHERE godName LIKE ?", new String[]{search});
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             gods.add(new ModeloDiosesMain(
@@ -81,7 +82,8 @@ public class ControladorDioses extends VinculoBD {
                     cursor.getString(1),
                     cursor.getString(2),
                     cursor.getString(3),
-                    cursor.getString(4)
+                    cursor.getString(4),
+                    cursor.getString(5)
             ));
             cursor.moveToNext();
         }
