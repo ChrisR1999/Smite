@@ -44,6 +44,7 @@ public class DotosDeLosItems extends AppCompatActivity {
     private  TextView tv16;
     private  TextView tv17;
     private  TextView tv18;
+    private  TextView tv19;
     private int costo;
     private ArrayList<ModeloItemsRandom> modelo;
     private int PoderFisico;
@@ -59,6 +60,7 @@ public class DotosDeLosItems extends AppCompatActivity {
     private int proteccionfisica;
     private int robodevida, criticos,crowcontrol,HPS;
     private String pasiva;
+    private String pasivaes;
 
 
     @Override
@@ -96,6 +98,7 @@ public class DotosDeLosItems extends AppCompatActivity {
         tv16= new TextView(this);
         tv17= new TextView(this);
         tv18= new TextView(this);
+        tv19= new TextView(this);
         iteme = (ImageView)findViewById(R.id.fotito);
         nombre = getIntent().getStringExtra("nombre");
         ln1 = (LinearLayout)findViewById(R.id.linearabajoitems);
@@ -109,7 +112,7 @@ public class DotosDeLosItems extends AppCompatActivity {
          ln2.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL);
 
          ln1.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL);
-        regreso.setText(R.string.regresar);
+        regreso.setText(R.string.todoslositems);
         regreso.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
         regreso.setTextSize(25);
         regreso.setTextColor(getResources().getColor(R.color.Negro));
@@ -145,6 +148,7 @@ public class DotosDeLosItems extends AppCompatActivity {
         criticos = modelo.get(0).getCriticalStrikeChance();
         crowcontrol = modelo.get(0).getCrowdControlReduction();
         pasiva = modelo.get(0).getPasive();
+        pasivaes = modelo.get(0).getPasivees();
 
 
 //        Toast.makeText(this,pasiva+"",Toast.LENGTH_LONG).show();
@@ -168,7 +172,8 @@ public class DotosDeLosItems extends AppCompatActivity {
        llenardatos(tv15,getResources().getString(R.string.criticos),criticos);
        llenardatos(tv16,getResources().getString(R.string.contromasas),crowcontrol);
        llenardatos(tv17,"HPS ",HPS);
-       datosdellinear(tv18,getResources().getString(R.string.pasiva),pasiva);
+       datosdellinear(tv18,getResources().getString(R.string.pasiva),pasiva,0);
+        datosdellinear(tv19,getResources().getString(R.string.pasiva)+"ES",pasivaes,1);
 
 
         ln1.addView(regreso);
@@ -190,15 +195,17 @@ public class DotosDeLosItems extends AppCompatActivity {
 
     }
 
-    public void datosdellinear(TextView texto,String previo,String poder){
+    public void datosdellinear(TextView texto,String previo,String poder,int esp){
 
             texto.setText(""+previo+": "+poder);
-            texto.setTextColor(getResources().getColor(R.color.Azul));
+            if(esp ==0){
+                texto.setTextColor(getResources().getColor(R.color.Azul));
+            }
+            else{
+                texto.setTextColor(getResources().getColor(R.color.amarillo));
+            }
             texto.setTextSize(26);
             ln1.addView(texto);
-
-
-
     }
 
     public void RegresoMenu() {

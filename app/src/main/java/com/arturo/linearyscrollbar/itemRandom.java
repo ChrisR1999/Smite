@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.arturo.linearyscrollbar.Controladores.ControladorItemsRandom;
@@ -27,6 +28,7 @@ public class itemRandom extends AppCompatActivity {
     private TextView itemDivider;
     private ImageView godImage;
     private LinearLayout linearItem;
+    private LinearLayout linearItem2;
     private LinearLayout ln1;
     private LinearLayout ln2;
     private LinearLayout ln3;
@@ -57,6 +59,7 @@ public class itemRandom extends AppCompatActivity {
         changeItems = new Button(this);
         regreso = new Button(this);
         linearItem = new LinearLayout(this);
+        linearItem2 = new LinearLayout(this);
         ln1 = new LinearLayout(this);
         ln2 = (LinearLayout) findViewById(R.id.linearabajo2);
         ln3 = new LinearLayout(this);
@@ -98,6 +101,7 @@ public class itemRandom extends AppCompatActivity {
         ln2.addView(ln1);
         ln2.addView(itemDivider);
         ln2.addView(linearItem);
+        ln2.addView(linearItem2);
         rollItems();
         ln2.addView(changeItems);
     }
@@ -115,7 +119,9 @@ public class itemRandom extends AppCompatActivity {
         ControladorItemsRandom controlador = new ControladorItemsRandom(this);
         modelo = controlador.getAllRandomItems(godType);
         linearItem.removeAllViews();
-        for (int i = 0; i < 6 ; i++){
+        linearItem2.removeAllViews();
+
+        for (int i = 0; i < 3 ; i++){
             final ImageButton image = new ImageButton(this);
             final String item = getRandomItem();
             image.setImageResource(getResources().getIdentifier(StringUtillities.parseItemName(item), "mipmap", getPackageName()));
@@ -125,12 +131,46 @@ public class itemRandom extends AppCompatActivity {
                     openItem(item);
                 }
             });
+            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) image.getLayoutParams();
+
+            // Set the height of this ImageButton
+            params.height = 600;
+
+            // Set the width of that ImageButton
+            params.width = 650;
+            image.setLayoutParams(params);
+            image.setScaleType(ImageView.ScaleType.FIT_XY);
+
             linearItem.addView(image);
+        }
+        for (int i = 0; i < 3 ; i++){
+            final ImageButton image = new ImageButton(this);
+            final String item = getRandomItem();
+            image.setImageResource(getResources().getIdentifier(StringUtillities.parseItemName(item), "mipmap", getPackageName()));
+            image.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    openItem(item);
+                }
+            });
+            /*RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) image.getLayoutParams();
+
+            // Set the height of this ImageButton
+            params.height = 200;
+
+            // Set the width of that ImageButton
+            params.width = 350;
+            image.setLayoutParams(params);
+            image.setScaleType(ImageView.ScaleType.FIT_XY);*/
+
+            linearItem2.addView(image);
         }
     }
 
     public void openItem(String item){
-
+        Intent intent = new Intent(this,  DotosDeLosItems.class);
+        intent.putExtra("nombre", item);
+        startActivity(intent);
     }
 
 

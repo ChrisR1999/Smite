@@ -100,7 +100,7 @@ public class ControladorItemsRandom extends VinculoBD {
     public ArrayList<ModeloItemsRandom> Lllamada(String type) {
         ArrayList<ModeloItemsRandom> list = new ArrayList<>();
         open();
-        Cursor cursor = bdGods.rawQuery("SELECT Nombre,Costo,PhysicalPower,MagicalPower,Mana,AtackSpeed,Health,CooldownReduction,MovementSpeed,MPS,Penetration,MagicalProtection,PhysicalProtection,Lifesteal,CriticalStrikeChance,CrowdControlReduction,HPS,Pasiva from ItemRandom where Nombre = ? ", new String[]{type});
+        Cursor cursor = bdGods.rawQuery("SELECT Nombre,Costo,PhysicalPower,MagicalPower,Mana,AtackSpeed,Health,CooldownReduction,MovementSpeed,MPS,Penetration,MagicalProtection,PhysicalProtection,Lifesteal,CriticalStrikeChance,CrowdControlReduction,HPS,Pasiva,PasivaEs from ItemRandom where Nombre = ? ", new String[]{type});
         cursor.moveToFirst();
 
 
@@ -123,6 +123,7 @@ public class ControladorItemsRandom extends VinculoBD {
         model.setCrowdControlReduction(cursor.getInt(15));
         model.setHPS(cursor.getInt(16));
         model.setPasive(cursor.getString(17));
+        model.setPasivees(cursor.getString(18));
         list.add(model);
 
         cursor.close();
