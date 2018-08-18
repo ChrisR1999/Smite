@@ -321,8 +321,6 @@ public class Buscar extends AppCompatActivity {
     }
 
     public void RegresoMenu() {
-        Intent mandar = new Intent(this, MainActivity.class);
-        startActivity(mandar);
         finish();
     }
 
