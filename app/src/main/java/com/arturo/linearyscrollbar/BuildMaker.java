@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.arturo.linearyscrollbar.Controladores.ControladorItemsRandom;
 import com.arturo.linearyscrollbar.Modelos.ModeloItemsRandom;
@@ -76,7 +77,8 @@ public class BuildMaker extends AppCompatActivity {
         godImage = (ImageView) findViewById(R.id.godBuildImage);
         godName = intent.getStringExtra("godName");
         godType = intent.getStringExtra("godType");
-
+        if(godType.equals("mago"))
+            godType = "magico";
         itemsList = new ControladorItemsRandom(this).getStadisticsByType(godType);
         godTitle.setText(godName);
         godImage.setImageResource(getResources().getIdentifier(StringUtillities.parseItemName(godName), "mipmap", getPackageName()));
@@ -130,9 +132,11 @@ public class BuildMaker extends AppCompatActivity {
             boolean exist = false;
 
             if (itemsSelected.size() > 0) {
-                if (itemsList.get(itemsSelected.get(count)) == c) {
-                    count++;
-                    exist = true;
+                if(count < itemsSelected.size()) {
+                    if (itemsList.get(itemsSelected.get(count)) == c) {
+                        count++;
+                        exist = true;
+                    }
                 }
             }
 
@@ -164,6 +168,9 @@ public class BuildMaker extends AppCompatActivity {
 
                 linearItems.addView(dialogLayout);
             }
+        }
+        for (Integer cc: itemsSelected){
+            Toast.makeText(this, cc.toString(), Toast.LENGTH_SHORT).show();
         }
         scroll.addView(linearItems);
         build.setView(scroll);
