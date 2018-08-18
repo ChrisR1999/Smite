@@ -27,15 +27,16 @@
                 android:text="TextView"
                 android:textSize="25sp"
                 app:layout_constraintEnd_toStartOf="@+id/button5"
-                app:layout_constraintStart_toEndOf="@+id/button4"
+                app:layout_constraintStart_toEndOf="@+id/backBuildButton"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/backBuildButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
+                android:onClick="RegresoMenu"
                 android:text="@string/regresar"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toStartOf="@+id/godBuildTitle"
@@ -138,7 +139,7 @@
                 android:text="@string/costo"
                 android:textSize="25sp"
                 app:layout_constraintEnd_toStartOf="@+id/godBuildImage"
-                app:layout_constraintStart_toStartOf="@+id/button4"
+                app:layout_constraintStart_toStartOf="@+id/backBuildButton"
                 app:layout_constraintTop_toBottomOf="@+id/godBuildTitle" />
 
             <TextView

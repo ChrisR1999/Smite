@@ -1,12 +1,14 @@
 package com.arturo.linearyscrollbar;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
@@ -20,6 +22,7 @@ import com.arturo.linearyscrollbar.Controladores.ControladorItems;
 import com.arturo.linearyscrollbar.Modelos.ModeloDioses;
 import com.arturo.linearyscrollbar.Modelos.ModeloDiosesMain;
 import com.arturo.linearyscrollbar.Utillities.StringUtillities;
+import com.arturo.linearyscrollbar.Utillities.StyleUtillities;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
@@ -242,11 +245,20 @@ public class Buscar extends AppCompatActivity {
             }
         }
 
-        for (int i = 0; i < 10; i++) {
-            ImageButton item = new ImageButton(this);
-            String newItem = StringUtillities.parseItemName(items[i]);
+        for ( int i = 0; i < 10; i++) {
+            final int aux = i;
+            final ImageButton item = new ImageButton(this);
+            final String newItem = StringUtillities.parseItemName(items[i]);
             item.setTag(items[i]);
             item.setImageResource(getResources().getIdentifier(newItem, "mipmap", getPackageName()));
+            item.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    openItem(items[aux]);
+                }
+            });
+            StyleUtillities.styleImages(item);
+
             if (i == 0)
                 linearStarter.addView(item);
             if (i > 0 && i < 4)
@@ -300,6 +312,12 @@ public class Buscar extends AppCompatActivity {
         mandar.putExtra("type", type);
         startActivity(mandar);
         finish();
+    }
+
+    public void openItem(String item) {
+        Intent intent = new Intent(this, DotosDeLosItems.class);
+        intent.putExtra("nombre", item);
+        startActivity(intent);
     }
 
     public void RegresoMenu() {

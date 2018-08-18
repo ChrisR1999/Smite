@@ -130,7 +130,7 @@ public class DotosDeLosItems extends AppCompatActivity {
         tv1.setText("  "+nombre);
         tv1.setTextColor(getResources().getColor(R.color.verde));
         tv1.setTextSize(26);
-        tv2.setText("  "+getResources().getString(R.string.cosot)+" "+costo);
+        tv2.setText("  "+getResources().getString(R.string.costo)+" "+costo);
         tv2.setTextColor(getResources().getColor(R.color.amarillo));
         tv2.setTextSize(26);
         PoderFisico = modelo.get(0).getPhysicalPower();

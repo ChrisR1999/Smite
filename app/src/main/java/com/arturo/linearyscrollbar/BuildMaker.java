@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -33,6 +34,7 @@ public class BuildMaker extends AppCompatActivity {
     private TextView priceBuild;
     private ImageView godImage;
     private AlertDialog dialog;
+    private Button backButton;
     private ArrayList<ModeloItemsRandom> itemsList;
     private ArrayList<Integer> itemsSelected;
     private String godName;
@@ -75,6 +77,7 @@ public class BuildMaker extends AppCompatActivity {
         priceBuild = (TextView) findViewById(R.id.price);
         buildStadistics = (TextView) findViewById(R.id.buildStadistics);
         godImage = (ImageView) findViewById(R.id.godBuildImage);
+        backButton = (Button) findViewById(R.id.backBuildButton);
         godName = intent.getStringExtra("godName");
         godType = intent.getStringExtra("godType");
         if(godType.equals("mago"))
@@ -258,4 +261,11 @@ public class BuildMaker extends AppCompatActivity {
             setStadistics(0, 0);
         }
     }
+
+    public void RegresoMenu(View view) {
+        Intent mandar = new Intent(this, MainActivity.class);
+        startActivity(mandar);
+        finish();
+    }
+
 }

@@ -38,7 +38,7 @@
     <string name="contromasas">CrowdCrontrol Reduction</string>
     <string name="criticos">Critical Strike Chance</string>
     <string name="pasiva">Pasive</string>
-    <string name="cosot">Cost</string>
+    <string name="costo">Cost</string>
     <string name="todoslositems">All items</string>
 
 </resources>
