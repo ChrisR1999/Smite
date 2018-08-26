@@ -221,7 +221,7 @@ public class BuildMaker extends AppCompatActivity {
         priceBuild.setText(String.valueOf(buildPrice));
         buildStadistics.setText("");
         buildStadistics.setTypeface(bebas);
-
+        buildStadistics.setBackgroundColor(getResources().getColor(R.color.azulclaro));
         buildStadistics.setTextColor(getResources().getColor(R.color.monitaa));
         buildStadistics.setText(
                 "Estadisticas" +
