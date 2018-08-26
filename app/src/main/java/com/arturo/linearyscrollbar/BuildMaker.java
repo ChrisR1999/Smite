@@ -3,6 +3,7 @@ package com.arturo.linearyscrollbar;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class BuildMaker extends AppCompatActivity {
+    private Typeface bebas = null;
     private ImageButton itemImage1;
     private ImageButton itemImage2;
     private ImageButton itemImage3;
@@ -61,6 +63,7 @@ public class BuildMaker extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_build_maker);
+        bebas = Typeface.createFromAsset(getAssets(),"arremaquina.ttf");
         initComponents();
     }
 
@@ -132,6 +135,7 @@ public class BuildMaker extends AppCompatActivity {
             final ImageView image = (ImageView) dialogLayout.findViewById(R.id.imageCard);
             final TextView name = (TextView) dialogLayout.findViewById(R.id.itemNameCard);
             final TextView cost = (TextView) dialogLayout.findViewById(R.id.itemCostCard);
+
             boolean exist = false;
 
             if (itemsSelected.size() > 0) {
@@ -169,6 +173,7 @@ public class BuildMaker extends AppCompatActivity {
                 name.setText(c.getNombre());
                 cost.setText(cost.getText().toString() + c.getCosto());
 
+
                 linearItems.addView(dialogLayout);
             }
         }
@@ -188,6 +193,8 @@ public class BuildMaker extends AppCompatActivity {
     }
 
     private void setStadistics(int indexItem, int action) {
+
+        bebas = Typeface.createFromAsset(getAssets(),"arremaquina.ttf");
         initStadistics();
         if (action == 1)
             itemsSelected.add(indexItem);
@@ -213,6 +220,9 @@ public class BuildMaker extends AppCompatActivity {
 
         priceBuild.setText(String.valueOf(buildPrice));
         buildStadistics.setText("");
+        buildStadistics.setTypeface(bebas);
+
+        buildStadistics.setTextColor(getResources().getColor(R.color.monitaa));
         buildStadistics.setText(
                 "Estadisticas" +
                         "\nAtaque fisico: " + physicalPower +
@@ -229,7 +239,11 @@ public class BuildMaker extends AppCompatActivity {
                         "\nRobo de vida: " + lifeSteal +
                         "\nChance de critico: " + criticalStrikeChance +
                         "\nI Dunno: " + crowdControlReduction +
-                        "\nHPS: " + hps
+                        "\nHPS: " + hps+
+                        "\n." +
+                        "\n." +
+                        "\n."
+
         );
 
     }
@@ -268,4 +282,8 @@ public class BuildMaker extends AppCompatActivity {
         finish();
     }
 
+    public void recargarlista2(View view) {
+        Intent intent = new Intent(this, TodosLosItems.class);
+        startActivity(intent);
+    }
 }
