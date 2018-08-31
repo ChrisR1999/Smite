@@ -14,7 +14,7 @@ public class StyleUtillities {
     }
 
     public static void styleImages(ImageButton image){
-        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(300, 300);
+        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(200, 200);
         image.setLayoutParams(params);
         image.setScaleType(ImageButton.ScaleType.FIT_XY);
     }

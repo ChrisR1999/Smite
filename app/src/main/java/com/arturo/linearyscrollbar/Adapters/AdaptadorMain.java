@@ -187,6 +187,10 @@ public class AdaptadorMain extends BaseAdapter {
         return roundedDrawable;
     }
 
+    public int getTypeID(int position){
+        return items.get(position).getGodCategory();
+    }
+
 
 
 }

@@ -134,10 +134,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 final TextView godName = (TextView) view.findViewById(R.id.cardGodName2);
-                final TextView godType = (TextView) view.findViewById(R.id.cardGodCategory2);
                 final String godNameClick = godName.getText().toString();
-                final String godTypeName = godType.getText().toString();
-                passActivity(godNameClick, godTypeName);
+                final int type = adapter.getTypeID(i);
+                passActivity(godNameClick, type);
             }
         });
         consultAllGods();
@@ -157,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
         listMain.setAdapter(adapter);
     }
 
-    private void passActivity(String name, String type) {
+    private void passActivity(String name, int type) {
         Intent intent = new Intent(this, Buscar.class);
         intent.putExtra("type", type);
         intent.putExtra("name", name);
