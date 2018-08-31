@@ -56,40 +56,91 @@ public class AdaptadorMain extends BaseAdapter {
 
     @Override
     public View getView(final int position, final View convertView, ViewGroup parent) {
+
         View v = convertView;
+        final ModeloDiosesMain dir = items.get(position);
         final TextView godName;
-        TextView godCategoryText;
-        TextView godPanteon;
-        ImageView godImage;
-        ImageView godImageCategory;
-        Button randomButton;
-        Button buildButton;
+        final TextView godCategoryText;
+        final TextView godPanteon;
+        final ImageView godImage;
+        final ImageButton randomButton;
+        final ImageButton buildButton;
+        String godTypeLabel = "";
 
         if (convertView == null) {
             LayoutInflater inf = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            v = inf.inflate(R.layout.godcard, null);
+            v = inf.inflate(R.layout.god_card2, null);
         }
 
-        final ModeloDiosesMain dir = items.get(position);
-
-        godName = (TextView) v.findViewById(R.id.nombre);
-        godCategoryText = (TextView) v.findViewById(R.id.godCategory);
-        godPanteon = (TextView) v.findViewById(R.id.godGroup);
+        godName = (TextView) v.findViewById(R.id.cardGodName2);
+        godCategoryText = (TextView) v.findViewById(R.id.cardGodCategory2);
+        godPanteon = (TextView) v.findViewById(R.id.pantheonGodCard2);
         godName.setText(dir.getGodName());
         godCategoryText.setText(dir.getGodCategory());
-        godPanteon.setText(dir.getGodPanteon());
-        godImage = (ImageView) v.findViewById(R.id.godImage);
+        godImage = (ImageView) v.findViewById(R.id.imageGodCard2);
         godImage.setImageDrawable(createImage(dir));
-        godImageCategory = (ImageView) v.findViewById(R.id.godCategoryImg);
-        randomButton = (Button) v.findViewById(R.id.randomButton);
-        buildButton = (Button) v.findViewById(R.id.buildButton);
+        randomButton = (ImageButton) v.findViewById(R.id.randomGodCard);
+        buildButton = (ImageButton) v.findViewById(R.id.buildGodCard);
+
+        switch (dir.getGodPanteon()){
+            case 1:
+                godPanteon.setText(contexto.getResources().getString(R.string.panteonGriego));
+                break;
+            case 2:
+                godPanteon.setText(contexto.getResources().getString(R.string.panteonHindu));
+                break;
+            case 3:
+                godPanteon.setText(contexto.getResources().getString(R.string.panteonMaya));
+                break;
+            case 4:
+                godPanteon.setText(contexto.getResources().getString(R.string.panteonJapones));
+                break;
+            case 5:
+                godPanteon.setText(contexto.getResources().getString(R.string.panteonEgipcio));;
+                break;
+            case 6:
+                godPanteon.setText(contexto.getResources().getString(R.string.panteonChino));
+                break;
+            case 7:
+                godPanteon.setText(contexto.getResources().getString(R.string.panteonCelta));
+                break;
+            case 8:
+                godPanteon.setText(contexto.getResources().getString(R.string.panteonRomano));
+                break;
+            case 9:
+                godPanteon.setText(contexto.getResources().getString(R.string.panteonVodoo));
+                break;
+            case 10:
+                godPanteon.setText(contexto.getResources().getString(R.string.panteonEslavo));
+                break;
+            case 11:
+                godPanteon.setText(contexto.getResources().getString(R.string.panteonNordico));
+                break;
+            case 12:
+                godPanteon.setText(contexto.getResources().getString(R.string.panteonPolinesio));
+                break;
+        }
+
+        godPanteon.setText(" | " + godPanteon.getText().toString());
+
+        switch (dir.getGodType()){
+            case 1:
+                godTypeLabel = "fisico";
+                break;
+            case 2:
+                godTypeLabel = "magico";
+                break;
+        }
+
+
+        final String finalGodTypeLabel = godTypeLabel;
 
         randomButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(activity, itemRandom.class);
                 intent.putExtra("godName", dir.getGodName());
-                intent.putExtra("godType", dir.getGodType());
+                intent.putExtra("godType", finalGodTypeLabel);
                 activity.startActivity(intent);
             }
         });
@@ -99,31 +150,11 @@ public class AdaptadorMain extends BaseAdapter {
             public void onClick(View view) {
                 Intent intent = new Intent(activity, BuildMaker.class);
                 intent.putExtra("godName", dir.getGodName());
-                intent.putExtra("godType", dir.getGodType());
+                intent.putExtra("godType", finalGodTypeLabel);
                 activity.startActivity(intent);
             }
         });
 
-        switch (dir.getGodCategory()) {
-            case "Guerrero":
-                godImageCategory.setImageResource(R.drawable.ic_sword);
-                break;
-            case "Asesino":
-                godImageCategory.setImageResource(R.drawable.ic_assassin);
-                break;
-            case "Mago":
-                godImageCategory.setImageResource(R.drawable.ic_mage);
-                break;
-            case "Tanque":
-                godImageCategory.setImageResource(R.drawable.ic_shield);
-                break;
-            case "ADC":
-                godImageCategory.setImageResource(R.drawable.ic_adc);
-                break;
-            default:
-                godImageCategory.setImageResource(R.drawable.ic_question);
-                break;
-        }
         return v;
     }
 

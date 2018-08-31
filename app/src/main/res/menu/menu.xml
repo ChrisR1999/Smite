@@ -3,24 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_search"
-        android:icon="@drawable/ic_searcht"
-        android:orderInCategory="100"
-        android:title="Buscar"
-        app:showAsAction="ifRoom" />
-
-    <!-- -    <item
-            android:id="@+id/action_user"
-            android:icon="@drawable/ic_usert"
-            android:orderInCategory="101"
-            android:title="usuarios"
-            app:showAsAction="ifRoom" />  -->
-
-    <item
         android:id="@+id/action_favorites"
-        android:icon="@drawable/ic_lovet1"
+        android:icon="@drawable/ic_favorite_heart"
         android:orderInCategory="102"
         android:title="favorites"
         app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/items"
+        android:title="@string/items"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/searchPlayers"
+        android:title="@string/BuscarJugador"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/options"
+        android:title="@string/options"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/credits"
+        android:title="@string/credits"
+        app:showAsAction="never" />
 
 </menu>

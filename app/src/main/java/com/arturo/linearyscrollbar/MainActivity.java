@@ -30,8 +30,8 @@ import com.google.android.gms.ads.AdView;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private AdView mAdView;
 
+    private AdView mAdView;
     private EditText searchBar;
     private Toolbar mToolbar;
     private Animation animOut;
@@ -53,10 +53,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id) {
-            case R.id.action_search:
-                searchBar.setVisibility(View.VISIBLE);
-                searchBar.setEnabled(true);
-                searchBar.startAnimation(animIn);
+            case R.id.action_favorites:
                 break;
             /*case R.id.action_user:
                 Intent intent = new Intent(this, Smiteguru.class);
@@ -84,8 +81,6 @@ public class MainActivity extends AppCompatActivity {
         listMain = (ListView) findViewById(R.id.listMain);
         searchBar = (EditText) findViewById(R.id.godSearch);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        mToolbar.setTitle("SMITE");
-        mToolbar.setTitleTextColor(getResources().getColor(R.color.Negro));
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         animOut = AnimationUtils.loadAnimation(this, R.anim.searchout);
@@ -94,8 +89,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFocusChange(View view, boolean b) {
                 if (!b) {
-                    searchBar.startAnimation(animOut);
-                    searchBar.setVisibility(View.GONE);
+
                 }
             }
         });
@@ -139,8 +133,8 @@ public class MainActivity extends AppCompatActivity {
         listMain.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                final TextView godName = (TextView) view.findViewById(R.id.nombre);
-                final TextView godType = (TextView) view.findViewById(R.id.godCategory);
+                final TextView godName = (TextView) view.findViewById(R.id.cardGodName2);
+                final TextView godType = (TextView) view.findViewById(R.id.cardGodCategory2);
                 final String godNameClick = godName.getText().toString();
                 final String godTypeName = godType.getText().toString();
                 passActivity(godNameClick, godTypeName);
@@ -162,107 +156,6 @@ public class MainActivity extends AppCompatActivity {
         adapter = new AdaptadorMain(this, godCards, this);
         listMain.setAdapter(adapter);
     }
-
-
-
-/*
-    private void insertResultGods(String name){
-        int id = 1;
-        /*
-        ControladorDioses controlador = new ControladorDioses(this);
-        ArrayList<String> model = controlador.searchResults(name);
-        if (model != null) {
-
-            for (final String m : model) {
-                final ImageButton btn = new ImageButton(this);
-                final String resourceRoute = m;
-                LinearLayout list = new LinearLayout(this);
-                list.setOrientation(LinearLayout.VERTICAL);
-                list.setId(id);
-                list.setBackgroundColor(getResources().getColor(R.color.Azul));
-                btn.setImageResource(getResources().getIdentifier(resourceRoute, "mipmap", getPackageName()));
-                btn.setTag(m);
-                btn.setId(id);
-                btn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        passActivity(m);
-                    }
-                });
-
-                btn.setBackgroundColor(getResources().getColor(R.color.Negro));
-                btn.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT));
-
-
-                TextView text = new TextView(this);
-                text.setText(m);
-                text.setTextSize(25);
-                text.setTextColor(getResources().getColor(R.color.Negro));
-
-                text.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT));
-
-
-                list.addView(text);
-                list.addView(btn);
-                linear.addView(list);
-                id++;
-            }
-
-        } else {
-            Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show();
-        }
-    }*/
-
-/*
-    private void insertGods() {
-        int id = 1;
-        ControladorDioses controlador = new ControladorDioses(this);
-        ArrayList<String> model = controlador.getAllGodsNames();
-        if (model != null) {
-            for (final String m : model) {
-                final ImageButton btn = new ImageButton(this);
-                final String resourceRoute = m;
-                LinearLayout list = new LinearLayout(this);
-                list.setOrientation(LinearLayout.VERTICAL);
-                list.setId(id);
-                list.setBackgroundColor(getResources().getColor(R.color.Azul));
-                btn.setImageResource(getResources().getIdentifier(resourceRoute, "mipmap", getPackageName()));
-                btn.setTag(m);
-                btn.setId(id);
-                btn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        passActivity(m);
-                    }
-                });
-
-                btn.setBackgroundColor(getResources().getColor(R.color.Negro));
-                btn.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT));
-
-
-                TextView text = new TextView(this);
-                text.setText(m);
-                text.setTextSize(25);
-                text.setTextColor(getResources().getColor(R.color.Negro));
-
-                text.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT));
-
-
-                list.addView(text);
-                list.addView(btn);
-                linear.addView(list);
-                id++;
-            }
-
-        } else {
-            Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show();
-        }
-    }*/
-
 
     private void passActivity(String name, String type) {
         Intent intent = new Intent(this, Buscar.class);

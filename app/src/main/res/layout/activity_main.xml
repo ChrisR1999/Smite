@@ -76,9 +76,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/linearLogo"
-        android:layout_marginTop="5dp"
         android:divider="#404040"
-        android:dividerHeight="2dp" />
+        android:dividerHeight="2dp"
+        />
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"

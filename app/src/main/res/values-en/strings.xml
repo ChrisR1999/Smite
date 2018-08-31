@@ -40,5 +40,10 @@
     <string name="pasiva">Pasive</string>
     <string name="costo">Cost</string>
     <string name="todoslositems">All items</string>
+    <string name="searchByName">Search by name...</string>
+    <string name="ceroStadistics">0</string>
+    <string name="credits">Credits</string>
+    <string name="options">Options</string>
+    <string name="buildInsideCard">Build\u0020</string>
 
 </resources>

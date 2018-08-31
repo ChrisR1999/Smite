@@ -30,9 +30,9 @@ public class ControladorDioses extends VinculoBD {
                         cursor.getInt(0),
                         cursor.getString(1),
                         cursor.getString(2),
-                        cursor.getString(3),
+                        cursor.getInt(3),
                         cursor.getString(4),
-                        cursor.getString(5)
+                        cursor.getInt(5)
                 ));
                 cursor.moveToNext();
             }
@@ -81,9 +81,9 @@ public class ControladorDioses extends VinculoBD {
                     cursor.getInt(0),
                     cursor.getString(1),
                     cursor.getString(2),
-                    cursor.getString(3),
+                    cursor.getInt(3),
                     cursor.getString(4),
-                    cursor.getString(5)
+                    cursor.getInt(5)
             ));
             cursor.moveToNext();
         }

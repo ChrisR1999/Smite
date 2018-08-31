@@ -16,7 +16,7 @@
     <string name="clash">CLASH</string>
     <string name="buscardios">Buscar un dios</string>
     <string name="recargar">Regresar al inicio</string>
-    <string name="BuscarJugador">Buscar Jugador</string>
+    <string name="BuscarJugador">Buscar jugador</string>
     <string name="Pc">PC Oficial Smite</string>
     <string name="PS4">PS4 Oficial</string>
     <string name="Xbox">XBOX Oficial</string>
@@ -49,6 +49,25 @@
     <string name="items">Items</string>
     <string name="random">Al azar</string>
     <string name="buildCreator">Crear build</string>
+    <string name="searchByName">Buscar por nombre...</string>
+    <string name="ceroStadistics">0</string>
+    <string name="credits">Creditos</string>
+    <string name="options">Opciones</string>
+    <string name="buildInsideCard">Build\u0020</string>
+    <string name="panteonGriego">Griego</string>
+    <string name="panteonHindu">Hindú</string>
+    <string name="panteonMaya">Maya</string>
+    <string name="panteonJapones">Japones</string>
+    <string name="panteonEgipcio">Egipcio</string>
+    <string name="panteonChino">Chino</string>
+    <string name="panteonCelta">Celta</string>
+    <string name="panteonRomano">Romano</string>
+    <string name="panteonVodoo">Vodoo</string>
+    <string name="panteonEslavo">Eslavo</string>
+    <string name="panteonNordico">Nordico</string>
+    <string name="panteonPolinesio">Polinesio</string>
+
+
 
 
 </resources>

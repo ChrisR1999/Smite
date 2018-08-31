@@ -5,14 +5,14 @@ public class ModeloDiosesMain {
     private String godName;
     private String resourceImage;
     private String godCategory;
-    private String godPanteon;
-    private String godType;
+    private int godPanteon;
+    private int godType;
 
     public ModeloDiosesMain() {
 
     }
 
-    public ModeloDiosesMain(int godId, String godName, String godCategory, String godPanteon, String resourceImage, String godType) {
+    public ModeloDiosesMain(int godId, String godName, String godCategory, int godPanteon, String resourceImage, int godType) {
         this.godId = godId;
         this.godName = godName;
         this.godCategory = godCategory;
@@ -49,11 +49,11 @@ public class ModeloDiosesMain {
         this.godCategory = godCategory;
     }
 
-    public String getGodPanteon() {
+    public int getGodPanteon() {
         return godPanteon;
     }
 
-    public void setGodPanteon(String godPanteon) {
+    public void setGodPanteon(int godPanteon) {
         this.godPanteon = godPanteon;
     }
 
@@ -65,11 +65,11 @@ public class ModeloDiosesMain {
         this.resourceImage = resourceImage;
     }
 
-    public String getGodType() {
+    public int getGodType() {
         return godType;
     }
 
-    public void setGodType(String godType) {
+    public void setGodType(int godType) {
         this.godType = godType;
     }
 }
