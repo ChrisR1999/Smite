@@ -58,7 +58,7 @@ public class Buscar extends AppCompatActivity {
     private LinearLayout linearAttack;
     private LinearLayout linearDefense;
     private String godName;
-    private String godType;
+    private int godType;
     private AdView mAdView;
 
     @Override
@@ -178,7 +178,7 @@ public class Buscar extends AppCompatActivity {
         setContentView(R.layout.activity_buscar);
         initComponents();
         godName = getIntent().getStringExtra("name");
-        godType = getIntent().getStringExtra("type");
+        godType = getIntent().getIntExtra("type", 0);
         final ImageView btn = new ImageView(this);
         final ControladorDioses controlador = new ControladorDioses(this);
         final ControladorItems controladorI = new ControladorItems(this);
@@ -306,7 +306,7 @@ public class Buscar extends AppCompatActivity {
     public void counterSearch(String god) {
         ModeloDiosesMain modelo = new ControladorDioses(this).getGodNameAndTypeByResourceImage(god);
         String name = modelo.getGodName();
-        String type = modelo.getGodCategory();
+        int type = modelo.getGodCategory();
         Intent mandar = new Intent(this, Buscar.class);
         mandar.putExtra("name", name);
         mandar.putExtra("type", type);

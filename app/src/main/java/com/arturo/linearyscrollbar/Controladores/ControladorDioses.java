@@ -29,7 +29,7 @@ public class ControladorDioses extends VinculoBD {
                 gods.add(new ModeloDiosesMain(
                         cursor.getInt(0),
                         cursor.getString(1),
-                        cursor.getString(2),
+                        cursor.getInt(2),
                         cursor.getInt(3),
                         cursor.getString(4),
                         cursor.getInt(5)
@@ -80,7 +80,7 @@ public class ControladorDioses extends VinculoBD {
             gods.add(new ModeloDiosesMain(
                     cursor.getInt(0),
                     cursor.getString(1),
-                    cursor.getString(2),
+                    cursor.getInt(2),
                     cursor.getInt(3),
                     cursor.getString(4),
                     cursor.getInt(5)
@@ -98,7 +98,7 @@ public class ControladorDioses extends VinculoBD {
         Cursor cursor = bdGods.rawQuery("SELECT godName, Tipo FROM datosDioses WHERE resourceImage = ?", new String[]{godName});
         cursor.moveToFirst();
         modelo.setGodName(cursor.getString(0));
-        modelo.setGodCategory(cursor.getString(1));
+        modelo.setGodCategory(cursor.getInt(1));
         cursor.close();
         close();
         return modelo;

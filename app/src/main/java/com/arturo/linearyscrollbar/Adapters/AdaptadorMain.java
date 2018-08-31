@@ -76,11 +76,33 @@ public class AdaptadorMain extends BaseAdapter {
         godCategoryText = (TextView) v.findViewById(R.id.cardGodCategory2);
         godPanteon = (TextView) v.findViewById(R.id.pantheonGodCard2);
         godName.setText(dir.getGodName());
-        godCategoryText.setText(dir.getGodCategory());
         godImage = (ImageView) v.findViewById(R.id.imageGodCard2);
         godImage.setImageDrawable(createImage(dir));
         randomButton = (ImageButton) v.findViewById(R.id.randomGodCard);
         buildButton = (ImageButton) v.findViewById(R.id.buildGodCard);
+
+        switch (dir.getGodCategory()){
+            case 1:
+                godCategoryText.setText(contexto.getResources().getString(R.string.categoriaGuerrero));
+                break;
+            case 2:
+                godCategoryText.setText(contexto.getResources().getString(R.string.categoriaMago));
+                break;
+            case 3:
+                godCategoryText.setText(contexto.getResources().getString(R.string.categoriaADC));
+                break;
+            case 4:
+                godCategoryText.setText(contexto.getResources().getString(R.string.categoriaMagoSoporte));
+                break;
+            case 5:
+                godCategoryText.setText(contexto.getResources().getString(R.string.categoriaTanque));
+                break;
+            case 6:
+                godCategoryText.setText(contexto.getResources().getString(R.string.categoriaTanque));
+                break;
+        }
+
+        godCategoryText.setText(godCategoryText.getText().toString() + " | ");
 
         switch (dir.getGodPanteon()){
             case 1:
@@ -96,7 +118,7 @@ public class AdaptadorMain extends BaseAdapter {
                 godPanteon.setText(contexto.getResources().getString(R.string.panteonJapones));
                 break;
             case 5:
-                godPanteon.setText(contexto.getResources().getString(R.string.panteonEgipcio));;
+                godPanteon.setText(contexto.getResources().getString(R.string.panteonEgipcio));
                 break;
             case 6:
                 godPanteon.setText(contexto.getResources().getString(R.string.panteonChino));
@@ -108,7 +130,7 @@ public class AdaptadorMain extends BaseAdapter {
                 godPanteon.setText(contexto.getResources().getString(R.string.panteonRomano));
                 break;
             case 9:
-                godPanteon.setText(contexto.getResources().getString(R.string.panteonVodoo));
+                godPanteon.setText(contexto.getResources().getString(R.string.panteonVudu));
                 break;
             case 10:
                 godPanteon.setText(contexto.getResources().getString(R.string.panteonEslavo));
@@ -120,8 +142,6 @@ public class AdaptadorMain extends BaseAdapter {
                 godPanteon.setText(contexto.getResources().getString(R.string.panteonPolinesio));
                 break;
         }
-
-        godPanteon.setText(" | " + godPanteon.getText().toString());
 
         switch (dir.getGodType()){
             case 1:

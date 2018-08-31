@@ -62,10 +62,16 @@
     <string name="panteonChino">Chino</string>
     <string name="panteonCelta">Celta</string>
     <string name="panteonRomano">Romano</string>
-    <string name="panteonVodoo">Vodoo</string>
+    <string name="panteonVudu">Vudú</string>
     <string name="panteonEslavo">Eslavo</string>
     <string name="panteonNordico">Nordico</string>
     <string name="panteonPolinesio">Polinesio</string>
+    <string name="categoriaGuerrero">Guerrero</string>
+    <string name="categoriaMago">Mago</string>
+    <string name="categoriaADC">ADC</string>
+    <string name="categoriaMagoSoporte">Mago-soporte</string>
+    <string name="categoriaTanque">Tanque</string>
+    <string name="categoriaAsesino">Asesino</string>
 
 
 

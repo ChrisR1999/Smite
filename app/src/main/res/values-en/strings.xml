@@ -45,5 +45,23 @@
     <string name="credits">Credits</string>
     <string name="options">Options</string>
     <string name="buildInsideCard">Build\u0020</string>
+    <string name="panteonGriego">Greek</string>
+    <string name="panteonHindu">Hindu</string>
+    <string name="panteonMaya">Maya</string>
+    <string name="panteonJapones">Japanese</string>
+    <string name="panteonEgipcio">Egyptcian</string>
+    <string name="panteonChino">Chinese</string>
+    <string name="panteonCelta">Celtic</string>
+    <string name="panteonRomano">Roman</string>
+    <string name="panteonVudu">Voodoo</string>
+    <string name="panteonEslavo">Slavic</string>
+    <string name="panteonNordico">Nordic</string>
+    <string name="panteonPolinesio">Polynesian</string>
+    <string name="categoriaGuerrero">Warrior</string>
+    <string name="categoriaMago">Mage</string>
+    <string name="categoriaADC">ADC</string>
+    <string name="categoriaMagoSoporte">Support-mage</string>
+    <string name="categoriaTanque">Tank</string>
+    <string name="categoriaAsesino">Assassin</string>
 
 </resources>
