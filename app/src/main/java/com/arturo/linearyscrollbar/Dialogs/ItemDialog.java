@@ -18,7 +18,7 @@ import com.arturo.linearyscrollbar.Utillities.StringUtillities;
 
 import java.util.ArrayList;
 
-public class ItemDialog{
+public class ItemDialog {
     private Context context;
     private Activity activity;
     private String title;
@@ -89,7 +89,7 @@ public class ItemDialog{
         dialog.show();
     }
 
-    public int getItem(){
+    public int getItem() {
         Toast.makeText(context, String.valueOf(indexSelected), Toast.LENGTH_SHORT).show();
         return indexSelected;
     }

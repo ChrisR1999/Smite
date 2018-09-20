@@ -38,13 +38,13 @@
     <string name="contromasas">CrowdCrontrol Reduction</string>
     <string name="criticos">Critical Strike Chance</string>
     <string name="pasiva">Pasive</string>
-    <string name="costo">Cost</string>
+    <string name="costo">Cost:\u0020</string>
     <string name="todoslositems">All items</string>
     <string name="searchByName">Search by name...</string>
     <string name="ceroStadistics">0</string>
     <string name="credits">Credits</string>
     <string name="options">Options</string>
-    <string name="buildInsideCard">Build\u0020</string>
+    <string name="buildInsideCard">Build:\u0020</string>
     <string name="panteonGriego">Greek</string>
     <string name="panteonHindu">Hindu</string>
     <string name="panteonMaya">Maya</string>

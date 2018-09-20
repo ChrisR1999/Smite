@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/gris"
     tools:context=".TodosLosItems">
 
@@ -17,8 +18,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
         </LinearLayout>
+
+
     </ScrollView>
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adViewRandom"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-5146175048698339/1447542724"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"/>
 
 </RelativeLayout>

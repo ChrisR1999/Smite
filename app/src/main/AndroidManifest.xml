@@ -24,7 +24,7 @@
         <activity android:name=".itemRandom" />
         <activity android:name=".BuildMaker" />
         <activity android:name=".TodosLosItems"></activity>
-        <activity android:name=".DotosDeLosItems"></activity>
+        <activity android:name=".DatosDeLosItems"></activity>
     </application>
 
 </manifest>

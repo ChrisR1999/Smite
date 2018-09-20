@@ -1,21 +1,17 @@
 package com.arturo.linearyscrollbar;
 
 import android.content.Intent;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.arturo.linearyscrollbar.Controladores.ControladorDioses;
 import com.arturo.linearyscrollbar.Controladores.ControladorItems;
@@ -315,7 +311,7 @@ public class Buscar extends AppCompatActivity {
     }
 
     public void openItem(String item) {
-        Intent intent = new Intent(this, DotosDeLosItems.class);
+        Intent intent = new Intent(this, DatosDeLosItems.class);
         intent.putExtra("nombre", item);
         startActivity(intent);
     }

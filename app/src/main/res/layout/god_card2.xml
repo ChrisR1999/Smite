@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:text=""
+            android:text="@string/categoriaAsesino"
             android:textColor="@android:color/primary_text_dark"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -48,8 +48,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/cardGodName2"
-            android:layout_marginTop="12dp"
-            android:text=""
+            android:layout_marginTop="16dp"
+            android:text="@string/categoriaAsesino"
             android:textColor="@android:color/secondary_text_dark"
             android:textSize="18sp" />
 
@@ -61,7 +61,7 @@
             android:layout_alignBaseline="@id/cardGodCategory2"
             android:layout_below="@+id/cardGodName2"
             android:layout_toEndOf="@id/cardGodCategory2"
-            android:text=""
+            android:text="@string/panteonCelta"
             android:textColor="@android:color/secondary_text_dark"
             android:textSize="18sp" />
 
@@ -70,7 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/cardGodCategory2"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="16dp"
             android:text="@string/buildInsideCard"
             android:textColor="@android:color/secondary_text_dark"
             android:textSize="20sp" />
@@ -80,6 +80,7 @@
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_alignBottom="@+id/buildIndicator"
+            android:layout_marginStart="8dp"
             android:layout_toEndOf="@id/buildIndicator"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_random" />

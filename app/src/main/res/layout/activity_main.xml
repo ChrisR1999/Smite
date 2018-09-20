@@ -8,34 +8,13 @@
 
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="66dp"
-        android:onClick="recargarlista2"
-        android:text="ITEMS" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="111dp"
+        android:id="@+id/changeViewButton"
+        android:layout_width="75dp"
         android:layout_height="65dp"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/linearToolbar"
-        android:layout_marginEnd="24dp"
-        android:onClick="Iralaweb"
-        android:text="@string/BuscarJugador" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="111dp"
-        android:layout_height="65dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/button2"
-        android:layout_marginStart="17dp"
-        android:onClick="recargarlista"
-        android:text="@string/recargar" />
+        android:layout_marginEnd="12dp"
+        android:text="@string/mas" />
 
     <LinearLayout
         android:id="@+id/linearToolbar"
@@ -63,9 +42,9 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="161dp"
+            android:layout_height="180dp"
             android:contentDescription="@string/recargar"
-            android:scaleType="fitXY"
+            android:scaleType="centerCrop"
             app:srcCompat="@mipmap/fondo" />
 
     </LinearLayout>

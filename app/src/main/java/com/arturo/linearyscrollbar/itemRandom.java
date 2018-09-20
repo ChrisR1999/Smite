@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -44,7 +43,6 @@ public class itemRandom extends AppCompatActivity {
 
         MobileAds.initialize(this, "ca-app-pub-5146175048698339~6692980600");
         mAdView = findViewById(R.id.adViewRandom);
-
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
     }
@@ -140,7 +138,7 @@ public class itemRandom extends AppCompatActivity {
     }
 
     public void openItem(String item) {
-        Intent intent = new Intent(this, DotosDeLosItems.class);
+        Intent intent = new Intent(this, DatosDeLosItems.class);
         intent.putExtra("nombre", item);
         startActivity(intent);
     }

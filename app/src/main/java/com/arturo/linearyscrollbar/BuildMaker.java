@@ -19,11 +19,15 @@ import android.widget.Toast;
 import com.arturo.linearyscrollbar.Controladores.ControladorItemsRandom;
 import com.arturo.linearyscrollbar.Modelos.ModeloItemsRandom;
 import com.arturo.linearyscrollbar.Utillities.StringUtillities;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class BuildMaker extends AppCompatActivity {
+    private AdView mAdView;
     private Typeface bebas = null;
     private ImageButton itemImage1;
     private ImageButton itemImage2;
@@ -64,6 +68,10 @@ public class BuildMaker extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_build_maker);
         bebas = Typeface.createFromAsset(getAssets(),"arremaquina.ttf");
+        MobileAds.initialize(this, "ca-app-pub-5146175048698339~6692980600");
+        mAdView = findViewById(R.id.adView2);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
         initComponents();
     }
 

@@ -5,18 +5,27 @@
     <item
         android:id="@+id/action_favorites"
         android:icon="@drawable/ic_favorite_heart"
-        android:orderInCategory="102"
+        android:orderInCategory="101"
         android:title="favorites"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 
     <item
-        android:id="@+id/items"
-        android:title="@string/items"
-        app:showAsAction="never" />
+        android:id="@+id/refreshList"
+        android:icon="@drawable/ic_if_refresh_134221"
+        android:orderInCategory="102"
+        android:title="refresh"
+        app:showAsAction="always" />
+
+
 
     <item
         android:id="@+id/searchPlayers"
         android:title="@string/BuscarJugador"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/items"
+        android:title="@string/items"
         app:showAsAction="never" />
 
     <item

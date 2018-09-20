@@ -52,13 +52,25 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
+        Intent intent;
         switch (id) {
             case R.id.action_favorites:
                 break;
-            /*case R.id.action_user:
-                Intent intent = new Intent(this, Smiteguru.class);
+
+            case R.id.refreshList:
+                searchBar.setText("");
+                this.recreate();
+                break;
+
+            case R.id.searchPlayers:
+                intent = new Intent(this, Smiteguru.class);
                 startActivity(intent);
-                break;*/
+                break;
+
+            case R.id.items:
+                intent = new Intent(this, TodosLosItems.class);
+                startActivity(intent);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -161,26 +173,5 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("type", type);
         intent.putExtra("name", name);
         startActivity(intent);
-    }
-
-
-    public void Iralaweb(View view) {
-        Intent intent = new Intent(this, Smiteguru.class);
-        startActivity(intent);
-    }
-
-    public void recargarlista(View view) {
-        searchBar.setText("");
-        this.recreate();
-    }
-
-    public void recargarlista2(View view) {
-        Intent intent = new Intent(this, TodosLosItems.class);
-        startActivity(intent);
-    }
-
-    private void PasaraTodoslosItems(View view) {
-
-
     }
 }

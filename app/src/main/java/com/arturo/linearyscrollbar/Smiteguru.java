@@ -16,6 +16,7 @@ public class Smiteguru extends AppCompatActivity {
 
 
     private Toolbar mToolbar;
+    private EditText searchBar;
     private EditText et1;
     private AdView mAdView;
     private AdView mAdView2;
@@ -25,6 +26,7 @@ public class Smiteguru extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_smiteguru);
         et1 = (EditText)findViewById(R.id.searchPlayer);
+        searchBar = (EditText) findViewById(R.id.godSearch);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbar.setTitle(R.string.BuscarJugador);
         mToolbar.setTitleTextColor(getResources().getColor(R.color.Negro));
@@ -37,8 +39,7 @@ public class Smiteguru extends AppCompatActivity {
                 finish();
             }
         });
-
-
+        mToolbar.removeView(searchBar);
         MobileAds.initialize(this, "ca-app-pub-5146175048698339/1447542724");
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
