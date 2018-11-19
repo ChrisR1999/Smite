@@ -17,6 +17,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ListView;
@@ -24,6 +25,7 @@ import android.widget.TextView;
 
 import com.arturo.linearyscrollbar.Adapters.AdaptadorMain;
 import com.arturo.linearyscrollbar.Controladores.ControladorDioses;
+import com.arturo.linearyscrollbar.Utillities.StyleUtillities;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -79,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         initComponents();
         // MobileAds.initialize(this, "ca-app-pub-5146175048698339~6692980600");
         mAdView = findViewById(R.id.adView);
@@ -88,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
     @SuppressLint("ClickableViewAccessibility")
     private void initComponents() {
+        StyleUtillities style = new StyleUtillities(this);
         godCards = new ArrayList();
         ghost = (FrameLayout) findViewById(R.id.ghostFrame);
         listMain = (ListView) findViewById(R.id.listMain);
@@ -101,7 +105,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFocusChange(View view, boolean b) {
                 if (!b) {
-
                 }
             }
         });
@@ -151,6 +154,7 @@ public class MainActivity extends AppCompatActivity {
                 passActivity(godNameClick, type);
             }
         });
+
         consultAllGods();
     }
 

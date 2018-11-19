@@ -1,8 +1,8 @@
 package com.arturo.linearyscrollbar;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
@@ -16,7 +16,6 @@ public class Smiteguru extends AppCompatActivity {
 
 
     private Toolbar mToolbar;
-    private EditText searchBar;
     private EditText et1;
     private AdView mAdView;
     private AdView mAdView2;
@@ -25,9 +24,9 @@ public class Smiteguru extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_smiteguru);
-        et1 = (EditText)findViewById(R.id.searchPlayer);
-        searchBar = (EditText) findViewById(R.id.godSearch);
+        et1 = (EditText) findViewById(R.id.searchPlayer);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar.removeAllViews();
         mToolbar.setTitle(R.string.BuscarJugador);
         mToolbar.setTitleTextColor(getResources().getColor(R.color.Negro));
         setSupportActionBar(mToolbar);
@@ -39,7 +38,7 @@ public class Smiteguru extends AppCompatActivity {
                 finish();
             }
         });
-        mToolbar.removeView(searchBar);
+
         MobileAds.initialize(this, "ca-app-pub-5146175048698339/1447542724");
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -52,65 +51,56 @@ public class Smiteguru extends AppCompatActivity {
 
     }
 
-    public void siguiente(View view){
-        Intent mandar = new Intent(this,MainActivity.class);
+    public void siguiente(View view) {
+        Intent mandar = new Intent(this, MainActivity.class);
         startActivity(mandar);
     }
 
 
-    public void buscar(View view){
+    public void buscar(View view) {
 
-        if(et1.length() == 0){
-            Toast.makeText(this, getResources().getString(R.string.ingrsanombre)  ,Toast.LENGTH_LONG).show();
-        }
-        else {
-            Intent i = new Intent(this,PaginaWeb.class);
-            i.putExtra("dato",et1.getText().toString());
-            i.putExtra("dato2","Pc");
+        if (et1.length() == 0) {
+            Toast.makeText(this, getResources().getString(R.string.ingrsanombre), Toast.LENGTH_LONG).show();
+        } else {
+            Intent i = new Intent(this, PaginaWeb.class);
+            i.putExtra("dato", et1.getText().toString());
+            i.putExtra("dato2", "Pc");
             startActivity(i);
-
         }
-
-
     }
 
-    public void buscarps(View view){
-        if(et1.length() == 0){
-            Toast.makeText(this,getResources().getString(R.string.ingrsanombre),Toast.LENGTH_LONG).show();
-        }
-        else {
-            Intent i = new Intent(this,PaginaWeb.class);
-            i.putExtra("dato",et1.getText().toString());
-            i.putExtra("dato2","PS4");
+    public void buscarps(View view) {
+        if (et1.length() == 0) {
+            Toast.makeText(this, getResources().getString(R.string.ingrsanombre), Toast.LENGTH_LONG).show();
+        } else {
+            Intent i = new Intent(this, PaginaWeb.class);
+            i.putExtra("dato", et1.getText().toString());
+            i.putExtra("dato2", "PS4");
             startActivity(i);
-
         }
 
     }
 
-    public void buscarxbox(View view){
-        if(et1.length() == 0){
-            Toast.makeText(this,getResources().getString(R.string.ingrsanombre),Toast.LENGTH_LONG).show();
-        }
-        else {
-            Intent i = new Intent(this,PaginaWeb.class);
-            i.putExtra("dato",et1.getText().toString());
-            i.putExtra("dato2","XBOX");
+    public void buscarxbox(View view) {
+        if (et1.length() == 0) {
+            Toast.makeText(this, getResources().getString(R.string.ingrsanombre), Toast.LENGTH_LONG).show();
+        } else {
+            Intent i = new Intent(this, PaginaWeb.class);
+            i.putExtra("dato", et1.getText().toString());
+            i.putExtra("dato2", "XBOX");
             startActivity(i);
 
         }
 
     }
 
-    public void guru(View view){
-        if(et1.length() == 0){
-            Toast.makeText(this,getResources().getString(R.string.ingrsanombre),Toast.LENGTH_LONG).show();
-        }
-        else {
-
-            Intent i = new Intent(this,PaginaWeb.class);
-            i.putExtra("dato",et1.getText().toString());
-            i.putExtra("dato2","Guru");
+    public void guru(View view) {
+        if (et1.length() == 0) {
+            Toast.makeText(this, getResources().getString(R.string.ingrsanombre), Toast.LENGTH_LONG).show();
+        } else {
+            Intent i = new Intent(this, PaginaWeb.class);
+            i.putExtra("dato", et1.getText().toString());
+            i.putExtra("dato2", "Guru");
             startActivity(i);
         }
 

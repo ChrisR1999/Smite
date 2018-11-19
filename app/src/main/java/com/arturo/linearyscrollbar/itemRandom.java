@@ -59,10 +59,16 @@ public class itemRandom extends AppCompatActivity {
         linearItem2 = new LinearLayout(this);
         ln1 = new LinearLayout(this);
         ln2 = (LinearLayout) findViewById(R.id.linearabajo2);
+        ln2.setOrientation(LinearLayout.VERTICAL);
+        ln2.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
         ln1.setOrientation(LinearLayout.HORIZONTAL);
 
         ln1.setBackgroundColor(getResources().getColor(R.color.Negro));
         ln2.setBackgroundColor(getResources().getColor(R.color.Negro));
+        linearItem.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
+        linearItem2.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
 
         styleHeaders(godNameTitle);
         godNameTitle.setText(godName);
@@ -129,7 +135,6 @@ public class itemRandom extends AppCompatActivity {
                 }
             });
 
-
             if (i % 2 == 0)
                 linearItem.addView(image);
             else
@@ -143,18 +148,12 @@ public class itemRandom extends AppCompatActivity {
         startActivity(intent);
     }
 
-
     public void styleHeaders(TextView style) {
         style.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
         style.setEnabled(false);
         style.setTextSize(25);
         style.setTextColor(getResources().getColor(R.color.Blanco));
         style.setBackgroundColor(getResources().getColor(R.color.Negro));
-    }
-
-    public void styleLinearItems(LinearLayout style) {
-        style.setOrientation(LinearLayout.HORIZONTAL);
-        style.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL);
     }
 
     public void RegresoMenu() {

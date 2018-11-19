@@ -3,8 +3,10 @@ package com.arturo.linearyscrollbar;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Point;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +21,7 @@ import android.widget.Toast;
 import com.arturo.linearyscrollbar.Controladores.ControladorItemsRandom;
 import com.arturo.linearyscrollbar.Modelos.ModeloItemsRandom;
 import com.arturo.linearyscrollbar.Utillities.StringUtillities;
+import com.arturo.linearyscrollbar.Utillities.StyleUtillities;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
@@ -67,7 +70,7 @@ public class BuildMaker extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_build_maker);
-        bebas = Typeface.createFromAsset(getAssets(),"arremaquina.ttf");
+        bebas = Typeface.createFromAsset(getAssets(), "arremaquina.ttf");
         MobileAds.initialize(this, "ca-app-pub-5146175048698339~6692980600");
         mAdView = findViewById(R.id.adView2);
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -77,6 +80,7 @@ public class BuildMaker extends AppCompatActivity {
 
     private void initComponents() {
         Intent intent = getIntent();
+        Point size = StyleUtillities.getPoint();
         itemsSelected = new ArrayList<Integer>();
         itemImage1 = (ImageButton) findViewById(R.id.itemBuild1);
         itemImage2 = (ImageButton) findViewById(R.id.itemBuild2);
@@ -91,11 +95,12 @@ public class BuildMaker extends AppCompatActivity {
         backButton = (Button) findViewById(R.id.backBuildButton);
         godName = intent.getStringExtra("godName");
         godType = intent.getStringExtra("godType");
-        if(godType.equals("mago"))
+        if (godType.equals("mago"))
             godType = "magico";
         itemsList = new ControladorItemsRandom(this).getStadisticsByType(godType);
         godTitle.setText(godName);
         godImage.setImageResource(getResources().getIdentifier(StringUtillities.parseItemName(godName), "mipmap", getPackageName()));
+        buildStadistics.setWidth((int)(size.x*0.8));
         setOnClickList(itemImage1, 0);
         setOnClickList(itemImage2, 1);
         setOnClickList(itemImage3, 2);
@@ -147,7 +152,7 @@ public class BuildMaker extends AppCompatActivity {
             boolean exist = false;
 
             if (itemsSelected.size() > 0) {
-                if(count < itemsSelected.size()) {
+                if (count < itemsSelected.size()) {
                     if (itemsList.get(itemsSelected.get(count)) == c) {
                         count++;
                         exist = true;
@@ -181,13 +186,13 @@ public class BuildMaker extends AppCompatActivity {
                 name.setText(c.getNombre());
                 cost.setText(cost.getText().toString() + c.getCosto());
 
-
                 linearItems.addView(dialogLayout);
             }
         }
-        for (Integer cc: itemsSelected){
+        /*for (Integer cc : itemsSelected) {
             Toast.makeText(this, cc.toString(), Toast.LENGTH_SHORT).show();
-        }
+        }*/
+
         scroll.addView(linearItems);
         build.setView(scroll);
         build.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -202,7 +207,7 @@ public class BuildMaker extends AppCompatActivity {
 
     private void setStadistics(int indexItem, int action) {
 
-        bebas = Typeface.createFromAsset(getAssets(),"arremaquina.ttf");
+        bebas = Typeface.createFromAsset(getAssets(), "arremaquina.ttf");
         initStadistics();
         if (action == 1)
             itemsSelected.add(indexItem);
@@ -247,11 +252,7 @@ public class BuildMaker extends AppCompatActivity {
                         "\nRobo de vida: " + lifeSteal +
                         "\nChance de critico: " + criticalStrikeChance +
                         "\nI Dunno: " + crowdControlReduction +
-                        "\nHPS: " + hps+
-                        "\n." +
-                        "\n." +
-                        "\n."
-
+                        "\nHPS: " + hps
         );
 
     }

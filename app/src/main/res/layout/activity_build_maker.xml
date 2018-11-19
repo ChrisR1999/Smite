@@ -175,13 +175,12 @@
 
             <TextView
                 android:id="@+id/buildStadistics"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:text="@string/ceroStadistics"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="@+id/gridLayout"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/gridLayout"
                 app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
 
@@ -195,6 +194,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
+        android:layout_below="@id/scrollItems"
         app:adSize="BANNER"
         app:adUnitId="ca-app-pub-5146175048698339/1447542724"/>
 

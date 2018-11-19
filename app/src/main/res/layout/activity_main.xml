@@ -7,15 +7,6 @@
     tools:context=".MainActivity">
 
 
-    <Button
-        android:id="@+id/changeViewButton"
-        android:layout_width="75dp"
-        android:layout_height="65dp"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/linearToolbar"
-        android:layout_marginEnd="12dp"
-        android:text="@string/mas" />
-
     <LinearLayout
         android:id="@+id/linearToolbar"
         android:layout_width="fill_parent"

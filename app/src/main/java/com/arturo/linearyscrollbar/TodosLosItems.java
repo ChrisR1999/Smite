@@ -42,8 +42,6 @@ public class TodosLosItems extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_todos_los_items);
         initComponents();
-
-
     }
 
 
@@ -160,10 +158,10 @@ public class TodosLosItems extends AppCompatActivity {
             final TextView Costo = new TextView(this);
             final TextView Nombre = new TextView(this);
             final TextView mas = new TextView(this);
-            campito.setOrientation(LinearLayout.HORIZONTAL);
             final String item = modelo.get(i).getNombre();
             final String tipo = modelo.get(i).getTipo();
             final int costo = modelo.get(i).getCosto();
+            campito.setOrientation(LinearLayout.HORIZONTAL);
             image.setImageResource(getResources().getIdentifier(StringUtillities.parseItemName(item), "mipmap", getPackageName()));
             image.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -228,11 +226,9 @@ public class TodosLosItems extends AppCompatActivity {
 
 
     public void openItem(String item) {
-
         Intent intent = new Intent(this, DatosDeLosItems.class);
         intent.putExtra("nombre", item);
         startActivity(intent);
-
     }
 
     public void RegresoMenu() {

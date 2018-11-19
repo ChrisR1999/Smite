@@ -4,24 +4,32 @@
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?attr/colorPrimary"
-    android:minHeight="?attr/actionBarSize"
+    android:background="@color/colorPrimary"
     local:popupTheme="@style/ThemeOverlay.AppCompat.Light"
     local:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-    <EditText
-        android:id="@+id/godSearch"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:hint="@string/searchByName"
-        android:drawableEnd="@drawable/ic_search_24_toolbar"
-        android:background="@color/colorPrimaryDark"
-        android:imeOptions="actionSearch"
-        android:maxLines="1"
-        android:inputType="text"
-        android:textColor="@android:color/secondary_text_dark"
-        android:textColorHint="@color/colorAccent"
-        android:padding="4dp" />
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true">
+
+        <EditText
+            android:id="@+id/godSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@color/colorPrimaryDark"
+            android:drawableEnd="@drawable/ic_search_24_toolbar"
+            android:hint="@string/searchByName"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:maxLines="1"
+            android:padding="4dp"
+            android:textColor="@android:color/secondary_text_dark"
+            android:textColorHint="@color/colorAccent" />
+
+    </LinearLayout>
 
 </android.support.v7.widget.Toolbar>
