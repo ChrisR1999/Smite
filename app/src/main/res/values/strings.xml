@@ -72,8 +72,20 @@
     <string name="categoriaMagoSoporte">Mago-soporte</string>
     <string name="categoriaTanque">Tanque</string>
     <string name="categoriaAsesino">Asesino</string>
-
-
-
-
+    <string name="estadisticas">Estadisticas</string>
+    <string name="ataqueFisico">\nAtaque fisico:\u0020</string>
+    <string name="ataqueMagico">\nAtaque magico:\u0020</string>
+    <string name="mana">\nMana:\u0020</string>
+    <string name="velAtaque">\nVel. ataque:\u0020</string>
+    <string name="salud">\nSalud:\u0020</string>
+    <string name="enfriamiento">\nEnfriamiento:\u0020</string>
+    <string name="velMovimiento">\nVel. movimiento:\u0020</string>
+    <string name="mps">\nMPS:\u0020</string>
+    <string name="penetracion">\nPenetracion:\u0020</string>
+    <string name="protMagica">\nProt. magica:\u0020</string>
+    <string name="protFisica">\nProt. fisica:\u0020</string>
+    <string name="roboVida">\nRobo de vida:\u0020</string>
+    <string name="probabilidadCritico">\nChance de critico:\u0020</string>
+    <string name="reduccionDeControlDeMasas">\nReduccion de control de masas:\u0020</string>
+    <string name="hps">\nHPS:\u0020</string>
 </resources>

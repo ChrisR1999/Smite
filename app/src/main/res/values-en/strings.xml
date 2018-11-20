@@ -63,5 +63,20 @@
     <string name="categoriaMagoSoporte">Support-mage</string>
     <string name="categoriaTanque">Tank</string>
     <string name="categoriaAsesino">Assassin</string>
-
+    <string name="estadisticas">Stadistics</string>
+    <string name="ataqueFisico">\nPhysical attack:\u0020</string>
+    <string name="ataqueMagico">\nMagical attack:\u0020</string>
+    <string name="mana">\nMana:\u0020</string>
+    <string name="velAtaque">\nAttack speed.:\u0020</string>
+    <string name="salud">\nHealth:\u0020</string>
+    <string name="enfriamiento">\nCooldown:\u0020</string>
+    <string name="velMovimiento">\nMovement speed.:\u0020</string>
+    <string name="mps">\nMPS:\u0020</string>
+    <string name="penetracion">\nPenetration:\u0020</string>
+    <string name="protMagica">\nMagical prot.:\u0020</string>
+    <string name="protFisica">\nPhysical prot.:\u0020</string>
+    <string name="roboVida">\nLife steal:\u0020</string>
+    <string name="probabilidadCritico">\nCritical prob.:\u0020</string>
+    <string name="reduccionDeControlDeMasas">\nCrown control reduction:\u0020</string>
+    <string name="hps">\nHPS:\u0020</string>
 </resources>

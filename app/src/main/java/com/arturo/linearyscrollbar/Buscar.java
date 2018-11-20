@@ -120,7 +120,7 @@ public class Buscar extends AppCompatActivity {
         comboTitle.setText("Combo");
         styleHeaders(comboTitle);
 
-        popularBuildsTitle.setText(R.string.BuildsPopulares);
+        popularBuildsTitle.setText(" ");
         styleHeaders(popularBuildsTitle);
 
         regreso.setText(R.string.regresar);
@@ -134,20 +134,20 @@ public class Buscar extends AppCompatActivity {
             }
         });
 
-        buildsConquest.setText(R.string.conquista);
+        //buildsConquest.setText(R.string.conquista);
         buildsConquest.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
 
         buildsConquest.setTextSize(25);
         buildsConquest.setTextColor(getResources().getColor(R.color.Negro));
 
-        buildsArena.setText(R.string.arena);
+        //buildsArena.setText(R.string.arena);
         buildsArena.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
 
         buildsArena.setTextSize(25);
         buildsArena.setTextColor(getResources().getColor(R.color.Negro));
         // buildsArena.setBackgroundColor(getResources().getColor(R.color.gris));
 
-        buildsJoust.setText(R.string.justa);
+        //buildsJoust.setText(R.string.justa);
         buildsJoust.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
 
         buildsJoust.setTextSize(25);
@@ -241,7 +241,7 @@ public class Buscar extends AppCompatActivity {
             }
         }
 
-        for ( int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {
             final int aux = i;
             final ImageButton item = new ImageButton(this);
             final String newItem = StringUtillities.parseItemName(items[i]);
@@ -293,8 +293,8 @@ public class Buscar extends AppCompatActivity {
         style.setTextColor(getResources().getColor(R.color.Blanco));
         style.setBackgroundColor(getResources().getColor(R.color.Negro));
     }
-    
-    public void styleLinearItems(LinearLayout style){
+
+    public void styleLinearItems(LinearLayout style) {
         style.setOrientation(LinearLayout.HORIZONTAL);
         style.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL);
     }

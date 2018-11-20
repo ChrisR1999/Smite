@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,7 +20,6 @@ import com.arturo.linearyscrollbar.Modelos.ModeloDiosesMain;
 import com.arturo.linearyscrollbar.R;
 import com.arturo.linearyscrollbar.itemRandom;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
@@ -81,7 +79,7 @@ public class AdaptadorMain extends BaseAdapter {
         randomButton = (ImageButton) v.findViewById(R.id.randomGodCard);
         buildButton = (ImageButton) v.findViewById(R.id.buildGodCard);
 
-        switch (dir.getGodCategory()){
+        switch (dir.getGodCategory()) {
             case 1:
                 godCategoryText.setText(contexto.getResources().getString(R.string.categoriaGuerrero));
                 break;
@@ -98,13 +96,13 @@ public class AdaptadorMain extends BaseAdapter {
                 godCategoryText.setText(contexto.getResources().getString(R.string.categoriaTanque));
                 break;
             case 6:
-                godCategoryText.setText(contexto.getResources().getString(R.string.categoriaTanque));
+                godCategoryText.setText(contexto.getResources().getString(R.string.categoriaAsesino));
                 break;
         }
 
         godCategoryText.setText(godCategoryText.getText().toString() + " | ");
 
-        switch (dir.getGodPanteon()){
+        switch (dir.getGodPanteon()) {
             case 1:
                 godPanteon.setText(contexto.getResources().getString(R.string.panteonGriego));
                 break;
@@ -143,7 +141,7 @@ public class AdaptadorMain extends BaseAdapter {
                 break;
         }
 
-        switch (dir.getGodType()){
+        switch (dir.getGodType()) {
             case 1:
                 godTypeLabel = "fisico";
                 break;
@@ -179,18 +177,17 @@ public class AdaptadorMain extends BaseAdapter {
     }
 
     public RoundedBitmapDrawable createImage(ModeloDiosesMain dir) {
-        Bitmap bmp = BitmapFactory.decodeResource(contexto.getResources(),contexto.getResources().getIdentifier(dir.getResourceImage(), "mipmap", contexto.getPackageName()));
+        Bitmap bmp = BitmapFactory.decodeResource(contexto.getResources(), contexto.getResources().getIdentifier(dir.getResourceImage(), "mipmap", contexto.getPackageName()));
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         RoundedBitmapDrawable roundedDrawable =
-                RoundedBitmapDrawableFactory.create(null ,bmp);
+                RoundedBitmapDrawableFactory.create(null, bmp);
         roundedDrawable.setCornerRadius(8);
         return roundedDrawable;
     }
 
-    public int getTypeID(int position){
+    public int getTypeID(int position) {
         return items.get(position).getGodCategory();
     }
-
 
 
 }

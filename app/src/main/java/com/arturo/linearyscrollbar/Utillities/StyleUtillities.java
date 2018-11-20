@@ -31,7 +31,7 @@ public class StyleUtillities {
         image.setScaleType(ImageButton.ScaleType.FIT_XY);
     }*/
 
-    public static Point getPoint(){
+    public static Point getPoint() {
         return point;
     }
 

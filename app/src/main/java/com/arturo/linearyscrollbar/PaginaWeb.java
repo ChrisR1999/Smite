@@ -56,16 +56,12 @@ public class PaginaWeb extends AppCompatActivity {
         } else {
             if (consola.equals("PS4")) {
                 wv1.loadUrl("https://archive.smitegame.com/player-stats/?set_platform_preference=ps4&player-name=" + url);
-
-
             } else {
                 if (consola.equals("XBOX")) {
                     wv1.loadUrl("https://archive.smitegame.com/player-stats/?set_platform_preference=xbox&player-name=" + url);
-
                 } else {
                     if (consola.equals("Pc")) {
                         wv1.loadUrl("https://archive.smitegame.com/player-stats/?set_platform_preference=pc&player-name=" + url);
-
                     } else {
                         Toast.makeText(this, "NO SE ENCONTRO", Toast.LENGTH_LONG).show();
                     }

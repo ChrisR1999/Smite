@@ -237,22 +237,22 @@ public class BuildMaker extends AppCompatActivity {
         buildStadistics.setBackgroundColor(getResources().getColor(R.color.azulclaro));
         buildStadistics.setTextColor(getResources().getColor(R.color.monitaa));
         buildStadistics.setText(
-                "Estadisticas" +
-                        "\nAtaque fisico: " + physicalPower +
-                        "\nAtaque magico: " + magicalPower +
-                        "\nMana: " + mana +
-                        "\nVel. ataque:" + attackSpeed +
-                        "\nSalud: " + health +
-                        "\nCooldown: " + coolDownReduction +
-                        "\nVel. movimiento: " + movementSpeed +
-                        "\nMPS: " + mps +
-                        "\nPenetracion: " + penetration +
-                        "\nProt. magica: " + magicalProtection +
-                        "\nProt. fisica: " + physicalProtection +
-                        "\nRobo de vida: " + lifeSteal +
-                        "\nChance de critico: " + criticalStrikeChance +
-                        "\nI Dunno: " + crowdControlReduction +
-                        "\nHPS: " + hps
+                this.getResources().getString(R.string.estadisticas) +
+                        this.getResources().getString(R.string.ataqueFisico) + physicalPower +
+                        this.getResources().getString(R.string.ataqueMagico) + magicalPower +
+                        this.getResources().getString(R.string.mana) + mana +
+                        this.getResources().getString(R.string.velAtaque) + attackSpeed +
+                        this.getResources().getString(R.string.salud) + health +
+                        this.getResources().getString(R.string.enfriamiento) + coolDownReduction +
+                        this.getResources().getString(R.string.velMovimiento) + movementSpeed +
+                        this.getResources().getString(R.string.mps) + mps +
+                        this.getResources().getString(R.string.penetracion) + penetration +
+                        this.getResources().getString(R.string.protMagica) + magicalProtection +
+                        this.getResources().getString(R.string.protFisica) + physicalProtection +
+                        this.getResources().getString(R.string.roboVida) + lifeSteal +
+                        this.getResources().getString(R.string.probabilidadCritico) + criticalStrikeChance +
+                        this.getResources().getString(R.string.reduccionDeControlDeMasas) + crowdControlReduction +
+                        this.getResources().getString(R.string.hps) + hps
         );
 
     }
