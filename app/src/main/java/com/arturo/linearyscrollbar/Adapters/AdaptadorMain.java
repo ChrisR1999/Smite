@@ -139,6 +139,9 @@ public class AdaptadorMain extends BaseAdapter {
             case 12:
                 godPanteon.setText(contexto.getResources().getString(R.string.panteonPolinesio));
                 break;
+            case 13:
+                godPanteon.setText(contexto.getResources().getString(R.string.panteonExcalibur));
+                break;
         }
 
         switch (dir.getGodType()) {
