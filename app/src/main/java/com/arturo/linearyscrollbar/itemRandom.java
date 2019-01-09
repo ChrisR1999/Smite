@@ -88,7 +88,7 @@ public class itemRandom extends AppCompatActivity {
                 RegresoMenu();
             }
         });
-        changeItems.setText("Rolar");
+        changeItems.setText(getResources().getString(R.string.rolar));
         changeItems.setGravity(Gravity.CENTER | Gravity.CENTER_VERTICAL);
         changeItems.setTextSize(25);
         changeItems.setTextColor(getResources().getColor(R.color.Negro));

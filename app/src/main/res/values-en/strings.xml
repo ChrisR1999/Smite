@@ -25,6 +25,7 @@
     <string name="fisicos">Phisical</string>
     <string name="magicos">Magic</string>
     <string name="general">General</string>
+    <string name="rolar">Randomize</string>
     <string name="poderfisico">Physical Power</string>
     <string name="podermagico">Magical Power</string>
     <string name="velocidadedeataque">Attack Speed</string>
