@@ -1,4 +1,5 @@
 <resources>
+
     <style name="MyMaterialTheme" parent="MyMaterialTheme.Base"></style>
 
     <style name="MyMaterialTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -9,4 +10,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="SplashTheme" parent="MyMaterialTheme.Base">
+        <item name="android:windowBackground">@drawable/splash</item>
+    </style>
 </resources>

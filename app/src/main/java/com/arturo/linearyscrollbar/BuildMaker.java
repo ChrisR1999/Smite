@@ -69,6 +69,7 @@ public class BuildMaker extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.MyMaterialTheme);
         setContentView(R.layout.activity_build_maker);
         bebas = Typeface.createFromAsset(getAssets(), "arremaquina.ttf");
         MobileAds.initialize(this, "ca-app-pub-5146175048698339~6692980600");

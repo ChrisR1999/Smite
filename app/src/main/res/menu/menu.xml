@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item
+    <!--<item
         android:id="@+id/action_favorites"
         android:icon="@drawable/ic_favorite_heart"
         android:orderInCategory="101"
         android:title="favorites"
-        app:showAsAction="always" />
+        app:showAsAction="always" /> -->
 
     <item
         android:id="@+id/refreshList"
@@ -15,7 +15,6 @@
         android:orderInCategory="102"
         android:title="refresh"
         app:showAsAction="always" />
-
 
 
     <item
@@ -28,10 +27,10 @@
         android:title="@string/items"
         app:showAsAction="never" />
 
-    <item
-        android:id="@+id/options"
-        android:title="@string/options"
-        app:showAsAction="never" />
+    <!-- <item
+         android:id="@+id/options"
+         android:title="@string/options"
+         app:showAsAction="never" /> -->
 
     <item
         android:id="@+id/credits"

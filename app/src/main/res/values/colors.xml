@@ -15,6 +15,10 @@
     <color name="foreground">#a8158301</color>
     <color name="monitaa">#000000</color>
     <color name="azulclaro">#dc63c3e6</color>
+
+
+    <color name="mainColor"></color>
+
 </resources>
 
 

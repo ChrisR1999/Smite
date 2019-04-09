@@ -6,4 +6,9 @@
         <item name="android:windowSharedElementEnterTransition">@android:transition/move</item>
         <item name="android:windowSharedElementExitTransition">@android:transition/move</item>
     </style>
+
+    <style name="SplashTheme" parent="MyMaterialTheme.Base">
+        <item name="android:windowBackground">@drawable/splash</item>
+    </style>
+
 </resources>

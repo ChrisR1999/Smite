@@ -19,6 +19,7 @@ import com.arturo.linearyscrollbar.BuildMaker;
 import com.arturo.linearyscrollbar.Modelos.ModeloDiosesMain;
 import com.arturo.linearyscrollbar.R;
 import com.arturo.linearyscrollbar.itemRandom;
+import com.bumptech.glide.Glide;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -75,7 +76,8 @@ public class AdaptadorMain extends BaseAdapter {
         godPanteon = (TextView) v.findViewById(R.id.pantheonGodCard2);
         godName.setText(dir.getGodName());
         godImage = (ImageView) v.findViewById(R.id.imageGodCard2);
-        godImage.setImageDrawable(createImage(dir));
+        Glide.with(contexto).load(getBitmap(dir)).into(godImage);
+        //godImage.setImageDrawable(createImage(dir));
         randomButton = (ImageButton) v.findViewById(R.id.randomGodCard);
         buildButton = (ImageButton) v.findViewById(R.id.buildGodCard);
 
@@ -140,7 +142,7 @@ public class AdaptadorMain extends BaseAdapter {
                 godPanteon.setText(contexto.getResources().getString(R.string.panteonPolinesio));
                 break;
             case 13:
-                godPanteon.setText(contexto.getResources().getString(R.string.panteonExcalibur));
+                godPanteon.setText(contexto.getResources().getString(R.string.panteonArturiano));
                 break;
         }
 
@@ -186,6 +188,11 @@ public class AdaptadorMain extends BaseAdapter {
                 RoundedBitmapDrawableFactory.create(null, bmp);
         roundedDrawable.setCornerRadius(8);
         return roundedDrawable;
+    }
+
+    private int getBitmap(ModeloDiosesMain dir) {
+        int idBitmap = contexto.getResources().getIdentifier(dir.getResourceImage(), "mipmap", contexto.getPackageName());
+        return idBitmap;
     }
 
     public int getTypeID(int position) {

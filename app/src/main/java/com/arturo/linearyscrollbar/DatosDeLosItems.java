@@ -65,8 +65,6 @@ public class DatosDeLosItems extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dotos_de_los_items);
         IniciarProyecto();
-
-
     }
 
 
@@ -168,16 +166,10 @@ public class DatosDeLosItems extends AppCompatActivity {
         llenardatos(tv17, "HPS ", HPS);
         datosdellinear(tv18, getResources().getString(R.string.pasiva), pasiva, 0);
         datosdellinear(tv19, getResources().getString(R.string.pasiva) + "ES", pasivaes, 1);
-
-
         ln1.addView(regreso);
-
-
     }
 
-
     public void llenardatos(TextView texto, String previo, int poder) {
-
         if (poder != 0) {
             texto.setText("" + previo + ": +" + poder);
             texto.setTextColor(getResources().getColor(R.color.Blanco));

@@ -21,7 +21,7 @@ public class ControladorItemsRandom extends VinculoBD {
     public ArrayList<ModeloItemsRandom> getAllRandomItems(String type) {
         ArrayList<ModeloItemsRandom> list = new ArrayList<>();
         open();
-        Cursor cursor = bdGods.rawQuery("SELECT Nombre FROM ItemRandom WHERE Tipo = ? OR Tipo = ?", new String[]{type,"ambos"});
+        Cursor cursor = bdGods.rawQuery("SELECT Nombre FROM ItemRandom WHERE Tipo = ? OR Tipo = ?", new String[]{type, "ambos"});
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             ModeloItemsRandom model = new ModeloItemsRandom();
@@ -42,7 +42,7 @@ public class ControladorItemsRandom extends VinculoBD {
                         "Mana, AtackSpeed, Health, CooldownReduction, MovementSpeed, MPS, Penetration, " +
                         "MagicalProtection, PhysicalProtection, Lifesteal, CriticalStrikeChance, " +
                         "CrowdControlReduction, HPS, Pasiva FROM ItemRandom WHERE Tipo = ? OR Tipo = ?",
-                new String[]{type,"ambos"}
+                new String[]{type, "ambos"}
         );
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
@@ -100,7 +100,16 @@ public class ControladorItemsRandom extends VinculoBD {
     public ArrayList<ModeloItemsRandom> Lllamada(String type) {
         ArrayList<ModeloItemsRandom> list = new ArrayList<>();
         open();
-        Cursor cursor = bdGods.rawQuery("SELECT Nombre,Costo,PhysicalPower,MagicalPower,Mana,AtackSpeed,Health,CooldownReduction,MovementSpeed,MPS,Penetration,MagicalProtection,PhysicalProtection,Lifesteal,CriticalStrikeChance,CrowdControlReduction,HPS,Pasiva,PasivaEs from ItemRandom where Nombre = ? ", new String[]{type});
+        Cursor cursor = bdGods.rawQuery("" +
+                "SELECT Nombre,Costo,PhysicalPower," +
+                "MagicalPower,Mana,AtackSpeed,Health," +
+                "CooldownReduction,MovementSpeed,MPS," +
+                "Penetration,MagicalProtection,PhysicalProtection," +
+                "Lifesteal,CriticalStrikeChance,CrowdControlReduction," +
+                "HPS,Pasiva,PasivaEs " +
+                "FROM ItemRandom " +
+                "WHERE Nombre = ? ", new String[]{type});
+
         cursor.moveToFirst();
 
 

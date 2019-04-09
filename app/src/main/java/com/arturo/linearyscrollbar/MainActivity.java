@@ -35,8 +35,6 @@ public class MainActivity extends AppCompatActivity {
     private AdView mAdView;
     private EditText searchBar;
     private Toolbar mToolbar;
-    private Animation animOut;
-    private Animation animIn;
     private ListView listMain;
     private FrameLayout ghost;
     private ArrayList godCards;
@@ -55,8 +53,8 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
         Intent intent;
         switch (id) {
-            case R.id.action_favorites:
-                break;
+            /*case R.id.action_favorites:
+                break;*/
 
             case R.id.refreshList:
                 searchBar.setText("");
@@ -79,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.SplashTheme);
         setContentView(R.layout.activity_main);
         initComponents();
         // MobileAds.initialize(this, "ca-app-pub-5146175048698339~6692980600");
@@ -97,8 +96,6 @@ public class MainActivity extends AppCompatActivity {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        animOut = AnimationUtils.loadAnimation(this, R.anim.searchout);
-        animIn = AnimationUtils.loadAnimation(this, R.anim.searchin);
         searchBar.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
