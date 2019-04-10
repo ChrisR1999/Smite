@@ -11,7 +11,7 @@
 
     <item
         android:id="@+id/refreshList"
-        android:icon="@drawable/ic_if_refresh_134221"
+        android:icon="@drawable/ic_if_refresh"
         android:orderInCategory="102"
         android:title="refresh"
         app:showAsAction="always" />

@@ -13,31 +13,28 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:orientation="vertical">
+
         <include
             android:id="@+id/toolbar"
             layout="@layout/toolbar" />
     </LinearLayout>
 
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linearToolbar"
+        android:layout_centerHorizontal="true"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-5146175048698339/1447542724" />
 
     <ListView
         android:id="@+id/listMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linearToolbar"
+        android:layout_below="@+id/adView"
         android:divider="#404040"
         android:dividerHeight="2dp" />
-
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"
-        android:layout_centerHorizontal="true"
-        app:adSize="BANNER"
-        app:adUnitId="ca-app-pub-5146175048698339/1447542724">
-
-    </com.google.android.gms.ads.AdView>
 
     <FrameLayout
         android:id="@+id/ghostFrame"

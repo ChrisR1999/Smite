@@ -63,7 +63,7 @@ public class DatosDeLosItems extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dotos_de_los_items);
+        setContentView(R.layout.activity_datos_de_los_items);
         IniciarProyecto();
     }
 

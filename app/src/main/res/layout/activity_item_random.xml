@@ -12,11 +12,31 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/linearabajo2"
+            android:id="@+id/mainLineal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
             android:orientation="vertical" />
     </ScrollView>
+
+    <Button
+        android:id="@+id/randomButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/backButton"
+        android:text="@string/rolar"
+        android:textAlignment="center"
+        android:textSize="25sp" />
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/adViewRandom"
+        android:text="@string/regresar"
+        android:textAlignment="center"
+        android:textSize="25sp" />
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adViewRandom"
@@ -24,11 +44,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
         app:adSize="BANNER"
-        app:adUnitId="ca-app-pub-5146175048698339/1447542724">
-
-    </com.google.android.gms.ads.AdView>
-
-
+        app:adUnitId="ca-app-pub-5146175048698339/1447542724" />
 </RelativeLayout>
