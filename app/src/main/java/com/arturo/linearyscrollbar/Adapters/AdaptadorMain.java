@@ -18,7 +18,7 @@ import android.widget.TextView;
 import com.arturo.linearyscrollbar.BuildMaker;
 import com.arturo.linearyscrollbar.Modelos.ModeloDiosesMain;
 import com.arturo.linearyscrollbar.R;
-import com.arturo.linearyscrollbar.itemRandom;
+import com.arturo.linearyscrollbar.ItemRandom;
 import com.bumptech.glide.Glide;
 
 import java.io.ByteArrayOutputStream;
@@ -161,7 +161,7 @@ public class AdaptadorMain extends BaseAdapter {
         randomButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(activity, itemRandom.class);
+                Intent intent = new Intent(activity, ItemRandom.class);
                 intent.putExtra("godName", dir.getGodName());
                 intent.putExtra("godType", finalGodTypeLabel);
                 activity.startActivity(intent);

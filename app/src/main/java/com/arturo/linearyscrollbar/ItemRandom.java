@@ -22,7 +22,7 @@ import com.google.android.gms.ads.MobileAds;
 
 import java.util.ArrayList;
 
-public class itemRandom extends AppCompatActivity {
+public class ItemRandom extends AppCompatActivity {
     private Button back;
     private Button changeItems;
     private LinearLayout linearItem;

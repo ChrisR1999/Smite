@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-
+    <string name="app_name">PocketSmite</string>
     <string name="Conte">GOOD AGAINST</string>
     <string name="EsContereado">WEAK AGAINST</string>
     <string name="BuildsPopulares">Popular Builds</string>
@@ -17,6 +17,14 @@
     <string name="Xbox">XBOX Oficial</string>
     <string name="guru">Any Console SmiteGuru</string>
     <string name="regresar">Return</string>
+    <string name="items">Items</string>
+    <string name="exampleGodName">God\'s name</string>
+    <string name="exampleCategory">God\'s category</string>
+    <string name="examplePantheon">Panteon</string>
+    <string name="starterItem">Starter items</string>
+    <string name="coreItem">Core items</string>
+    <string name="attackItem">Attack items</string>
+    <string name="defenseItem">Defense items</string>
     <string name="mago">Mage</string>
     <string name="sup">Support</string>
     <string name="tanque">Tank</string>
@@ -39,9 +47,10 @@
     <string name="contromasas">CrowdCrontrol Reduction</string>
     <string name="criticos">Critical Strike Chance</string>
     <string name="pasiva">Pasive</string>
-    <string name="costo">Cost:\u0020</string>
+    <string name="costo">\u0020Cost:\u0020</string>
     <string name="todoslositems">All items</string>
-    <string name="searchByName">Search by name...</string>
+    <string name="searchByName">Search by name…</string>
+    <string name="buildCreator">Create build</string>
     <string name="ceroStadistics">0</string>
     <string name="credits">Credits</string>
     <string name="options">Options</string>
@@ -81,4 +90,5 @@
     <string name="probabilidadCritico">\nCritical prob.:\u0020</string>
     <string name="reduccionDeControlDeMasas">\nCrown control reduction:\u0020</string>
     <string name="hps">\nHPS:\u0020</string>
+    <string name="more">\u0020more…</string>
 </resources>

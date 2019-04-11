@@ -14,7 +14,7 @@
         android:icon="@drawable/ic_if_refresh"
         android:orderInCategory="102"
         android:title="refresh"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
 
 
     <item

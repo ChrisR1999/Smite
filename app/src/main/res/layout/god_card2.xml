@@ -9,18 +9,18 @@
         android:id="@+id/imageGodCard2"
         android:layout_width="128dp"
         android:layout_height="172dp"
-        android:layout_marginBottom="5dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:src="@mipmap/arachne" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp">
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="20dp">
 
 
         <TextView
@@ -37,8 +37,8 @@
         <ImageButton
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
             android:layout_marginTop="4dp"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_favorite_heart" />
@@ -58,8 +58,8 @@
             android:id="@+id/pantheonGodCard2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@id/cardGodCategory2"
             android:layout_below="@+id/cardGodName2"
+            android:layout_alignBaseline="@id/cardGodCategory2"
             android:layout_toEndOf="@id/cardGodCategory2"
             android:text="@string/panteonCelta"
             android:textColor="@android:color/secondary_text_dark"

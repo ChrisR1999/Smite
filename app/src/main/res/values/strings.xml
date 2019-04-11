@@ -43,14 +43,12 @@
     <string name="contromasas">Reduccion Control de Masas</string>
     <string name="criticos">Probavilidad de Criticos</string>
     <string name="pasiva">Pasiva</string>
-    <string name="costo">Costo:</string>
+    <string name="costo">\u0020Costo:</string>
     <string name="todoslositems">Todos Los Items</string>
-    <string name="mas">mas...</string>
     <string name="items">Items</string>
-    <string name="random">Al azar</string>
     <string name="rolar">Rolar</string>
     <string name="buildCreator">Crear build</string>
-    <string name="searchByName">Buscar por nombre...</string>
+    <string name="searchByName">Buscar por nombre…</string>
     <string name="ceroStadistics">0</string>
     <string name="credits">Creditos</string>
     <string name="options">Opciones</string>
@@ -90,4 +88,5 @@
     <string name="probabilidadCritico">\nChance de critico:\u0020</string>
     <string name="reduccionDeControlDeMasas">\nReduccion de control de masas:\u0020</string>
     <string name="hps">\nHPS:\u0020</string>
+    <string name="more">\u0020mas…</string>
 </resources>
