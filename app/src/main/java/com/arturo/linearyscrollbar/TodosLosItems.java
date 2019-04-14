@@ -80,7 +80,7 @@ public class TodosLosItems extends AppCompatActivity {
                 menuBack();
             }
         });
-        modelo = controlador.TodosLosITems(intent.getStringExtra("type"));
+        modelo = controlador.getAllItems();
 
         styleHeaders(allItems, R.string.todoslositems);
         styleHeaders(magicItems, R.string.magicos);
@@ -132,7 +132,7 @@ public class TodosLosItems extends AppCompatActivity {
         linearItemMagicos.setOrientation(LinearLayout.VERTICAL);
         linearambos.setOrientation(LinearLayout.VERTICAL);
 
-        for (int i = 0; i < 101; i++) {
+        for (int i = 0; i < modelo.size(); i++) {
             final ImageButton image = new ImageButton(this);
             final LinearLayout campito = new LinearLayout(this);
             final TextView Costo = new TextView(this);
@@ -175,25 +175,23 @@ public class TodosLosItems extends AppCompatActivity {
             Costo.setTextColor(getResources().getColor(R.color.Blanco));
             Nombre.setTextColor(getResources().getColor(R.color.amarillo));
 
+            campito.addView(image);
+            campito.addView(Nombre);
+            campito.addView(Costo);
+            campito.addView(mas);
+
             if (tipo.equals("fisico")) {
-                campito.addView(image);
-                campito.addView(Nombre);
-                campito.addView(Costo);
-                campito.addView(mas);
+
                 linearItem.addView(campito);
             } else {
                 if (tipo.equals("magico")) {
-                    campito.addView(image);
-                    campito.addView(Nombre);
-                    campito.addView(Costo);
-                    campito.addView(mas);
+
                     linearItemMagicos.addView(campito);
                 } else {
-                    campito.addView(image);
-                    campito.addView(Nombre);
-                    campito.addView(Costo);
-                    campito.addView(mas);
-                    linearambos.addView(campito);
+                    if (tipo.equals("ambos")) {
+
+                        linearambos.addView(campito);
+                    }
                 }
             }
         }

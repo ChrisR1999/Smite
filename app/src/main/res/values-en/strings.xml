@@ -6,6 +6,7 @@
     <string name="EsContereado">WEAK AGAINST</string>
     <string name="BuildsPopulares">Popular Builds</string>
     <string name="arena">ARENA</string>
+    <string name="combo">Combo</string>
     <string name="conquista">CONQUEST</string>
     <string name="justa">JOUST</string>
     <string name="clash">CLASH</string>
@@ -30,7 +31,7 @@
     <string name="tanque">Tank</string>
     <string name="guerrero">Warrior</string>
     <string name="ingrsanombre">Write a name before you search</string>
-    <string name="fisicos">Phisical</string>
+    <string name="fisicos">Physical</string>
     <string name="magicos">Magic</string>
     <string name="general">General</string>
     <string name="rolar">Randomize</string>

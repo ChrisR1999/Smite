@@ -24,11 +24,12 @@ public class ModeloItemsRandom {
     private String tipo;
 
 
-    public ModeloItemsRandom(){}
+    public ModeloItemsRandom() {
+    }
 
     public ModeloItemsRandom(int id, String nombre, int costo, int physicalPower, int magicalPower, int mana, int attackSpeed, int health, int coolDown,
                              int movementSpeed, int MPS, int penetration, int magicalProtection, int lifeSteal, int criticalStrikeChance, int crowdControlReduction,
-                             int HPS, String pasive, String tipo,int PhysicalProtection,String pasivees) {
+                             int HPS, String pasive, String tipo, int PhysicalProtection, String pasivees) {
         this.id = id;
         this.nombre = nombre;
         this.costo = costo;

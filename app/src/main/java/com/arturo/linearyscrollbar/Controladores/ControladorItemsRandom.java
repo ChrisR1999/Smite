@@ -21,7 +21,11 @@ public class ControladorItemsRandom extends VinculoBD {
     public ArrayList<ModeloItemsRandom> getAllRandomItems(String type) {
         ArrayList<ModeloItemsRandom> list = new ArrayList<>();
         open();
-        Cursor cursor = bdGods.rawQuery("SELECT Nombre FROM ItemRandom WHERE Tipo = ? OR Tipo = ?", new String[]{type, "ambos"});
+        Cursor cursor = bdGods.rawQuery(
+                "SELECT Nombre " +
+                        "FROM ItemRandom " +
+                        "WHERE Tipo = ? OR Tipo = ?", new String[]{type, "ambos"}
+        );
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             ModeloItemsRandom model = new ModeloItemsRandom();
@@ -74,13 +78,12 @@ public class ControladorItemsRandom extends VinculoBD {
     }
 
 
-    public ArrayList<ModeloItemsRandom> TodosLosITems(String type) {
+    public ArrayList<ModeloItemsRandom> getAllItems() {
         ArrayList<ModeloItemsRandom> list = new ArrayList<>();
+
         open();
         Cursor cursor = bdGods.rawQuery("SELECT Nombre,Tipo,Costo,Pasiva from ItemRandom ", null);
-
         cursor.moveToFirst();
-
         while (!cursor.isAfterLast()) {
             ModeloItemsRandom model = new ModeloItemsRandom();
             model.setNombre(cursor.getString(0));
@@ -96,9 +99,9 @@ public class ControladorItemsRandom extends VinculoBD {
         return list;
     }
 
+    public ModeloItemsRandom getItemData(String name) {
+        ModeloItemsRandom model = new ModeloItemsRandom();
 
-    public ArrayList<ModeloItemsRandom> Lllamada(String type) {
-        ArrayList<ModeloItemsRandom> list = new ArrayList<>();
         open();
         Cursor cursor = bdGods.rawQuery("" +
                 "SELECT Nombre,Costo,PhysicalPower," +
@@ -108,15 +111,14 @@ public class ControladorItemsRandom extends VinculoBD {
                 "Lifesteal,CriticalStrikeChance,CrowdControlReduction," +
                 "HPS,Pasiva,PasivaEs " +
                 "FROM ItemRandom " +
-                "WHERE Nombre = ? ", new String[]{type});
+                "WHERE Nombre = ? ", new String[]{name});
+
 
         cursor.moveToFirst();
 
-
-        ModeloItemsRandom model = new ModeloItemsRandom();
         model.setNombre(cursor.getString(0));
-        model.setPhysicalPower(cursor.getInt(2));
         model.setCosto(cursor.getInt(1));
+        model.setPhysicalPower(cursor.getInt(2));
         model.setMagicalPower(cursor.getInt(3));
         model.setMana(cursor.getInt(4));
         model.setAttackSpeed(cursor.getInt(5));
@@ -133,11 +135,9 @@ public class ControladorItemsRandom extends VinculoBD {
         model.setHPS(cursor.getInt(16));
         model.setPasive(cursor.getString(17));
         model.setPasivees(cursor.getString(18));
-        list.add(model);
 
         cursor.close();
         close();
-        return list;
+        return model;
     }
-
 }

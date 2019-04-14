@@ -236,7 +236,7 @@ public class Buscar extends AppCompatActivity {
         godNameTitle.setText(godName);
         styleHeaders(godNameTitle);
 
-        comboTitle.setText("Combo");
+        comboTitle.setText(R.string.combo);
         styleHeaders(comboTitle);
 
         popularBuildsTitle.setText(" ");
@@ -284,7 +284,6 @@ public class Buscar extends AppCompatActivity {
 
         defenseDivider.setText(R.string.defenseItem);
         styleHeaders(defenseDivider);
-
     }
 
 
@@ -302,7 +301,9 @@ public class Buscar extends AppCompatActivity {
     }
 
     public void counterSearch(String god) {
-        ModeloDiosesMain modelo = new ControladorDioses(this).getGodNameAndTypeByResourceImage(god);
+        ModeloDiosesMain modelo =
+                new ControladorDioses(this)
+                        .getGodNameAndTypeByResourceImage(god);
         String name = modelo.getGodName();
         int type = modelo.getGodCategory();
         Intent send = new Intent(this, Buscar.class);
@@ -316,6 +317,7 @@ public class Buscar extends AppCompatActivity {
         Intent intent = new Intent(this, DatosDeLosItems.class);
         intent.putExtra("nombre", item);
         startActivity(intent);
+        //Toast.makeText(this, item, Toast.LENGTH_SHORT).show();
     }
 
     public void backMenu() {
