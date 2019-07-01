@@ -16,9 +16,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.arturo.linearyscrollbar.BuildMaker;
+import com.arturo.linearyscrollbar.ItemRandom;
 import com.arturo.linearyscrollbar.Modelos.ModeloDiosesMain;
 import com.arturo.linearyscrollbar.R;
-import com.arturo.linearyscrollbar.ItemRandom;
 import com.bumptech.glide.Glide;
 
 import java.io.ByteArrayOutputStream;
@@ -143,6 +143,9 @@ public class AdaptadorMain extends BaseAdapter {
                 break;
             case 13:
                 godPanteon.setText(contexto.getResources().getString(R.string.panteonArturiano));
+                break;
+            case 14:
+                godPanteon.setText(contexto.getResources().getString(R.string.panteonYoruba));
                 break;
         }
 
