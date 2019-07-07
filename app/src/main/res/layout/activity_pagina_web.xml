@@ -13,7 +13,7 @@
         android:layout_below="@+id/linearToolbar2"
         android:layout_alignParentStart="true"
         app:adSize="BANNER"
-        app:adUnitId="ca-app-pub-5146175048698339/1447542724" />
+        app:adUnitId="ca-app-pub-5146175048698339/5952485553" />
 
     <LinearLayout
         android:id="@+id/linearToolbar2"

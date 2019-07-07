@@ -20,12 +20,12 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.cristofer.scrollybar1.R;
 import com.cristofer.scrollybar1.Adapters.AdaptadorMain;
 import com.cristofer.scrollybar1.Controladores.ControladorDioses;
 import com.cristofer.scrollybar1.Utillities.StyleUtillities;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 import java.util.ArrayList;
 
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         setTheme(R.style.SplashTheme);
         setContentView(R.layout.activity_main);
         initComponents();
-        // MobileAds.initialize(this, "ca-app-pub-5146175048698339~6692980600");
+        MobileAds.initialize(this, "ca-app-pub-5146175048698339~2263101100");
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
@@ -104,7 +104,8 @@ public class MainActivity extends AppCompatActivity {
         });
         searchBar.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -113,7 +114,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void afterTextChanged(Editable editable) { }
+            public void afterTextChanged(Editable editable) {
+            }
         });
 
 

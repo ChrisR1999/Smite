@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-    <string name="app_name">PocketSmite</string>
+    <string name="app_name">Smite-Pedia</string>
     <string name="Conte">GOOD AGAINST</string>
     <string name="EsContereado">WEAK AGAINST</string>
     <string name="BuildsPopulares">Popular Builds</string>

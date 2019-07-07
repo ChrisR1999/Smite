@@ -27,5 +27,8 @@
         <activity android:name=".BuildMaker" />
         <activity android:name=".TodosLosItems" />
         <activity android:name=".DatosDeLosItems" />
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-5146175048698339~2263101100"/>
     </application>
 </manifest>

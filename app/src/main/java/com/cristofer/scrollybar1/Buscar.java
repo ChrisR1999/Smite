@@ -175,7 +175,7 @@ public class Buscar extends AppCompatActivity {
         ln2.addView(buildsArena);
         ln2.addView(buildsJoust);
 
-        MobileAds.initialize(this, "ca-app-pub-5146175048698339~6692980600");
+        //MobileAds.initialize(this, "ca-app-pub-5146175048698339~6692980600");
         mAdView = findViewById(R.id.adView);
 
         AdRequest adRequest = new AdRequest.Builder().build();

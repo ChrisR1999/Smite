@@ -70,7 +70,7 @@ public class PaginaWeb extends AppCompatActivity {
             }
         }
 
-        MobileAds.initialize(this, "ca-app-pub-5146175048698339~6692980600");
+        //MobileAds.initialize(this, "ca-app-pub-5146175048698339~6692980600");
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);

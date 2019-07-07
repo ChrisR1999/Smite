@@ -45,5 +45,5 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         app:adSize="BANNER"
-        app:adUnitId="ca-app-pub-5146175048698339/1447542724" />
+        app:adUnitId="ca-app-pub-5146175048698339/5952485553" />
 </RelativeLayout>
