@@ -30,9 +30,9 @@
                 android:id="@+id/godBuildTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
                 android:text=""
                 android:textSize="25sp"
                 app:layout_constraintEnd_toStartOf="@+id/button5"
@@ -56,8 +56,8 @@
                 android:id="@+id/button5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
                 android:onClick="recargarlista2"
                 android:text="@string/items"
                 android:textSize="20sp"
@@ -79,9 +79,9 @@
                 android:id="@+id/gridLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="32dp"
+                android:layout_marginEnd="8dp"
                 app:columnCount="3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.488"
@@ -145,9 +145,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginEnd="64dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="56dp"
+                android:layout_marginEnd="64dp"
                 android:background="@color/Negro"
                 android:text="@string/costo"
                 android:textColor="@color/Blanco"
@@ -177,9 +177,25 @@
                 android:id="@+id/buildStadistics"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
                 android:text="@string/ceroStadistics"
                 android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/gridLayout"
+                app:layout_constraintHorizontal_bias="0.503"
+                app:layout_constraintStart_toStartOf="@+id/gridLayout"
+                app:layout_constraintTop_toBottomOf="@+id/adView2" />
+
+            <com.google.android.gms.ads.AdView
+                android:id="@+id/adView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/price"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                app:adSize="BANNER"
+                app:adUnitId="ca-app-pub-5146175048698339/5952485553"
                 app:layout_constraintEnd_toEndOf="@+id/gridLayout"
                 app:layout_constraintStart_toStartOf="@+id/gridLayout"
                 app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
@@ -187,16 +203,6 @@
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/scrollItems"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="10dp"
-        app:adSize="BANNER"
-        app:adUnitId="ca-app-pub-5146175048698339/5952485553" />
+
 
 </RelativeLayout>
